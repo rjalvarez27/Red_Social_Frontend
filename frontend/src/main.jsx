@@ -1,19 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import { Routes , Route , HashRouter } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+
+import './styles/header.css'
+import './styles/nav.css'
+
+import {Header} from './components/Header.jsx'
+import {Nav} from './components/Nav.jsx'
+import {Home} from './pages/Home.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <HashRouter>
-      <Routes>
-        <Route element={<PrivateRoute />}>
-        //Rutas Privadas
-        <Route path="/Privada" element={<App />} />
-        </Route>
-        //Rutas Publicas
-        <Route path="/" element={<App />} />
-      </Routes>
-    </HashRouter>
-  </React.StrictMode>,
+    <React.StrictMode>
+    <Header/>
+    <Nav />
+    </React.StrictMode>,
 )
