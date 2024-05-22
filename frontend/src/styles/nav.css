@@ -1,18 +1,29 @@
 /*Menu nav izq*/
-#nav{
+.nav{
     width: 18%;
     height: 100%;
     background-color: rgb(18, 16, 25);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 25px;
 }
 
-#avatar{
+/* PERFIL SITE */
+
+.nav-perfil{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-perfil-avatar{
     width: 100px;
     height: 100px;
     background-color: white;
@@ -20,23 +31,37 @@
     margin-top: 35px
 }
 
-#menu{
-    width: 100%;
+.nav-perfil-name{
+    color: white;
+    font-family: "Inter", sans-serif;
 }
 
-#menu a{
+.nav-perfil-username{
+    color: rgba(174, 174, 174, 1);
+}
+
+/* MENU SITE*/
+
+.menu{
+    width: 100%;
+    margin-left: 40px;
+}
+
+.menu a{
+    width: 100%;
+    height: 100%;
     text-decoration: none;
     color: white;
     font-family: "Inter", sans-serif;
     font-weight: medium;
     font-style: italic;
+    font-size: larger;
 }
 
-#menu li{
+.menu li{
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(18, 16, 25);
     text-decoration: none;
 }

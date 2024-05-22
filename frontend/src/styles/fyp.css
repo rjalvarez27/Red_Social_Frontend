@@ -1,0 +1,8 @@
+.principal{
+    background-color: red;
+    width: 60%;
+    height: 1000px;
+    position: relative;
+    left: 20%;
+    top: 100px;
+}
