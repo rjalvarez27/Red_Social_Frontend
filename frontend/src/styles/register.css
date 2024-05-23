@@ -3,31 +3,25 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .all{
    display: flex;
    flex-direction: row;
    justify-content: center;
    align-items: center;
    width: 100vw;
-   height: auto;
+   height: 100vh;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .conten1 {
-    width: 600px;
+    width: 550px;
     height: 100px;
     display: flex;
     flex-direction: column;
@@ -39,7 +33,7 @@ body {
 }
 
 .conten2 {
-    width: 600px;
+    width: 550px;
     height: 700px;
     display: flex;
     flex-direction: column;

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { validName, validUserName, validCorreo, validPassword } from "../components/Regext.jsx";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
+import "../styles/register.css";
 
 export function Register() {
+    const navigate = useNavigate()
     const [confirm, setConfirm] = useState("");
     const [data, setData] = useState({
         name: "",
@@ -35,7 +37,7 @@ export function Register() {
                 } else {
                     console.log("redirigir a login")
                     setTimeout(function () {
-                        window.location.reload();
+                    navigate("/Login");
                     }, 3000);
                     return
                 }
@@ -55,7 +57,7 @@ export function Register() {
     return (
         <>
             <div className="all flex">
-                <div className="flex-col w-[25%] space-y-[450px] relative z-0 ">
+                <div className="flex-col w-[25%] space-y-[350px] relative z-0  ">
                     <img src="../src/img/register/regist1.png" alt="register1" className="border-double border-[5px] border-black my-[80px]" />
                     <img src="../src/img/register/regist2.png" alt="register2" className="border-double border-[5px] border-black" />
                 </div>
@@ -63,7 +65,7 @@ export function Register() {
                     <div className="conten1">
                         <img src="../src/img/principales/logo.png" alt="logo" className="w-[110px] " />
                     </div>
-                    <div className="conten2">
+                    <div className="conten2 bg-white">
                         <h1 className="text-2xl text-center m-3">Crea una cuenta</h1>
                         <form action="" className='flex flex-col gap-1 items-center' onSubmit={handleSubmit}>
                             <h3 className="text-lg font-black items-start ">Nombre</h3>
@@ -92,7 +94,7 @@ export function Register() {
                                 <p className="text-[10px]  m-1">Haz click aqui si desea tener una cuenta premium directamente.  </p>
                             </div>
                             <div className="flex">
-                                <p>Si no tienes ninguna cuenta , simplemente haz clic aqui. </p>
+                                <p>Si no tienes ninguna cuenta , simplemente haz clic aqui </p>
                             </div>
                             <div className="flex">
                                 <button className="border w-12 py-3 m-1 rounded-lg  hover:bg-gray-800 hover:text-white">
@@ -105,16 +107,16 @@ export function Register() {
                                     <i className="fa-brands fa-facebook"></i>
                                 </button>
                             </div>
-                            <input type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg m-4 w-1/3' />
+                            <input type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg m-4 w-1/3'/>
                         </form>
                     </div>
                     <div className="sticky top-[100vh] conten3">
                         <h1 className="text-sm text-center m-2 ">© 2024 Copyright: Mounts</h1>
                     </div>
                 </div>
-                <div className="flex-col w-[25%] space-y-[470px] relative z-0">
+                <div className="flex-col w-[25%] relative z-0 space-y-[350px] ">
                     <NavLink to="/"><img src="../src/img/principales/home.png" alt="home" className="w-[60px] my-16 mx-20" /></NavLink>
-                    <img src="../src/img/register/character.png" alt="personaje" className=" w-[250px] sticky z-10" />
+                    <img src="../src/img/register/character.png" alt="personaje" className=" w-[280px] sticky z-10 " />
                 </div>
             </div>
         </>

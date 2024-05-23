@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<PrivateRoute />}>
         //Rutas Privadas
-          <Route path="/Home" element={<Home />} />
+          <Route path="/home" element={<Home />} />
         </Route>
         //Rutas Publicas
         <Route path="/" element={<Login />} />
