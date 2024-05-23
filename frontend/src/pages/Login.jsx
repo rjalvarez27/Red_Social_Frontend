@@ -11,7 +11,6 @@ export function Login() {
     email: "",
     password: "",
   });
-  const [token, setToken] = useState(null);
   const navigate = useNavigate();
 
   const senData = async (e) => {
@@ -24,19 +23,25 @@ export function Login() {
       try {
         const response = await axios.post("http://localhost:3000/social/login", data);
         console.log(response.data.token);
-        setToken(response.data.token);
-        console.log(token)
-        document.cookie = `token=${token}; max-age=7200;`
+        if(response){
+        Cookies.set = `token = ${response.data.token}; max-age=7200;` 
+        }
         console.log("Iniciando sesion");
         setTimeout(function () {
-          navigate("/Home");
-          }, 3000);
-        return
+        navigate("/home");
+        }, 2000);
+       
+        
       } catch (error) {
         console.log(error.response.data);
       }
     }
-    
+    useEffect(() => {
+       console.log(token)
+       if(token){
+        navigate("/home");
+       }
+    });
   };
 return (
     <>
