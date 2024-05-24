@@ -1,7 +1,4 @@
 /* Regist */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 .all{
    display: flex;
