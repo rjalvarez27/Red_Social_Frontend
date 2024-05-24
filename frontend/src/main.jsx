@@ -10,9 +10,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route element={<PrivateRoute />}>
+        <Route element={<PrivateRoute/>}>
         //Rutas Privadas
-          <Route path="/Home" element={<Home />} />
+          <Route path="/home" element={<Home />} />
         </Route>
         //Rutas Publicas
         <Route path="/" element={<Login />} />

@@ -1,18 +1,19 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from 'js-cookie'
 
 export function PrivateRoute() {
   const [token, setToken] = useState(true);
 
   useEffect(() => {
-    const token = (document.cookie = "token");
+    const token = Cookies.get('token') 
 
     const validToken = async () => {
       try {
         const response = await axios({
           method: "get",
-          url: "http://localhost:3000/api/user",
+          url: "http://localhost:3000/social/login",
           headers: {
             authorization: token,
           },
