@@ -5,6 +5,14 @@ import { PrivateRoute } from './routes/PrivateRoutes'
 import { Login } from '../src/pages/Login.jsx'
 import { Register } from '../src/pages/Register.jsx'
 import { Home } from '../src/pages/Home.jsx'
+import { Membership } from './pages/Membership.jsx'
+import { MembershipPay } from './pages/MembershipPay.jsx'
+import { Payments } from './pages/Payments.jsx'
+import { PerfilAdmin } from './pages/PerfilAdmin.jsx'
+import { PerfilUser } from '../src/pages/PerfilUser.jsx'
+import { Rates } from './pages/RatesP.jsx'
+import "../src/styles/index.css"
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -17,6 +25,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         //Rutas Publicas
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route  path="/membership" element={<Membership />} />
+        <Route path="/membershipPay" element={<MembershipPay />} />
+        <Route path="/payments" element={<Payments />} />
+        <Route path="/perfiladmin" element={<PerfilAdmin />} />
+        <Route path="/perfiluser" element={<PerfilUser />} />
+        <Route path="/rates" element={<Rates/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
