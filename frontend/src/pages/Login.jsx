@@ -4,6 +4,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { validCorreo, validPassword } from "../components/Regext.jsx";
 import axios from "axios";
 import "../styles/login.css";
+import Cookies from 'js-cookie'
 
 
 export function Login() {
@@ -23,25 +24,14 @@ export function Login() {
       try {
         const response = await axios.post("http://localhost:3000/social/login", data);
         console.log(response.data.token);
-        if(response){
-        Cookies.set = `token = ${response.data.token}; max-age=7200;` 
-        }
-        console.log("Iniciando sesion");
-        setTimeout(function () {
-        navigate("/home");
-        }, 2000);
-       
+        Cookies.set('token', `${response.data.token}`)
+        console.log(Cookies.get('token'))
         
       } catch (error) {
         console.log(error.response.data);
       }
     }
-    useEffect(() => {
-       console.log(token)
-       if(token){
-        navigate("/home");
-       }
-    });
+   
   };
 return (
     <>
