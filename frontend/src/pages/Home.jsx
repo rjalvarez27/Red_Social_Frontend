@@ -1,7 +1,12 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
+import Cookies from 'js-cookie'
+
 export function Home() {
+    const navigate = useNavigate();
     const cerrarSesion = () => {
-        localStorage.removeItem("token");
-        window.location.reload();
+        Cookies.remove('token');
+        navigate('/')
       };
     return (
         <div>

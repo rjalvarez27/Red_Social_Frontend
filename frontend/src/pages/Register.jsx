@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { validName, validUserName, validCorreo, validPassword } from "../components/Regext.jsx";
 import { NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
+import Cookies from 'js-cookie'
 import "../styles/register.css";
 
 export function Register() {
@@ -54,6 +55,12 @@ export function Register() {
             console.log("Datos incorrectos, por favor verifique los datos")
         }
     };
+    useEffect(() => {
+        const data = Cookies.get('token')
+        if(data){
+          navigate('/home')
+        }
+      });
     return (
         <>
             <div className="all flex">

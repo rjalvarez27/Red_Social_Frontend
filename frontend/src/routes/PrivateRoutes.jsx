@@ -13,7 +13,7 @@ export function PrivateRoute() {
       try {
         const response = await axios({
           method: "get",
-          url: "http://localhost:3000/social/login",
+          url: "http://localhost:3000/social/user",
           headers: {
             authorization: token,
           },
