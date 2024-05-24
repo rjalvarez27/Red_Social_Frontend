@@ -12,6 +12,7 @@ export function Login() {
     email: "",
     password: "",
   });
+  const [token, setToken] = useState(null)
   const navigate = useNavigate();
 
   const senData = async (e) => {
@@ -23,16 +24,24 @@ export function Login() {
     else if (validCorreo.test(data.email) && validPassword.test(data.password)) {
       try {
         const response = await axios.post("http://localhost:3000/social/login", data);
-        console.log(response.data.token);
-        Cookies.set('token', `${response.data.token}`)
+        const info = response.data
+        setToken(info.token)
+        Cookies.set('token', `${info.token}`)
         console.log(Cookies.get('token'))
+        navigate('/home')
         
       } catch (error) {
         console.log(error.response.data);
       }
     }
-   
   };
+  useEffect(() => {
+    const data = Cookies.get('token')
+    if(data){
+      navigate('/home')
+    }
+  });
+  
 return (
     <>
       <div className="containerL">
