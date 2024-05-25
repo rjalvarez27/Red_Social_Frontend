@@ -17,7 +17,7 @@ export function Login() {
 
   const senData = async (e) => {
     e.preventDefault();
-    if(!data.email || !data.password){
+    if (!data.email || !data.password) {
       alert('Campos estan vacios, por favor rellene todos los datos')
       return
     }
@@ -29,7 +29,7 @@ export function Login() {
         Cookies.set('token', `${info.token}`)
         console.log(Cookies.get('token'))
         navigate('/home')
-        
+
       } catch (error) {
         console.log(error.response.data);
       }
@@ -37,23 +37,23 @@ export function Login() {
   };
   useEffect(() => {
     const data = Cookies.get('token')
-    if(data){
+    if (data) {
       navigate('/home')
     }
   });
-  
-return (
-    <>
+
+  return (
+    <div className="login-body">
       <div className="containerL">
-        <div className="box1 flex-none w-[50%]">
+        <div className="box1">
           <img src="../src/img/principales/logo.png" alt="logo" className="w-[150px] m-2" />
           <h1 className="text-3xl font-black ">MOUNTS</h1>
         </div>
-        <div className="box2 flex-none w-[50%] bg-white ">
+        <div className="box2">
           <form className='flex flex-col items-center bg-transparent' onSubmit={senData}>
             <h3 className="text-lg font-black items-start m-2">Correo electronico</h3>
             <label className='flex m-2 items-center border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
-              <input type="Email" placeholder="Ingresa tu Email" className='p-1 rounded-md text-center' onChange={(e) => setData({...data, email: e.target.value})}/>
+              <input type="Email" placeholder="Ingresa tu Email" className='p-1 rounded-md text-center' onChange={(e) => setData({ ...data, email: e.target.value })} />
             </label>
             <h3 className="text-lg font-black items-start m-2">Contraseña</h3>
             <label className='flex items-center border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
@@ -78,20 +78,20 @@ return (
           </form>
         </div>
       </div>
-      <div className="container">
+      <div className="containerL">
         <div className="box3">
           <p>¿No tienes cuenta?</p>
           <NavLink to="/register" className="text-lg text-center m-1 text-blue-800">Registrate</NavLink>
         </div>
       </div>
-      <div className="container">
-         <p className="text-lg text-center m-1 font-semibold ">Descarga la app</p>
-        <div className="flex-col relative ">
+      <div className="containerF">
+        <p className="text-xl text-center m-1 font-bold ">Descarga la app</p>
+      <div className="flex-col relative ">
           <img src="../src/img/login/img2.png" alt="app" className="w-[400px] position:relative z-0 " />
           <img src="../src/img/login/img1.png" alt="fondo" className="w-[500px] absolute inset-0 z-[-1] " />
         </div>
-      </div>
-    </>
+       </div> 
+    </div>
   );
 }
 

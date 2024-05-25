@@ -1,14 +1,5 @@
 /* Regist */
 
-.all{
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center;
-   width: 100vw;
-   height: 100vh;
-}
-
 .container {
     display: flex;
     flex-direction: column;
@@ -52,14 +43,13 @@
     }
 
     .conten1 {
-        position: relative;
-        width: 500px;
+        width: 450px;
         height: 100px;
     }
 
     .conten2 {
         position: relative;
-        width: 500px;
+        width: 450px;
         height: 670px;
     }
 
@@ -76,12 +66,12 @@
     }
 
     .conten1 {
-        width: 340px;
+        width: 400px;
         height: 100px;
     }
 
     .conten2 {
-        width: 340px;
-        height: 500px;
+        width: 400px;
+        height: 750px;
     }
 }

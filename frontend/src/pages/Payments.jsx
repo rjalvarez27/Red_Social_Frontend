@@ -38,23 +38,26 @@ export function Payments() {
                         <p className="text-lg m-3 text-start" >Si es por paypal por favor Presione el boton para proceder con la forma de pago:</p>
                         <button className='text-blue-500 bg-yellow-300 w-[200px] m-3 p-2'>PayPal</button>
                     </div>
-                    <div>
-                        <p className="text-lg m-3 text-start" >Si es por pago Movil verifique que los datos son correctos e ingrese los datos en la siguiente seccion:</p>
-                        <h3 className="text-lg font-black items-start ">Nombre</h3>
-                        <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
-                            <input type="text" className='p-1 rounded-md text-center' name="name" id="name" />
+                    <div className='flex-col w-[100%]'>
+                        <p className="text-lg m-3 text-center" >Si es por pago Movil verifique que los datos son correctos e ingrese los datos en la siguiente seccion:</p>
+                    </div>
+                    <div className='flex-col w-[100%]'>
+                        <h3 className="text-lg font-black">Nombre</h3>
+
+                        <label>
+                            <input type="text" className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white ' name="name" id="name" />
                         </label>
                         <h3 className="text-lg font-black items-start ">Cedula</h3>
-                        <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
+                        <label>
                             <input type="text" className='p-1 rounded-md text-center' name="name" id="name" />
                         </label>
                         <h3 className="text-lg font-black items-start ">Banco</h3>
-                        <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
+                        <label >
                             <input type="text" className='p-1 rounded-md text-center' name="name" id="name" />
                         </label>
                         <h3 className="text-lg font-black items-start ">Numero de Referencia</h3>
-                        <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
-                            <input type="text" className='p-1 rounded-md text-center' name="name" id="name" onChange={(e) => setData({ ...data, name: e.target.value })} />
+                        <label >
+                            <input type="text" className='p-1 rounded-md text-center' name="name" id="name" />
                         </label>
                     </div>
                     <div className='flex-col w-[100%] text-center '>
@@ -63,13 +66,16 @@ export function Payments() {
                     </p>
                     <button className='text-white bg-green-500 w-[200px] m-3 p-2'>WhatsApp</button>
                     </div>
+                    <div className="sticky top-[100vh] conten3">
+                        <h1 className="text-sm text-center m-2 ">© 2024 Copyright: Mounts</h1>
+                    </div>
                 </div>
                 <div className="general-box3">
                     <div className="flex justify-center w-[100%] ">
                         <ul className='flex m-5'>
-                            <li className='m-2 text-3xl'><i class="fa-solid fa-bell"></i></li>
-                            <li className='m-2 text-3xl'><i class="fa-solid fa-magnifying-glass"></i></li>
-                            <li className='m-2 text-3xl'><i class="fa-solid fa-gear"></i></li>
+                            <li className='m-2 text-3xl'><i className="fa-solid fa-bell"></i></li>
+                            <li className='m-2 text-3xl'><i className="fa-solid fa-magnifying-glass"></i></li>
+                            <li className='m-2 text-3xl'><i className="fa-solid fa-gear"></i></li>
                         </ul>
                     </div>
                     <div className='rates-part3'>
