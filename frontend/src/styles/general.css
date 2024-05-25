@@ -74,10 +74,7 @@ ol li:hover {
     html{
         font-size: 15px;
     }
-   .container{
-    padding: 50px;
-   }
-
+  
 }
 
 @media screen and (max-width:580px){
