@@ -12,6 +12,8 @@ export function Login() {
     email: "",
     password: "",
   });
+
+  console.log(data)
   const [token, setToken] = useState(null)
   const navigate = useNavigate();
 
@@ -31,7 +33,6 @@ export function Login() {
       try {
         const response = await axios.post("http://localhost:3000/social/login", data);
         const info = response.data
-        console.log(info)
         setToken(info.token)
         Cookies.set('token', `${info.token}`)
         console.log(Cookies.get('token'))
