@@ -21,24 +21,38 @@ export function Register() {
             alert('Campos estan vacios, por favor rellene todos los datos')
             return
         }
-        else if (validName.test(data.name) && validUserName.test(data.username) && validCorreo.test(data.email) && validPassword.test(data.password)) {
-            if (data.password != confirm) {
-                alert('Las contrasenias no coinciden, por favor verifique los datos')
-                return
-            }
+        if (!validName.test(data.name)) {
+            alert('Nombre incorrecto, por favor verifique los datos')
+        }
+        if (!validUserName.test(data.username)) {
+            alert('Usuario incorrecto, por favor verifique los datos')
+        }
+        if (!validCorreo.test(data.email)) {
+            alert('Correo incorrecto, por favor verifique los datos')
+        }
+        if (!validPassword.test(data.password)) {
+            alert('Contraseña incorrecta, por favor verifique los datos')
+        }
+        else if (data.password != confirm) {
+            alert('Las contrasenias no coinciden, por favor verifique los datos')
+            return
+        }
+        else {
             try {
+                console.log(checkbox)
                 const response = await axios.post('http://localhost:3000/social/user', data)
-                alert('Cuenta creada con exito')
+                console.log(response.data)
+                console.log(checkbox)
                 if (checkbox == true) {
-                    console.log("redirigir a zona de pago")
+                    console.log("redirigir a zona de pago, el usuario de igual manera queda registrado")
                     setTimeout(function () {
-                        window.location.reload();
+                        navigate("/membership");
                     }, 3000);
                     return
                 } else {
                     console.log("redirigir a login")
                     setTimeout(function () {
-                        navigate("/Login");
+                        navigate("/");
                     }, 3000);
                     return
                 }
@@ -50,9 +64,6 @@ export function Register() {
                 }, 2000);
                 return
             }
-        }
-        else {
-            console.log("Datos incorrectos, por favor verifique los datos")
         }
     };
     useEffect(() => {
@@ -79,7 +90,6 @@ export function Register() {
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
                                 <input type="text" className='p-1 rounded-md text-center' name="name" id="name" onChange={(e) => setData({ ...data, name: e.target.value })} />
                             </label>
-
                             <h3 className="text-lg font-black items-start ">UserName</h3>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
                                 <input type="text" className='p-1 rounded-md text-center' name="username" id="username" onChange={(e) => setData({ ...data, username: e.target.value })} />
