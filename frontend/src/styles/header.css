@@ -1,13 +1,19 @@
 /*Header*/
-#header{
+.header{
     width: 64%;
-    height: 75px;
+    height: 80px;
     background-color: rgb(18, 16, 25);
     color: rgb(255, 255, 255);
     font-size: 3vh;
     position: fixed;
+    z-index: 5;
     left: 18%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.logo-header{
+    width: 75px;
+    box-shadow: 0 5px 5px rgb(0,0,0,0.6);
 }

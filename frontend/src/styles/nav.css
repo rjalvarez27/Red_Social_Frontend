@@ -31,12 +31,12 @@
     margin-top: 35px
 }
 
-.nav-perfil-name{
+.perfil-name{
     color: white;
     font-family: "Inter", sans-serif;
 }
 
-.nav-perfil-username{
+.perfil-username{
     color: rgba(174, 174, 174, 1);
 }
 
@@ -45,6 +45,14 @@
 .menu{
     width: 100%;
     margin-left: 40px;
+}
+
+.menu li{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .menu a{
@@ -58,10 +66,17 @@
     font-size: larger;
 }
 
-.menu li{
+/* BOTON NUEVA PUBLICACION */
+
+.new-post{    
     height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+    background-color: white;
+    color: rgb(18, 16, 25);
+    font-weight: bold;
+    font-size: 15px;
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
 }
