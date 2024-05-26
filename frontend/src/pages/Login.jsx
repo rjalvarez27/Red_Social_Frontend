@@ -63,17 +63,17 @@ export function Login() {
               <p className="text-sm text-center m-1">Haga Click aqui para iniciar sesion directamente </p>
             </div>
             <div className="flex">
-              <button className="border w-12 py-3 m-1 rounded-lg  hover:bg-gray-800 hover:text-white">
+              <button className="border w-12 py-3 m-1 rounded-lg  hover:bg-gray-800 hover:text-white" disabled>
                 <i className="fa-brands fa-x-twitter"></i>
               </button>
-              <button className="border w-12 py-3 m-1 rounded-lg hover:bg-gray-800 hover:text-red-600">
+              <button className="border w-12 py-3 m-1 rounded-lg hover:bg-gray-800 hover:text-red-600" disabled>
                 <i className="fa-brands fa-google"></i>
               </button>
-              <button className="border w-12 py-3 m-1 rounded-lg hover:bg-gray-800 hover:text-blue-600">
+              <button className="border w-12 py-3 m-1 rounded-lg hover:bg-gray-800 hover:text-blue-600" disabled>
                 <i className="fa-brands fa-facebook"></i>
               </button>
             </div>
-            <NavLink to="/recuperar" className="text-lg text-center m-1">¿Olviste tu contraseña?</NavLink>
+            <NavLink to="/recoverEmail" className="text-lg text-center m-1">¿Olviste tu contraseña?</NavLink>
             <input type="submit" value="Iniciar Sesion" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg m-4' />
           </form>
         </div>
@@ -86,11 +86,11 @@ export function Login() {
       </div>
       <div className="containerF">
         <p className="text-xl text-center m-1 font-bold ">Descarga la app</p>
-      <div className="flex-col relative ">
+        <div className="flex-col relative ">
           <img src="../src/img/login/img2.png" alt="app" className="w-[400px] position:relative z-0 " />
           <img src="../src/img/login/img1.png" alt="fondo" className="w-[500px] absolute inset-0 z-[-1] " />
         </div>
-       </div> 
+      </div>
     </div>
   );
 }

@@ -104,13 +104,13 @@ export function Register() {
                                 <p>Si no tienes ninguna cuenta , simplemente haz clic aqui </p>
                             </div>
                             <div className="flex">
-                                <button className="border w-12 py-3 m-1 rounded-lg  hover:bg-gray-800 hover:text-white">
+                                <button className="border w-12 py-3 m-1 rounded-lg  hover:bg-gray-800 hover:text-white" disabled>
                                     <i className="fa-brands fa-x-twitter"></i>
                                 </button>
-                                <button className="border w-12 py-3 m-1 rounded-lg hover:bg-gray-800 hover:text-red-600">
+                                <button className="border w-12 py-3 m-1 rounded-lg hover:bg-gray-800 hover:text-red-600" disabled>
                                     <i className="fa-brands fa-google"></i>
                                 </button>
-                                <button className="border w-12 py-3 m-1 rounded-lg hover:bg-gray-800 hover:text-blue-600">
+                                <button className="border w-12 py-3 m-1 rounded-lg hover:bg-gray-800 hover:text-blue-600" disabled>
                                     <i className="fa-brands fa-facebook"></i>
                                 </button>
                             </div>
