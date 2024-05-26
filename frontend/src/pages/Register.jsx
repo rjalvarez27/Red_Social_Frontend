@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { validName, validUserName, validCorreo, validPassword } from "../components/Regext.jsx";
-import { NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie'
 import "../styles/register.css";
@@ -38,7 +38,7 @@ export function Register() {
                 } else {
                     console.log("redirigir a login")
                     setTimeout(function () {
-                    navigate("/Login");
+                        navigate("/Login");
                     }, 3000);
                     return
                 }
@@ -57,12 +57,12 @@ export function Register() {
     };
     useEffect(() => {
         const data = Cookies.get('token')
-        if(data){
-          navigate('/home')
+        if (data) {
+            navigate('/home')
         }
-      });
+    });
     return (
-        <>
+        <div>
             <div className="all flex">
                 <div className="flex-col w-[25%] space-y-[350px] relative z-0  ">
                     <img src="../src/img/register/regist1.png" alt="register1" className="border-double border-[5px] border-black my-[80px]" />
@@ -114,7 +114,7 @@ export function Register() {
                                     <i className="fa-brands fa-facebook"></i>
                                 </button>
                             </div>
-                            <input type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg m-4 w-1/3'/>
+                            <input type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg m-4 w-1/3' />
                         </form>
                     </div>
                     <div className="sticky top-[100vh] conten3">
@@ -126,6 +126,6 @@ export function Register() {
                     <img src="../src/img/register/character.png" alt="personaje" className=" w-[280px] sticky z-10 " />
                 </div>
             </div>
-        </>
+        </div>
     );
 }
