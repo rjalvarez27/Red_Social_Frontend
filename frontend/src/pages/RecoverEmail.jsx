@@ -16,23 +16,29 @@ export function RecoverEmail() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(data)
         if (!data.email) {
             alert('El email se encuentra vacio, por favor rellene la casilla ')
             return
         }
+        if(!validCorreo.test(data.email)){
+            alert('Por favor verifique el dato ingresado')
+        }
         else if (validCorreo.test(data.email)) {
             try {
-                const response = await axios.get('http://localhost:3000/social/user', data)
-                console.log(response.data)
-                
+                const response = await axios.get(`http://localhost:3000/social/user/recovery/${data.email}`, data)
+                const info = response.data
+                if (!info) {
+                  alert('Error 404')                
+                }else{
+                    console.log(info)
+                    Cookies.set('token', `${info.token}`)
+                    navigate('/recoverConfirm')
+                }
             } catch (error) {
                 console.log(error.response.data);
             }
         }
     }
-
-
 
     return (
         <div className="flex flex-col">
