@@ -7,7 +7,7 @@ export function Home() {
     const cerrarSesion = () => {
         Cookies.remove('token');
         navigate('/')
-      };
+    };
     return (
         <div>
             <h1>Home</h1>

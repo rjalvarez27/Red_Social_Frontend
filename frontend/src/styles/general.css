@@ -1,6 +1,6 @@
-/* Base de Paginas en geenral */
+/* Base de las paginas en general */
 
-.general-content{
+.general-content {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-.general-box1{
+.general-box1 {
     width: 20%;
     height: 100vh;
     display: flex;
@@ -20,7 +20,7 @@
     align-items: center;
 }
 
-ol li{
+ol li {
     list-style: none;
     margin: 20px;
     cursor: pointer;
@@ -38,7 +38,7 @@ ol li:hover {
     border-radius: 10px;
 }
 
-.general-box2{
+.general-box2 {
     width: 60%;
     height: 100vh;
     display: flex;
@@ -46,8 +46,8 @@ ol li:hover {
     margin: 10px;
 }
 
-.general-box3{
-    width: 20%; 
+.general-box3 {
+    width: 20%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -60,33 +60,38 @@ ol li:hover {
 
 /* Responsive*/
 
-@media screen and (max-width:750px){
-    *{
+@media screen and (max-width: 750px) {
+    * {
         font-size: 11px;
     }
-    .general-box1{
+
+    .general-box1 {
         width: 25%;
     }
-    .general-box2{
+
+    .general-box2 {
         width: 50%;
     }
-    .general-box3{
+
+    .general-box3 {
         width: 25%;
     }
 }
 
-@media screen and (max-width:580px){
-    *{
+@media screen and (max-width: 580px) {
+    * {
         font-size: 10px;
     }
-    .general-box1{
+
+    .general-box1 {
         width: 25%;
     }
-    .general-box2{
+
+    .general-box2 {
         width: 50%;
     }
-    .general-box3{
+
+    .general-box3 {
         width: 25%;
     }
-    
 }

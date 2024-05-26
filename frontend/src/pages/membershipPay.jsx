@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 export function MembershipPay() {
+//recordar el toast con los datos del pago movil 
+
+
     return (
         <div className="general-content">
             <div className="general-box1">
@@ -38,13 +41,13 @@ export function MembershipPay() {
                 <div className='flex flex-col items-center '>
                     <form action="" className=' flex flex-col text-center border border-gray-800 rounded-lg  p-4 shadow-lg bg-white'>
                         <h3 className="text-sm font-black">Nombre</h3>
-                        <input type="text" className='flex border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white ' name="name" id="name" />
+                        <input type="text" className='flex border border-gray-800 rounded-lg p-1 shadow-lg bg-white ' name="name" id="name" />
                         <h3 className="text-sm font-black items-start ">Cedula</h3>
-                        <input type="text" className='p-1 rounded-md text-center' name="name" id="name" />
+                        <input type="text" className='flex border border-gray-800 rounded-lg p-1 shadow-lg bg-white ' name="ci" id="ci" />
                         <h3 className="text-sm font-black items-start ">Banco</h3>
-                        <input type="text" className='p-1 rounded-md text-center' name="name" id="name" />
+                        <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white ' name="bank" id="back" />
                         <h3 className="text-sm font-black items-start ">Numero de Referencia</h3>
-                        <input type="text" className='p-1 rounded-md text-center' name="name" id="name" />
+                        <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white ' name="reference" id="reference" />
                         <p className="text-xs">Verifique antes de Connfirmar</p>
                         <button className='text-white bg-black  m-1 p-1 rounded-md'>Confirmar</button>
                     </form>
