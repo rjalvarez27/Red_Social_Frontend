@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 export function MembershipPay() {
-//recordar el toast con los datos del pago movil 
+    //recordar el toast con los datos del pago movil 
 
 
     return (
