@@ -17,7 +17,7 @@ export function Register() {
     const [checkbox, setCheckbox] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!data.username || !data.email || !data.password || !confirm) {
+        if (!data.name || !data.username || !data.email || !data.password || !confirm) {
             alert('Campos estan vacios, por favor rellene todos los datos')
             return
         }
@@ -32,6 +32,10 @@ export function Register() {
         }
         if (!validPassword.test(data.password)) {
             alert('Contraseña incorrecta, por favor verifique los datos')
+        } 
+        if (data.password.length < 6) {
+            alert('La contrasenia debe tener minimo 6 caracteres')
+            return
         }
         else if (data.password != confirm) {
             alert('Las contrasenias no coinciden, por favor verifique los datos')
@@ -39,26 +43,22 @@ export function Register() {
         }
         else {
             try {
-                console.log(checkbox)
                 const response = await axios.post('http://localhost:3000/social/user', data)
-                console.log(response.data)
-                console.log(checkbox)
                 if (checkbox == true) {
-                    console.log("redirigir a zona de pago, el usuario de igual manera queda registrado")
+                    alert("redirigiendo a la zona de pago, usuario registrado con exito")
                     setTimeout(function () {
                         navigate("/membership");
-                    }, 3000);
+                    }, 2000);
                     return
                 } else {
-                    console.log("redirigir a login")
+                    alert("usuario registrado con exito")
                     setTimeout(function () {
                         navigate("/");
-                    }, 3000);
+                    }, 2000);
                     return
                 }
             } catch (error) {
-                console.log("Correo en uso, por favor ingrese otro")
-                console.log(response.data)
+                alert("Correo en uso, por favor ingrese otro")
                 setTimeout(function () {
                     window.location.reload();
                 }, 2000);
