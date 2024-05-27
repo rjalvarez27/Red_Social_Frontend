@@ -12,8 +12,6 @@ export function Login() {
     email: "",
     password: "",
   });
-
-  console.log(data)
   const [token, setToken] = useState(null)
   const navigate = useNavigate();
 
@@ -35,7 +33,6 @@ export function Login() {
         const info = response.data
         setToken(info.token)
         Cookies.set('token', `${info.token}`)
-        console.log(Cookies.get('token'))
         navigate('/home')
       } catch(error) {
         console.log(error.response.data);

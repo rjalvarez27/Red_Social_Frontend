@@ -1,11 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
-import { validCorreo, validPassword } from "../components/Regext.jsx";
+import React, { useEffect, useState} from "react";
+import { NavLink } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/recovery.css";
-import Cookies from 'js-cookie'
+
 
 export function RecoverPassword() {
+    const navigate = useNavigate();
+    const [code, setCode] = useState(false);
+    const params = useParams();
+  
+
+
+    useEffect(() => {
+        const validToken = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/social/recovery/${params.code}`);
+                setCode(response.data.message)
+                console.log(code)
+                if(code == true){
+                    console.log("ok")
+                }else if(response.data.message == "jwt malformed"){
+                    navigate('/')
+                }
+            } catch (error) {
+                console.log(error.response.data);
+
+            }
+        };
+        validToken();
+    }, []);
+
+
     return (
         <div className="flex flex-col">
             <div className='flex-col'>

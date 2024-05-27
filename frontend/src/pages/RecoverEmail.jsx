@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { validCorreo, validPassword } from "../components/Regext.jsx";
+import { validCorreo} from "../components/Regext.jsx";
 import axios from "axios";
 import "../styles/recovery.css";
 import Cookies from 'js-cookie'
 
 export function RecoverEmail() {
-
     const navigate = useNavigate()
     const [data, setData] = useState({
         email: "",
     })  
-
-   
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,21 +22,20 @@ export function RecoverEmail() {
         }
         else if (validCorreo.test(data.email)) {
             try {
-                const response = await axios.get(`http://localhost:3000/social/user/recovery/${data.email}`, data)
-                const info = response.data
-                if (!info) {
-                  alert('Error 404')                
-                }else{
-                    console.log(info)
-                    Cookies.set('token', `${info.token}`)
-                    navigate('/recoverConfirm')
+                const response = await axios.post(`http://localhost:3000/social/recovery/${data.email}`, data);
+                if(response.data){
+                   console.log(response.data)
+                   alert("Se ha enviado un correo para recuperar su cuenta, Esta pagina lo redirecionara en 3 segundos")
+                   setTimeout(function () {
+                   navigate("/");
+                   }, 3000);
+                return
                 }
             } catch (error) {
                 console.log(error.response.data);
             }
         }
     }
-
     return (
         <div className="flex flex-col">
             <div className='flex-col'>
