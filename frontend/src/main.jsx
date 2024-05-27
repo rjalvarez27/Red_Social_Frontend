@@ -12,7 +12,6 @@ import { PerfilAdmin } from './pages/PerfilAdmin.jsx'
 import { PerfilUser } from '../src/pages/PerfilUser.jsx'
 import { Rates } from './pages/RatesP.jsx'
 import { RecoverEmail } from './pages/RecoverEmail.jsx'
-import { RecoverConfirm } from './pages/RecoverConfirm.jsx'
 import { RecoverPassword } from './pages/RecoverPassword.jsx'
 import "../src/styles/index.css"
 
@@ -34,8 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/perfiluser" element={<PerfilUser />} />
         <Route path="/rates" element={<Rates />} />
         <Route path="/recoverEmail" element={<RecoverEmail />} />
-        <Route path="/recoverConfirm" element={<RecoverConfirm />} />
-        <Route path="/recoverPassword" element={<RecoverPassword />} />
+        <Route path="/recoverPassword/:code" element={<RecoverPassword />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
