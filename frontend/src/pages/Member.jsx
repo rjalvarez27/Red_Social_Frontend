@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/general.css'
 import Cookies from 'js-cookie'
 
-export function Membership() {
+export function Member() {
 
     const navigate = useNavigate()
     const [check, setCheck] = useState(false)
