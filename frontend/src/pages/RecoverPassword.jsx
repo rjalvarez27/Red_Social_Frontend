@@ -12,7 +12,7 @@ export function RecoverPassword() {
     const [passwordC, setPasswordC] = useState("");
     const [id, setId] = useState("");
     const [value, setValue] = useState({
-        password: "",
+        password: ""
     })
     
     const hanledUser = async (e) => {
@@ -29,7 +29,6 @@ export function RecoverPassword() {
             return
         } else if(validPassword.test(value.password)) { 
             try {
-                console.log(`http://localhost:3000/social/user/${id}, value`)
                 const response = await axios.patch(`http://localhost:3000/social/user/${id}`, value);
                 alert("Contrasenia cambiada con exito")
                 setTimeout(function () {
