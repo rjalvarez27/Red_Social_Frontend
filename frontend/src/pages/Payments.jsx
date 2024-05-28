@@ -1,12 +1,34 @@
 //Pagina de pago de publicidad
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import '../styles/general.css'
 
 export function Payments() {
     const navigate = useNavigate()
+    const [pagoMovil, setpagoMovil] = useState(false)
+    const [pagoP, setPagoP] = useState(false)
+    const [data, setData] = useState({
+        name: "",
+        ci: "",
+        bank: "",
+        reference: "",
+        amount: ""
+    })
+
+    
+    const hanledPagoMovil = (e) => {
+        e.preventDefault()
+        // toda la logica para pagar con movil
+    }
+
+    const hanledpagoP = (e) => {
+        e.preventDefault()
+        if(pagoP === true){
+            alert("Presione el boton de paypal, para dirigirte a la plataforma de pago")      
+        }
+    }
 
 
     useEffect(() => {
@@ -43,14 +65,14 @@ export function Payments() {
                         <p className="m-1 text-justify">Seleccione su metodo de Pago</p>
                         <div className='flex-col w-full'>
                             <label className='m-2' >
-                                <input type="checkbox" name="basic" id="basic" className=' bg-white  hover:accent-black ' /> Pago movil</label>
+                                <input type="checkbox" name="basic" id="basic" className=' bg-white  hover:accent-black ' onChange={(e) => setpagoMovil(e.target.checked)} /> Pago movil</label>
                             <label className='m-2'>
-                                <input type="checkbox" name="Premiun" id="Premiun" className=' bg-white  hover:accent-black' /> PayPal</label>
+                                <input type="checkbox" name="Premiun" id="Premiun" className=' bg-white  hover:accent-black' onChange={(e) => setPagoP(e.target.checked)} /> PayPal</label>
                         </div>
                     </div>
                     <div className='flex-col text-center '>
                         <p className=" m-1 text-justify" >Si es por paypal por favor Presione el boton para proceder con la forma de pago:</p>
-                        <button className='text-blue-500 bg-yellow-300 w-36 m-3 p-2 rounded-md'>PayPal</button>
+                        <a href="https://www.paypal.com/ve/home"><button className='text-blue-500 bg-yellow-300 w-36 m-3 p-2 rounded-md'>PayPal</button></a>
                         <p className="text-justify" >Si es por pago Movil verifique que los datos son correctos e ingrese los datos en la siguiente formulario:</p>
                     </div>
                     <div className='flex flex-col items-center '>
@@ -58,9 +80,9 @@ export function Payments() {
                             <h3 className="text-sm font-black">Nombre</h3>
                             <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white ' name="name" id="name" />
                             <h3 className="text-sm font-black items-start ">Cedula</h3>
-                            <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white' name="name" id="name" />
+                            <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white' name="ci" id="ci" />
                             <h3 className="text-sm font-black items-start ">Banco</h3>
-                            <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white' name="name" id="name" />
+                            <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white' name="bank" id="bank" />
                             <h3 className="text-sm font-black items-start ">Numero de Referencia</h3>
                             <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white' name="name" id="name" />
                             <p className="text-xs">Verifique antes de Connfirmar</p>
