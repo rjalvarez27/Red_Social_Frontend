@@ -7,7 +7,7 @@ export function PerfilAdmin() {
         <div>
             <div className="general-content">
                 <div className="general-box1 z-0">
-                    <img src="../src/img/principales/logo.png" alt="" className='w-[150px] my-[60px]' />
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px]' />
                     <div className="general-part1 ">
                         <ol className='flex-col '>
                             <li>Explorar</li>
@@ -17,7 +17,7 @@ export function PerfilAdmin() {
                             <li >Configuracion</li>
                         </ol>
                     </div>
-                    <img src="../src/img/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
                 </div>
                 <div className="general-box2">
                     <div className='flex flex-col'>

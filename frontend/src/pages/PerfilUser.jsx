@@ -71,7 +71,7 @@ export function PerfilUser() {
             if (!token) {
                 alert('Por favor inicia sesion')
                 setTimeout(function () {
-                    navigate("/");
+                    navigate("/login");
                 }, 2000);
                 return
             } else {
@@ -102,7 +102,7 @@ export function PerfilUser() {
         <div>
             <div className="general-content">
                 <div className="general-box1 z-0">
-                    <img src="../src/img/principales/logo.png" alt="" className='w-[150px] my-[60px]' />
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px]' />
                     <div className="general-part1 ">
                         <ol className='flex-col '>
                             <li>Explorar</li>
@@ -112,12 +112,12 @@ export function PerfilUser() {
                             <li >Configuracion</li>
                         </ol>
                     </div>
-                    <img src="../src/img/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
                 </div>
                 <div className="general-box2">
                     <div className='flex flex-col'>
                         <div className='flex-col w-[100%]'>
-                            <NavLink to="/" className="flex justify-end"><img src="../src/img/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
+                            <NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
                             <h1 className="text-3xl font-black m-2 text-center">Bienvenido {user.name}</h1>
                         </div>
                     </div>
