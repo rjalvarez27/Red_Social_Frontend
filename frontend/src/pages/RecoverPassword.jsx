@@ -17,11 +17,6 @@ export function RecoverPassword() {
     
     const hanledUser = async (e) => {
         e.preventDefault();
-        console.log(id)
-        console.log(value.password)
-        console.log(passwordC)
-        console.log(value)
-        
         if (!value.password || !passwordC) {
             alert('Campos estan vacios, por favor rellene todos los datos')
             return
