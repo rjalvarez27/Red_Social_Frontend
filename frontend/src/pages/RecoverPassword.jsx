@@ -37,7 +37,6 @@ export function RecoverPassword() {
             try {
                 console.log(`http://localhost:3000/social/user/${id}, value`)
                 const response = await axios.patch(`http://localhost:3000/social/user/${id}`, value);
-                console.log(response)
                 alert("Contrasenia cambiada con exito")
                 setTimeout(function () {
                     navigate("/");
