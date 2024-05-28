@@ -28,7 +28,6 @@ export function RecoverPassword() {
             alert('La contrasenia debe tener minimo 6 caracteres')
             return
         } else if(validPassword.test(value.password)) { 
-            console.log("paso esto")
             try {
                 console.log(`http://localhost:3000/social/user/${id}, value`)
                 const response = await axios.patch(`http://localhost:3000/social/user/${id}`, value);
@@ -49,7 +48,6 @@ export function RecoverPassword() {
                     setId(response.data.message);
                 }
             } catch (error) {
-                console.log(error.response.data.message);
                 if (error.response.data.message === false) {
                     alert("El token no es valido o a expirado")
                     setTimeout(function () {
