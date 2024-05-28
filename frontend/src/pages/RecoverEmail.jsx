@@ -27,7 +27,7 @@ export function RecoverEmail() {
                 if (response) {
                     alert("Se ha enviado un correo para recuperar su cuenta, Esta pagina lo redirecionara en 3 segundos")
                     setTimeout(function () {
-                        navigate("/");
+                        navigate("/login");
                     }, 3000);
                     return
                 }else {
@@ -41,11 +41,11 @@ export function RecoverEmail() {
     return (
         <div className="flex flex-col">
             <div className='flex-col'>
-                <NavLink to="/" className="flex justify-end"><img src="../src/img/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
+                <NavLink to="/login" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
             </div>
             <div className="recovery-body">
                 <div className="recovery-box">
-                    <img src="../src/img/principales/logo.png" alt="logo" className="w-[90px] m-2" />
+                    <img src="../src/images/principales/logo.png" alt="logo" className="w-[90px] m-2" />
                 </div>
                 <div className="recovery-box2">
                     <h3 className="text-2xl font-black  text-center">Recuperar Password</h3>

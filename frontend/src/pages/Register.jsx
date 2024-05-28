@@ -11,7 +11,7 @@ export function Register() {
     const [data, setData] = useState({
         name: "",
         username: "",
-        email: "",
+        email: "", 
         password: "",
     });
     const [checkbox, setCheckbox] = useState(false);
@@ -53,7 +53,7 @@ export function Register() {
                 } else {
                     alert("usuario registrado con exito")
                     setTimeout(function () {
-                        navigate("/");
+                        navigate("/login");
                     }, 2000);
                     return
                 }
@@ -69,19 +69,19 @@ export function Register() {
     useEffect(() => {
         const data = Cookies.get('token')
         if (data) {
-            navigate('/home')
+            navigate('/')
         }
     });
     return (
         <div>
             <div className="all flex">
                 <div className="flex-col w-[25%] space-y-[350px] relative z-0  ">
-                    <img src="../src/img/register/regist1.png" alt="register1" className="border-double border-[5px] border-black my-[80px]" />
-                    <img src="../src/img/register/regist2.png" alt="register2" className="border-double border-[5px] border-black" />
+                    <img src="../src/images/register/regist1.png" alt="register1" className="border-double border-[5px] border-black my-[80px]" />
+                    <img src="../src/images/register/regist2.png" alt="register2" className="border-double border-[5px] border-black" />
                 </div>
                 <div className="container min-h-screen w-[50%] relative z-40">
                     <div className="conten1">
-                        <img src="../src/img/principales/logo.png" alt="logo" className="w-[110px] " />
+                        <img src="../src/images/logo.png" alt="logo" className="w-20 " />
                     </div>
                     <div className="conten2 bg-white">
                         <h1 className="text-2xl text-center m-3">Crea una cuenta</h1>
@@ -90,7 +90,7 @@ export function Register() {
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
                                 <input type="text" className='p-1 rounded-md text-center' name="name" id="name" onChange={(e) => setData({ ...data, name: e.target.value })} />
                             </label>
-                            <h3 className="text-lg font-black items-start ">UserName</h3>
+                            <h3 className="text-lg font-black items-start ">@UserName</h3>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
                                 <input type="text" className='p-1 rounded-md text-center' name="username" id="username" onChange={(e) => setData({ ...data, username: e.target.value })} />
                             </label>
@@ -132,8 +132,8 @@ export function Register() {
                     </div>
                 </div>
                 <div className="flex-col w-[25%] relative z-0 space-y-[350px] ">
-                    <NavLink to="/"><img src="../src/img/principales/home.png" alt="home" className="w-[60px] my-16 mx-20" /></NavLink>
-                    <img src="../src/img/register/character.png" alt="personaje" className=" w-[280px] sticky z-10 " />
+                    <NavLink to="/login"><img src="../src/images/principales/home.png" alt="home" className="w-[60px] my-10 mx-36" /></NavLink>
+                    <img src="../src/images/register/character.png" alt="personaje" className=" w-[280px] sticky z-10 " />
                 </div>
             </div>
         </div>
