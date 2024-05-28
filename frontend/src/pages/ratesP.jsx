@@ -6,26 +6,31 @@ import '../styles/general.css'
 import Cookies from 'js-cookie'
 
 export function Rates() {
-    const navigate = useNavigate()
-   const[check, setCheck] = useState(false)
-   console.log(check)
-
-   const handleCheck = (e) => {
-    e.preventDefault()
-    if(check === true){
-        alert ("Pasando a la paginna de pagos")
-        setTimeout(() => {
-         navigate('/payments')    
-        }, 2000);
-    }else{
-        alert("Redireccioanndo a la pagina de inicio")
-        setTimeout(() => {
-         navigate('/home')    
-        }, 2000);
+   const navigate = useNavigate()
+   const[checkB, setCheckB] = useState(false)
+   const[checkP, setCheckP] = useState(false)
+   
+   
+   const handleCheck = () => {
+    if(!checkB && !checkP){
+        alert("Por favor seleccione una tarifa")
     }
+    if(checkB == true && checkP == true){
+        alert("Estan marcadas las dos casillas, por favor marque solo una casilla")
+   }else if(checkB == true){
+       Cookies.set('basic', 'true')
+       alert ("Tarifa basica activada,  reedirigiendo al pago")
+       setTimeout(() => {
+       navigate('/payments') 
+       }, 2000);
+   } else if(checkP == true){
+    Cookies.set('premium', 'true')
+    alert ("Tarifa Premium activada,  reedirigiendo al pago")
+    setTimeout(() => {
+    navigate('/payments') 
+    }, 2000);
    }
-
-
+}
     useEffect(() => {
         const token = Cookies.get('token')
         if (!token) {
@@ -33,8 +38,6 @@ export function Rates() {
         }
 
     }, [])
-
-
     return (
         <div>
             <div className="general-content">
@@ -93,17 +96,17 @@ export function Rates() {
                                 </tr>
                                 <tr className="border-b-2">
                                     <th>Seleccione el tipo de Plan</th>
-                                    <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
-                                    <td><input type="checkbox" name="Premiun" id="Premiun" className=' bg-white  hover:accent-black hover: text-green-500' onChange={(e) => setCheck(e.target.checked)} /></td>
+                                    <td><input type="checkbox" name="Premiun" id="Premiun" className=' bg-white  hover:accent-black hover: text-green-500' onChange={(e) => setCheckB(e.target.checked)} /></td>
+                                    <td><input type="checkbox" name="Premiun" id="Premiun" className=' bg-white  hover:accent-black hover: text-green-500' onChange={(e) => setCheckP(e.target.checked)} /></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div className='flex text-center mx-5'>
-                        <h3>Seleccione Plan premium si esta de acuerdo y haga click en confirmar para seguir con el proceso de pago</h3>
+                        <h3>Seleccione que plan de publicidad desea adquirir por un mes y haga click en confirmar para seguir con el proceso de pago</h3>
                     </div>
                     <div className='flex justify-center w-[100%]' >
-                        <NavLink to="/Payments"><button className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-8 rounded-lg m-4" onClick={handleCheck}>Confirmar</button></NavLink>
+                       <button className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-8 rounded-lg m-4" onClick={handleCheck}>Confirmar</button>
                     </div>
                     <div className="sticky top-[100vh] conten3">
                         <h1 className="text-sm text-center m-2 ">© 2024 Copyright: Mounts</h1>
