@@ -1,0 +1,68 @@
+.nav-messages{
+    width: 100%;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.img-profile-messages{
+    width: 170px;
+    height: 170px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.nav-messages-search{
+    width: 220px;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.messages-chat{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.messages-chat-img{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.chat{
+    width: 82%;
+    height: 710px;
+    position: relative;
+    top: 80px;
+    margin-left: 18%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages-header{
+    width: 100%;
+    height: 90px;
+
+    background-color: rgb(18, 16, 25);
+}
+
+.chat-messages-area{
+    width: 100%;
+    height: 530px;
+}
+
+.chat-messages-input{
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+
+    background-color: rgb(18, 16, 25);
+}

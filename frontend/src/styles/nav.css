@@ -1,0 +1,82 @@
+/*Menu nav izq*/
+.nav{
+    width: 18%;
+    height: 100%;
+    background-color: rgb(18, 16, 25);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* PERFIL SITE */
+
+.nav-perfil{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-perfil-avatar{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    margin-top: 35px
+}
+
+.perfil-name{
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+.perfil-username{
+    color: rgba(174, 174, 174, 1);
+}
+
+/* MENU SITE*/
+
+.menu{
+    width: 100%;
+    margin-left: 40px;
+}
+
+.menu li{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.menu a{
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: medium;
+    font-style: italic;
+    font-size: larger;
+}
+
+/* BOTON NUEVA PUBLICACION */
+
+.new-post{    
+    height: 50px;
+    background-color: white;
+    color: rgb(18, 16, 25);
+    font-weight: bold;
+    font-size: 15px;
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}

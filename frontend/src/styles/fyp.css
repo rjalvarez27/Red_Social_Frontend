@@ -1,0 +1,168 @@
+.fyp-nav{
+    width: 64%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(18, 16, 25);
+    position: fixed;
+}
+
+.fyp-nav-link{
+    width: 50%;
+    height: 100%;
+}
+
+.fyp-nav-link button{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(18, 16, 25);
+    border: none;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.fyp-nav button:hover{
+    background-color: rgb(32, 30, 41);
+}
+
+.fyp-nav hr{
+    width: 1px;
+    height: 20px;
+    background-color: rgb(32, 30, 41);
+}
+
+/* POST'S SECTION */
+
+.fyp-area{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;;
+    margin-top: 60px;
+    padding-top: 35px;
+}
+
+.fyp-section{
+    width: 76%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.fyp-section-post{
+    background-color: rgb(18, 16, 25);
+    width: 750px;
+    padding: 25px;
+    display: flex;
+    border-radius: 15px;
+}
+
+.fyp-section-post-area{
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fyp-section-post-user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 70px;
+}
+
+.perfil-img{
+    background-color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.fyp-section-post-content{
+    color: white;
+}
+
+.fyp-section-post-image{
+    width: 96%;
+    display: flex;
+    justify-content: center;
+    grid: grid;
+    
+}
+
+.fyp-section-post-image img{
+    width: 100%;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+.fyp-section-post-interaction{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fyp-section-post-interaction img{
+    width: 25px;
+}
+
+.fyp-interaction{
+    width: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fyp-interaction img{
+    width: 25px;
+}
+
+.fyp-interaction-data{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+    width: 96%;
+    color: rgb(174, 174, 174
+    );
+}
+
+.principal-post{
+    background-color: rgb(18, 16, 25);
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.fyp-section-post-form{
+    margin-top: 30px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* INPUTS COMMENT */
+
+#comment{
+    background-color: rgb(18, 16, 25);
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    color: white;
+}
+
+#image{
+    display: flex;
+    color: rgb(74, 171, 100);
+}
+
+.label-image{
+    width: 25px;
+}

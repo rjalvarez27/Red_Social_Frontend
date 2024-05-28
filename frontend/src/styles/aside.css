@@ -1,0 +1,143 @@
+.aside{
+    width: 18%;
+    height: 100%;
+    background-color: rgb(18, 16, 25);
+    position: fixed;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+/* TOP SITE */
+
+.option-space{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.option-space-img{
+    width: 25px;
+    height: 25px;
+}
+
+.option-space-search{
+    width: 70%;
+    height: 15px;
+    padding: 17px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    color: black;
+    font-family: "Inter", sans-serif;
+}
+
+/* TRENDS SITE */
+
+.trends-space{
+    width: 100%;
+    height: 44%;
+}
+
+.trends-space-area{
+    display: flex;
+    flex-direction: column;    
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.trends{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.trends-title{
+    font-family: "Inter", sans-serif;
+    font-size: medium;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.trends-list{
+    width: 80%;
+}
+
+.trends-list a{
+    text-decoration: none;
+}
+
+.trends-list li{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-decoration: none;
+}
+
+/* MESSAGES SITE */
+
+.messages-space{
+    width: 100%;
+    height: 44%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-bottom: 10px;
+}
+
+.messages-space button{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(18, 16, 25);
+    border: none;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-style: italic;
+    box-shadow: 5px 0px 5px rgb(0,0,0,0.4);
+}
+
+.messages-list{
+    width: 100%;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    box-shadow: inset 0 0 5px 3px rgb(0,0,0,0.3);
+}
+
+.messages{
+    width: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages li{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-bottom: 0.5px solid rgba(174, 174, 174, 1);
+}
+
+.messages-link{
+    width: 100%;
+    height: 50px;
+    text-decoration: none;
+    color: white;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

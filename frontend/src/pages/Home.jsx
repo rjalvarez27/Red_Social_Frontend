@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
-import Cookies from 'js-cookie'
+import { Header } from '../components/Header.jsx'
+import {Nav} from '../components/Nav.jsx'
+import { Aside } from '../components/Aside.jsx'
+import { FyP } from '../components/FyP.jsx'
+import { Newpost } from '../components/Newpost.jsx'
 
-export function Home() {
-    const navigate = useNavigate();
-    const cerrarSesion = () => {
-        Cookies.remove('token');
-        navigate('/')
-    };
-    return (
-        <div>
-            <h1>Home</h1>
-            <p>Pagina de Publicaiones</p>
-            <button onClick={cerrarSesion}>Cerrar Sesion</button>
-        </div>
-    );
+export function Home(){
+  return(
+      <>
+        <Header/>
+        <Nav/>
+        <Aside/>
+        <FyP/>
+        
+      </>
+  )
 }
+
