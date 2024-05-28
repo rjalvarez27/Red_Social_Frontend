@@ -1,9 +1,23 @@
 //Pagina de pago de publicidad
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import Cookies from 'js-cookie'
 import '../styles/general.css'
 
 export function Payments() {
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        const token = Cookies.get('token')
+        if (!token) {
+            navigate('/home')
+        }
+
+    }, [])
+
+
     return (
         <div>
             <div className="general-content">

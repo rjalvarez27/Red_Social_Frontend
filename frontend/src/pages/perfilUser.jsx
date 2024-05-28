@@ -1,7 +1,108 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
+import axios from 'axios'
+import { validName, validUserName, validCorreo } from "../components/Regext.jsx";
+import "../styles/recovery.css";
+let conten1 = ""
+
 
 export function PerfilUser() {
+    const token = Cookies.get('token')
+    const navigate = useNavigate()
+    const [id, setId] = useState({})
+    const [user, setUser] = useState({})
+    const [name, setName] = useState({
+        name: '',
+    })
+    const [username, setUsername] = useState({
+        username: ''
+    })
+    const [email, setEmail] = useState({
+        email: ''
+    })
+
+    console.log(name)
+    console.log(username)
+    console.log(email)
+
+    const hamledname = async (e) => {
+        e.preventDefault();
+        if (!name) {
+            alert('Por favor rellene el campo')
+            return
+        }
+        if (!validName.test(name)) {
+            alert('Por favor verifique el campo')
+            return
+        }
+        else {
+            try {
+                console.log(`http://localhost:3000/social/user/${id}`)
+                const response = await axios.patch(`http://localhost:3000/social/user/${id}`, name);
+                console.log(response.data)
+                setName(response.data.message)
+            } catch (error) {
+                console.error('error:', error.message);
+            }
+        }
+    }
+
+    const hamledusername = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.patch(`http://localhost:3000/social/user/${id}`, { username })
+            console.log(response.data)
+            setUsername(response.data.message)
+        } catch (error) {
+            console.error('error:', error.message);
+        }
+    }
+
+    const hamledemail = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.patch(`http://localhost:3000/social/user/${id}`, { email })
+            console.log(response.data)
+            setEmail(response.data.message)
+        } catch (error) {
+            console.error('error:', error.message);
+        }
+    }
+
+    useEffect(() => {
+        const hanledToken = async () => {
+            if (!token) {
+                alert('Por favor inicia sesion')
+                setTimeout(function () {
+                    navigate("/");
+                }, 2000);
+                return
+            } else {
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
+                    setId(response.data.message)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
+        }
+        hanledToken()
+        const hanledUser = async () => {
+            if (id) {
+                console.log(id)
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/user/${id}`);
+                    setUser(response.data)
+                    console.log(response.data)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
+        }
+        hanledUser()
+    }, [token, id]);
     return (
         <div>
             <div className="general-content">
@@ -20,39 +121,69 @@ export function PerfilUser() {
                 </div>
                 <div className="general-box2">
                     <div className='flex flex-col'>
-                        <h1 className="text-3xl font-black m-2 text-center">Perfil de usuario</h1>
+                        <div className='flex-col w-[100%]'>
+                            <NavLink to="/" className="flex justify-end"><img src="../src/img/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
+                            <h1 className="text-3xl font-black m-2 text-center">Bienvenido {user.name}</h1>
+                        </div>
                     </div>
-                    <div>
-                        <h3>Nombre de usuario</h3>
-                        <p>Nombre</p>
-                        <input type="text" />
-                        <h3>Correo electronico</h3>
-                        <p>Correo</p>
-                        <input type="email" />
+                    <div className='flex flex-col'>
+                        <h3 className="text-lg font-black ">Nombre de usuario</h3>
+                        <form className='flex flex-row  place-items-start gap-2 '>
+                            <p className='font-black items-start m-2'>{user.name}</p>
+                            <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
+                                <input type="text" className='p-1 rounded-md text-center' name="name" id="name" placeholder='Nombre Nuevo' onChange={(e) => setName(e.target.value)} />
+                            </label>
+                            <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hamledname}> Aceptar</button>
+                        </form>
+                        <h3 className="text-lg font-black items-start">Username</h3>
+                        <form className='flex flex-row  place-items-start gap-2 '>
+                            <p className='font-black items-start m-2'>{user.username}</p>
+                            <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
+                                <input type="text" className='p-1 rounded-md text-center' name="username" id="username" placeholder='Username Nuevo' onChange={(e) => setUsername(e.target.value)} />
+                            </label>
+                            <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hamledusername}> Aceptar</button>
+                        </form>
+                        <h3 className="text-lg font-black items-start">Correo electronico</h3>
+                        <form className='flex flex-row  place-items-start gap-2 '>
+                            <p className='font-black items-start m-2'>{user.email}</p>
+                            <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
+                                <input type="Email" className='p-1 rounded-md text-center' name="email" id="email" placeholder='Nombre Nuevo' onChange={(e) => setEmail(e.target.value)} />
+                            </label>
+                            <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hamledemail}> Aceptar</button>
+                        </form>
+                        <p className='text-sm font-black text-center m-2'>Por favor Introduzca en las casillas los datos que desea cambiar y presione para confirmar los cambios</p>
                     </div>
-                    <div>
-                        <h3>Cambiar Password</h3>
-                        <button>Enviar</button>
-                        <input type="text" value="clave enciada al Correo" />
-                        <input type="text" value="Nueva contrasena" />
-                        <button>Confirmar</button>
-                        <p>Haga click en enviar para resivir un correo de confirmacion para cambiar su contrasena</p>
+                    <div className='flex flex-col'>
+                        <h3 className="text-lg font-black items-start">Cambiar Password</h3>
+                        <div className='flex flex-col w-full text-center' >
+                            <p className='text-sm font-black text-center m-2'>Para cambiar la contraseña, haga click en el siguiente boton</p>
+                            <NavLink to="/recoverEmail"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded'> Cambiar Password </button></NavLink>
+                        </div>
                     </div>
-                    <div>
-                        <h3>tipo de Usuario</h3>
-                        <p>tipo de usuarios</p>
-                        <button>Usuarios Premiun</button>
-                        <h3>cambiar imagen de perfil</h3>
-                        <input type="file" />
+                    <div className='flex flex-row m-2'>
+                        <div className='flex flex-col w-[50%]'>
+                            <h3 className="text-lg font-black items-start">Tipo de Usuario</h3>
+                            <p className='text-sm font-black text-start m-2'> <i className="fa-solid fa-circle-check text-green-500"></i> Usuario: {user.rol}</p>
+                        </div>
+                        <div className='flex flex-col '>
+                            <h3 className="text-lg font-black items-start m-1">Cambiar Imagen de Perfil</h3>
+                            <label class="block mb-2 text-sm font-medium text-black dark:text-white" for="file_input" >Upload file</label>
+                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 px-2 py-2" id="file_input" type="file" />
+                        </div>
                     </div>
-                    <div>
-                        <h3>Promocionar Publicaciones</h3>
-                        <p>Para promocionar tu publicacion, haga click en el siguiente boton</p>
-                        <button>Promocionar</button>
+                    <div className='flex flex-col'>
+                        <h3 className="text-lg font-black items-start">Promocionar Publicaciones</h3>
+                        <div className='flex flex-col w-full text-center'>
+                            <p className='text-sm font-black m-2'>Para promocionar tu publicacion, haga click en el siguiente boton</p>
+                            <NavLink to="/rates"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded'> Publicaciones </button></NavLink>
+                        </div>
                     </div>
-                    <div>
-                        <p>Si no eres usuario Premiun por favor, haz click en el siguiente boton</p>
-                        <NavLink to="/membership"><button>Premiun</button></NavLink>
+                    <div className='flex flex-col'>
+                        <h3 className="text-lg font-black items-start">Usuario Premium</h3>
+                        <div className='flex flex-col w-full text-center'>
+                            <p className='text-sm font-black m-2'>Si no eres usuario Premiun por favor, haz click en el siguiente boton</p>
+                            <NavLink to="/membership"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded m-2'>Usuarios Premium</button></NavLink>
+                        </div>
                     </div>
                     <div className="sticky top-[100vh] conten3">
                         <h1 className="text-sm text-center m-2 ">© 2024 Copyright: Mounts</h1>
