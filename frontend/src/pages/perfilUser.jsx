@@ -22,11 +22,6 @@ export function PerfilUser() {
     const [email, setEmail] = useState({
         email: ''
     })
-
-    console.log(name)
-    console.log(username)
-    console.log(email)
-
     const hamledname = async (e) => {
         e.preventDefault();
         if (!name) {
@@ -182,7 +177,7 @@ export function PerfilUser() {
                         <h3 className="text-lg font-black items-start">Usuario Premium</h3>
                         <div className='flex flex-col w-full text-center'>
                             <p className='text-sm font-black m-2'>Si no eres usuario Premiun por favor, haz click en el siguiente boton</p>
-                            <NavLink to="/membership"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded m-2'>Usuarios Premium</button></NavLink>
+                            <NavLink to="/member"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded m-2'>Usuarios Premium</button></NavLink>
                         </div>
                     </div>
                     <div className="sticky top-[100vh] conten3">
