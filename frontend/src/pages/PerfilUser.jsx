@@ -1,12 +1,10 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { validName, validUserName, validCorreo } from "../components/Regext.jsx";
 import Cookies from 'js-cookie'
 import axios from 'axios'
-import { validName, validUserName, validCorreo } from "../components/Regext.jsx";
 import "../styles/recovery.css";
-let conten1 = ""
-
 
 export function PerfilUser() {
     const token = Cookies.get('token')
