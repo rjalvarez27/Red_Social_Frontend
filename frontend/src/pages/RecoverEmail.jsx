@@ -3,7 +3,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { validCorreo } from "../components/Regext.jsx";
 import axios from "axios";
 import "../styles/recovery.css";
-import Cookies from 'js-cookie'
+
 
 export function RecoverEmail() {
     const navigate = useNavigate()

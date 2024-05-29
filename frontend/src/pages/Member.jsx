@@ -18,7 +18,7 @@ export function Member() {
                 navigate('/')
             }, 2000);
         } else if (check == true) {
-            Cookies.set('users', 'Premiun')
+            Cookies.set('type', 'Premiun')
             alert("Tarifa Premiun activada,  reedirigiendo a la pagina de pago")
             setTimeout(() => {
                 navigate('/payments')
