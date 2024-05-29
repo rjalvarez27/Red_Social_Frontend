@@ -1,4 +1,4 @@
-export function Modelpost(){
+export function Modelpost({content, image}){
     return(
             <div className="fyp-section-post">
                 <div className="fyp-section-post-area">
@@ -10,10 +10,10 @@ export function Modelpost(){
                         </div>
                     </div>
                     <span className="fyp-section-post-content">
-                            contenido de publicacion
+                        {content}
                     </span>
                     <div className="fyp-section-post-image" >
-                        <img src="" alt="" />
+                        <p>{image}</p>
                     </div>
                 </div>
                     

@@ -48,7 +48,7 @@
 .fyp-section{
     width: 76%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     gap: 25px;
 }
@@ -158,11 +158,4 @@
     color: white;
 }
 
-#image{
-    display: flex;
-    color: rgb(74, 171, 100);
-}
 
-.label-image{
-    width: 25px;
-}
