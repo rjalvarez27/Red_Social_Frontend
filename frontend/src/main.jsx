@@ -42,7 +42,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         //aqui van las rutas privadas
         </Route>
         //Rutas Publicas
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/member" element={<Member />} />
         <Route path="/membershipPay" element={<MembershipPay />} />
