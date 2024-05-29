@@ -22,22 +22,20 @@ export function PerfilUser() {
     const [email, setEmail] = useState({
         email: ''
     })
-    const hamledname = async (e) => {
+
+    const hanledname = async (e) => {
         e.preventDefault();
-        if (!name) {
+        if (!name.name) {
             alert('Por favor rellene el campo')
             return
-        }
-        if (!validName.test(name)) {
-            alert('Por favor verifique el campo')
-            return
-        }
-        else {
+        } else if (!validName.test(name.name)) {
+            alert('Datos no validos, por favor verifique los datos')
+        } else {
             try {
-                console.log(`http://localhost:3000/social/user/${id}`)
-                const response = await axios.patch(`http://localhost:3000/social/user/${id}`, name);
+                const response = await axios.patch(`http://localhost:3000/social/user/${id}`, name)
                 console.log(response.data)
-                setName(response.data.message)
+                alert('Se ha actualizado el nombre')
+                window.location.replace('');
             } catch (error) {
                 console.error('error:', error.message);
             }
@@ -46,23 +44,39 @@ export function PerfilUser() {
 
     const hamledusername = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.patch(`http://localhost:3000/social/user/${id}`, { username })
-            console.log(response.data)
-            setUsername(response.data.message)
-        } catch (error) {
-            console.error('error:', error.message);
+        if (!username.username) {
+            alert('Por favor rellene el campo')
+            return
+        } else if (!validUserName.test(username.username)) {
+            alert('Datos no validos, por favor verifique los datos')
+        } else {
+            try {
+                const response = await axios.patch(`http://localhost:3000/social/user/${id}`, username)
+                console.log(response.data)
+                alert('Se ha actualizado el Username')
+                window.location.replace('');
+            } catch (error) {
+                console.error('error:', error.message);
+            }
         }
     }
 
     const hamledemail = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.patch(`http://localhost:3000/social/user/${id}`, { email })
-            console.log(response.data)
-            setEmail(response.data.message)
-        } catch (error) {
-            console.error('error:', error.message);
+        if (!email.email) {
+            alert('Por favor rellene el campo')
+            return
+        } else if (!validCorreo.test(email.email)) {
+            alert('Datos no validos, por favor verifique los datos')
+        } else {
+            try {
+                const response = await axios.patch(`http://localhost:3000/social/user/${id}`, email)
+                console.log(response.data)
+                alert('Se ha actualizado el email')
+                window.location.replace('');
+            } catch (error) {
+                console.error('error:', error.message);
+            }
         }
     }
 
@@ -83,19 +97,17 @@ export function PerfilUser() {
                 }
             }
         }
-        hanledToken()
         const hanledUser = async () => {
             if (id) {
-                console.log(id)
                 try {
                     const response = await axios.get(`http://localhost:3000/social/user/${id}`);
                     setUser(response.data)
-                    console.log(response.data)
                 } catch (error) {
                     console.error('error:', error.message);
                 }
             }
         }
+        hanledToken()
         hanledUser()
     }, [token, id]);
     return (
@@ -126,15 +138,15 @@ export function PerfilUser() {
                         <form className='flex flex-row  place-items-start gap-2 '>
                             <p className='font-black items-start m-2'>{user.name}</p>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
-                                <input type="text" className='p-1 rounded-md text-center' name="name" id="name" placeholder='Nombre Nuevo' onChange={(e) => setName(e.target.value)} />
+                                <input type="text" className='p-1 rounded-md text-center' name="name" id="name" placeholder='Nombre Nuevo' onChange={(e) => setName({ ...name, name: e.target.value })} />
                             </label>
-                            <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hamledname}> Aceptar</button>
+                            <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hanledname}> Aceptar</button>
                         </form>
                         <h3 className="text-lg font-black items-start">Username</h3>
                         <form className='flex flex-row  place-items-start gap-2 '>
                             <p className='font-black items-start m-2'>{user.username}</p>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
-                                <input type="text" className='p-1 rounded-md text-center' name="username" id="username" placeholder='Username Nuevo' onChange={(e) => setUsername(e.target.value)} />
+                                <input type="text" className='p-1 rounded-md text-center' name="username" id="username" placeholder='Username Nuevo' onChange={(e) => setUsername({ ...username, username: e.target.value })} />
                             </label>
                             <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hamledusername}> Aceptar</button>
                         </form>
@@ -142,7 +154,7 @@ export function PerfilUser() {
                         <form className='flex flex-row  place-items-start gap-2 '>
                             <p className='font-black items-start m-2'>{user.email}</p>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
-                                <input type="Email" className='p-1 rounded-md text-center' name="email" id="email" placeholder='Nombre Nuevo' onChange={(e) => setEmail(e.target.value)} />
+                                <input type="Email" className='p-1 rounded-md text-center' name="email" id="email" placeholder='Nombre Nuevo' onChange={(e) => setEmail({ ...email, email: e.target.value })} />
                             </label>
                             <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hamledemail}> Aceptar</button>
                         </form>
@@ -162,8 +174,8 @@ export function PerfilUser() {
                         </div>
                         <div className='flex flex-col '>
                             <h3 className="text-lg font-black items-start m-1">Cambiar Imagen de Perfil</h3>
-                            <label class="block mb-2 text-sm font-medium text-black dark:text-white" for="file_input" >Upload file</label>
-                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 px-2 py-2" id="file_input" type="file" />
+                            <label className="block mb-2 text-sm font-medium text-black dark:text-white" htmlFor="file_input" >Upload file</label>
+                            <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 px-2 py-2" id="file_input" type="file" />
                         </div>
                     </div>
                     <div className='flex flex-col'>
