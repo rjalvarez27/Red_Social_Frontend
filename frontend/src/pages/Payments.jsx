@@ -34,7 +34,7 @@ export function Payments() {
     useEffect(() => {
         const token = Cookies.get('token')
         if (!token) {
-            navigate('/home')
+            navigate('/login')
         }
 
     }, [])
@@ -44,7 +44,7 @@ export function Payments() {
         <div>
             <div className="general-content">
                 <div className="general-box1">
-                    <img src="../src/img/principales/logo.png" alt="" className='w-[150px] my-[60px]' />
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px]' />
                     <div className="general-part1">
                         <ol className='flex flex-col '>
                             <li>Explorar</li>
@@ -54,11 +54,11 @@ export function Payments() {
                             <li >Configuracion</li>
                         </ol>
                     </div>
-                    <img src="../src/img/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
                 </div>
                 <div className="general-box2">
                     <div className='flex-col'>
-                        <NavLink to="/" className="flex justify-end"><img src="../src/img/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
+                        <NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
                         <h1 className="text-3xl font-black  text-center m-1">Pago de la Publicidad</h1>
                     </div>
                     <div className='flex-col text-center'>
