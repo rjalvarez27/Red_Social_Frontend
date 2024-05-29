@@ -33,7 +33,7 @@ export function Login() {
         const info = response.data
         setToken(info.token)
         Cookies.set('token', `${info.token}`)
-        navigate('/home')
+        navigate('/')
       } catch(error) {
         console.log(error.response.data);
         alert(error.response.data.message)
@@ -43,7 +43,7 @@ export function Login() {
 useEffect(() => {
   const data = Cookies.get('token')
   if (data) {
-    navigate('/home')
+    navigate('/')
   }
 });
 
@@ -51,7 +51,7 @@ return (
   <div className="login-body">
     <div className="containerL">
       <div className="box1">
-        <img src="../src/img/principales/logo.png" alt="logo" className="w-[150px] m-2" />
+        <img src="../src/images/principales/logo.png" alt="logo" className="w-[150px] m-2" />
         <h1 className="text-3xl font-black ">MOUNTS</h1>
       </div>
       <div className="box2">
@@ -92,8 +92,8 @@ return (
     <div className="containerF">
       <p className="text-xl text-center m-1 font-bold ">Descarga la app</p>
       <div className="flex-col relative ">
-        <img src="../src/img/login/img2.png" alt="app" className="w-[400px] position:relative z-0 " />
-        <img src="../src/img/login/img1.png" alt="fondo" className="w-[500px] absolute inset-0 z-[-1] " />
+        <img src="../src/images/login/img2.png" alt="app" className="w-[400px] position:relative z-0 " />
+        <img src="../src/images/login/img1.png" alt="fondo" className="w-[500px] absolute inset-0 z-[-1] " />
       </div>
     </div>
   </div>
