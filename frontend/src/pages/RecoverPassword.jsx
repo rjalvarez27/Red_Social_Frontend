@@ -14,7 +14,7 @@ export function RecoverPassword() {
     const [value, setValue] = useState({
         password: ""
     })
-    
+
     const hanledUser = async (e) => {
         e.preventDefault();
         if (!value.password || !passwordC) {
@@ -24,10 +24,10 @@ export function RecoverPassword() {
         if (value.password != passwordC) {
             alert('Las contrasenias no coinciden, por favor verifique los datos')
             return
-        }if (value.password.length < 6) {
+        } if (value.password.length < 6) {
             alert('La contrasenia debe tener minimo 6 caracteres')
             return
-        } else if(validPassword.test(value.password)) { 
+        } else if (validPassword.test(value.password)) {
             try {
                 const response = await axios.patch(`http://localhost:3000/social/user/password/${id}`, value);
                 alert("Contrasenia cambiada con exito")
@@ -53,7 +53,7 @@ export function RecoverPassword() {
                         navigate("/");
                     }, 2000);
                 }
-                
+
             }
         };
         validToken();

@@ -26,39 +26,40 @@ export function Payments() {
         if (pagoMovil === false && pagoP === false) {
             alert("Presione alguno de los dos botones , para dirigirte a la plataforma de pago")
         }
-        else if( pagoMovil === pagoP){
+        else if (pagoMovil === pagoP) {
             alert("Por favor seleccione un solo metodo de pago")
         }
-        else if(pagoP === true){
-            alert("Presione el boton de paypal, para dirigirte a la plataforma de pago")   
+        else if (pagoP === true) {
+            alert("Presione el boton de paypal, para dirigirte a la plataforma de pago")
         }
-        else if(!data.name || !data.ci || !data.bank || !data.reference){
+        else if (!data.name || !data.ci || !data.bank || !data.reference) {
             alert("Por favor rellene todos los campos")
         }
-        else if (pagoMovil === true){
+        else if (pagoMovil === true) {
             try {
-            data.email = user.email
-            data.type = Cookies.get('type')
-            const response = axios.post("http://localhost:3000/social/paymentPM", data)
-            if(!response){
-                alert("Error al realizar el pago")
+                data.email = user.email
+                data.type = Cookies.get('type')
+                const response = axios.post("http://localhost:3000/social/paymentPM", data)
+                if (!response) {
+                    alert("Error al realizar el pago")
+                }
+                else {
+                    alert("Se ha realizado el pago")
+                    Cookies.remove('type')
+                    setTimeout(function () {
+                        navigate("/");
+                    }, 2000);
+                }
             }
-            else{
-                alert("Se ha realizado el pago")
-                setTimeout(function () {
-                    navigate("/");
-                }, 2000);
-            }
-        }
             catch (error) {
                 console.error('error:', error.message);
             }
         }
-         
+
     }
 
     useEffect(() => {
-        const hanledToken = async () => {           
+        const hanledToken = async () => {
             if (!token) {
                 alert('Por favor inicia sesion')
                 setTimeout(function () {
@@ -125,16 +126,16 @@ export function Payments() {
                     </div>
                     <div className='flex flex-col items-center '>
                         <form action="" className=' flex flex-col text-center border border-gray-800 rounded-lg  p-4 shadow-lg bg-white'>
-                        <h3 className="text-sm font-black">Nombre</h3>
-                        <input type="text" className='flex border border-gray-800 rounded-lg p-1 shadow-lg bg-white ' name="name" id="name" onChange={(e) => setData({ ...data, name: e.target.value })}/>
-                        <h3 className="text-sm font-black items-start ">Cedula</h3>
-                        <input type="text" className='flex border border-gray-800 rounded-lg p-1 shadow-lg bg-white ' name="ci" id="ci" onChange={(e) => setData({ ...data, ci: e.target.value })}/>
-                        <h3 className="text-sm font-black items-start ">Banco</h3>
-                        <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white ' name="bank" id="back" onChange={(e) => setData({ ...data, bank: e.target.value })} />
-                        <h3 className="text-sm font-black items-start ">Numero de Referencia</h3>
-                        <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white ' name="reference" id="reference" onChange ={(e) => setData({ ...data, reference: e.target.value })} />
-                        <p className="text-xs">Verifique antes de Connfirmar</p>
-                        <button className='text-white bg-black  m-1 p-1 rounded-md' onClick={hanledcheck} >Confirmar</button>
+                            <h3 className="text-sm font-black">Nombre</h3>
+                            <input type="text" className='flex border border-gray-800 rounded-lg p-1 shadow-lg bg-white ' name="name" id="name" onChange={(e) => setData({ ...data, name: e.target.value })} />
+                            <h3 className="text-sm font-black items-start ">Cedula</h3>
+                            <input type="text" className='flex border border-gray-800 rounded-lg p-1 shadow-lg bg-white ' name="ci" id="ci" onChange={(e) => setData({ ...data, ci: e.target.value })} />
+                            <h3 className="text-sm font-black items-start ">Banco</h3>
+                            <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white ' name="bank" id="back" onChange={(e) => setData({ ...data, bank: e.target.value })} />
+                            <h3 className="text-sm font-black items-start ">Numero de Referencia</h3>
+                            <input type="text" className='flex border border-gray-800 rounded-lg  p-1 shadow-lg bg-white ' name="reference" id="reference" onChange={(e) => setData({ ...data, reference: e.target.value })} />
+                            <p className="text-xs">Verifique antes de Connfirmar</p>
+                            <button className='text-white bg-black  m-1 p-1 rounded-md' onClick={hanledcheck} >Confirmar</button>
                         </form>
                     </div>
                     <div className='flex-col w-[100%] text-center '>
@@ -156,12 +157,6 @@ export function Payments() {
                         </ul>
                     </div>
                     <div className='general-part3'>
-                        <h1>Mensaje</h1>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
                     </div>
                 </div>
             </div>

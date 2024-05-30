@@ -30,7 +30,7 @@ export function RecoverEmail() {
                         navigate("/login");
                     }, 3000);
                     return
-                }else {
+                } else {
                     alert("Error en servidor")
                 }
             } catch (error) {

@@ -46,7 +46,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/register" element={<Register />} />
         <Route path="/member" element={<Member />} />
         <Route path="/membershipPay" element={<MembershipPay />} />
-        <Route path="/payment" element={<Payments />} />
+        <Route path="/payments" element={<Payments />} />
         <Route path="/perfiladmin" element={<PerfilAdmin />} />
         <Route path="/perfiluser" element={<PerfilUser />} />
         <Route path="/rates" element={<Rates />} />
