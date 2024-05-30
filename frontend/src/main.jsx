@@ -40,18 +40,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
         <Route element={<PrivateRoute />}>
         //Rutas Privadas
-        //aqui van las rutas privadas
-        </Route>
-        //Rutas Publicas
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/member" element={<Member />} />
+          <Route path="/member" element={<Member />} />
         <Route path="/membershipPay" element={<MembershipPay />} />
         <Route path="/payments" element={<Payments />} />
         <Route path="/perfiladmin" element={<PerfilAdmin />} />
         <Route path="/perfiluser" element={<PerfilUser />} />
         <Route path="/rates" element={<Rates />} />
-        <Route path="/recoverEmail" element={<RecoverEmail />} />
+       
         <Route path="/recoverPassword/:code" element={<RecoverPassword />} />
         <Route path='/' element={<Home/>}/>
         <Route path='/messages' element={<Messages/>}/>
@@ -59,6 +54,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/explorar' element={<Explorar/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/interacciones' element={<Interacciones/>}/>
+        </Route>
+        //Rutas Publicas
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/recoverEmail" element={<RecoverEmail />} />
         </Routes>
     </BrowserRouter>
     </React.StrictMode>,
