@@ -29,6 +29,7 @@ import { PerfilUser } from './pages/PerfilUser.jsx'
 import { Rates } from './pages/ratesP.jsx'
 import { RecoverEmail } from './pages/RecoverEmail.jsx'
 import { RecoverPassword } from './pages/RecoverPassword.jsx'
+import { Interacciones } from './pages/Interacciones.jsx'
 
 
 
@@ -57,6 +58,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/post' element={<Publication/>}/>
         <Route path='/explorar' element={<Explorar/>}/>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/interacciones' element={<Interacciones/>}/>
         </Routes>
     </BrowserRouter>
     </React.StrictMode>,

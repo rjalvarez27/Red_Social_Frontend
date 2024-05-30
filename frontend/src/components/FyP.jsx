@@ -1,4 +1,30 @@
+import { useState, useEffect } from "react";
+
+import { Modelpost } from "./Modelpost";
+
 export function FyP(){
+
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        const GetPost = async () => {
+            try{
+                const response = await fetch('http://localhost:3000/social/publicaciones');
+                if(response.ok){
+                    const data = await response.json();
+                    setPosts(data);
+                }else{
+                    console.error('error');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        GetPost();
+    }, []);
+
+
     return (
         <>
             <main className="principal">
@@ -10,33 +36,9 @@ export function FyP(){
                 </nav>
                 <div className="fyp-area">
                     <section className="fyp-section">
-                        <div className="fyp-section-post">
-                            <div className="fyp-section-post-area">
-                                <div className="fyp-section-post-user">
-                                    <img src="" alt="imagen" className="perfil-img"/>                            
-                                    <div>
-                                        <a className="perfil-name" href="/profile"><strong>Nombre de usuario</strong></a>
-                                        <p className="perfil-username">@username</p>
-                                    </div>
-                                </div>
-                                <span className="fyp-section-post-content">
-                                        contenido de publicacion
-                                </span>
-                                <div className="fyp-section-post-image" >
-                                    <img src="" alt="" />
-                                </div>
-                            </div>
-                                
-                            <div className="fyp-section-post-interaction">
-                                <img src="src/images/down-arrow.png" alt="" />
-
-                                <div className="fyp-interaction">
-                                    <img src="src/images/comments.png" alt="" />
-                                    <img src="src/images/share_white.png" alt="" />
-                                    <img src="src/images/like-white.png" alt="" />
-                                </div>
-                            </div>   
-                        </div>
+                        {posts.map((post) => (
+                            <Modelpost content={post.content} key={post.id} />
+                        ))}
                     </section>
                 </div>
             </main>
