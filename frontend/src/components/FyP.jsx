@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-
+import axios from "axios";
 import { Modelpost } from "./Modelpost";
 
 export function FyP(){
 
     const [posts, setPosts] = useState([]);
-
-    
 
     useEffect(() => {
         const GetPost = async () => {
@@ -16,7 +14,7 @@ export function FyP(){
                     const data = await response.json();
                     setPosts(data);
                     console.log(data)
-                    console.log(data.id)
+                    console.log(data[0].image[0].data)
                 }else{
                     console.error('error');
                 }
@@ -27,7 +25,6 @@ export function FyP(){
         
         GetPost();
     }, []);
-
 
     return (
         <>

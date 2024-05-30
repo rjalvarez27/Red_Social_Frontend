@@ -9,9 +9,9 @@ import { useNavigate } from 'react-router-dom'
 
 export function Home(){
     const navigate = useNavigate()
-  const token = Cookies.get('token')
-  const [id, setId] = useState()
-  const [user, setUser] = useState()
+    const token = Cookies.get('token')
+    const [id, setId] = useState()
+    const [user, setUser] = useState()
 
 
 	//const token = Cookies.set('token', 1234)
