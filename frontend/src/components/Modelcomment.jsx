@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 export function Modelcomment({content, image }){
+
+
+
     const navigate = useNavigate()
 
     console.log(image)

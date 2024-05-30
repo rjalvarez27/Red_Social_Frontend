@@ -4,10 +4,17 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import axios from 'axios'
+import { Newpost } from '../components/Newpost.jsx'
 
 
 
 export function Profile() {
+
+    const [open, setOpen] = useState(false)
+
+    const handleClose = () => {
+        setOpen(false)
+    }
 
     const navigate = useNavigate()
     const token = Cookies.get('token')
@@ -52,6 +59,29 @@ export function Profile() {
     hanledUser()
 }, [token, id]);
 
+
+const [posts, setPosts] = useState([]);
+
+useEffect(() => {
+    const GetPost = async () => {
+        try{
+            const response = await fetch('http://localhost:3000/social/publicaciones');
+            if(response.ok){
+                const data = await response.json();
+                setPosts(data);
+                console.log(data)
+                console.log(data[0].image[0].data)
+            }else{
+                console.error('error');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    GetPost();
+}, []);
+
     return (
         <>
             <div className='header-profile'>
@@ -88,18 +118,18 @@ export function Profile() {
                         <li><div className="decoracion -white"></div><a onClick={() => navigate("/perfiluser")} >Configuración</a></li>
                     </ul>
                 </div>
+                <button className="new-post w-[180px] xl:w-[220px]" onClick={() => setOpen(!open)}>Nueva publicación</button>
             </aside>
 
             <main className='main-profile'>
                 <div className='post-profile'>
-                    <Modelpost />
-                    <Modelpost />
-                    <Modelpost />
-                    <Modelpost />
-                    <Modelpost />
-                    <Modelpost />
+                    {posts.map((post) => (
+                            <Modelpost content={post.content} key={post._id} image={post.image}/>
+                        ))}
                 </div>
             </main>
+
+            { open && <Newpost onClose={handleClose}/>  }
         </>
     )
 }
