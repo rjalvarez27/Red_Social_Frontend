@@ -5,6 +5,8 @@ import { validName, validUserName, validCorreo } from "../components/Regext.jsx"
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import "../styles/recovery.css";
+import { Navmenu } from '../components/Navmenu.jsx';
+import { Chatlist } from '../components/Chatlist.jsx';
 
 export function PerfilUser() {
     const token = Cookies.get('token')
@@ -111,23 +113,16 @@ export function PerfilUser() {
     return (
         <div>
             <div className="general-content">
-                <div className="general-box1 z-0">
-                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px]' />
-                    <div className="general-part1 ">
-                        <ol className='flex-col '>
-                            <li>Explorar</li>
-                            <li >Interacciones</li>
-                            <li >Premium</li>
-                            <li >Mensaje</li>
-                            <li >Configuracion</li>
-                        </ol>
-                    </div>
+            <div className="general-box1 z-0 ">
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")}/>
+                    <Navmenu />
                     <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
                 </div>
-                <div className="general-box2">
+
+                <div className="general-box2 p-[20px] overflow-y-visible">
                     <div className='flex flex-col'>
                         <div className='flex-col w-[100%]'>
-                            <NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
+                            {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
                             <h1 className="text-3xl font-black m-2 text-center">Bienvenido {user.name}</h1>
                         </div>
                     </div>
@@ -160,9 +155,9 @@ export function PerfilUser() {
                     </div>
                     <div className='flex flex-col'>
                         <h3 className="text-lg font-black items-start">Cambiar Password</h3>
-                        <div className='flex flex-col w-full text-center' >
+                        <div className='flex flex-col w-full items-center' >
                             <p className='text-sm font-black text-center m-2'>Para cambiar la contraseña, haga click en el siguiente boton</p>
-                            <NavLink to="/recoverEmail"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded'> Cambiar Password </button></NavLink>
+                            <NavLink to="/recoverEmail" className="w-[200px]"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded'> Cambiar Password </button></NavLink>
                         </div>
                     </div>
                     <div className='flex flex-row m-2'>
@@ -172,20 +167,20 @@ export function PerfilUser() {
                         </div>
                         <div className='flex flex-col '>
                             <h3 className="text-lg font-black items-start m-1">Cambiar Imagen de Perfil</h3>
-                            <label className="block mb-2 text-sm font-medium text-black dark:text-white" htmlFor="file_input" >Upload file</label>
-                            <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 px-2 py-2" id="file_input" type="file" />
+                            <label className="block w-full text-base text-[#f5f5f5] border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2" htmlFor="file_input" >Upload file</label>
+                            <input className="hidden" id="file_input" type="file" />
                         </div>
                     </div>
                     <div className='flex flex-col'>
                         <h3 className="text-lg font-black items-start">Promocionar Publicaciones</h3>
-                        <div className='flex flex-col w-full text-center'>
+                        <div className='flex flex-col w-full items-center'>
                             <p className='text-sm font-black m-2'>Para promocionar tu publicacion, haga click en el siguiente boton</p>
                             <NavLink to="/rates"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded'> Publicaciones </button></NavLink>
                         </div>
                     </div>
                     <div className='flex flex-col'>
                         <h3 className="text-lg font-black items-start">Usuario Premium</h3>
-                        <div className='flex flex-col w-full text-center'>
+                        <div className='flex flex-col w-full items-center'>
                             <p className='text-sm font-black m-2'>Si no eres usuario Premiun por favor, haz click en el siguiente boton</p>
                             <NavLink to="/member"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded m-2'>Usuarios Premium</button></NavLink>
                         </div>
@@ -202,9 +197,13 @@ export function PerfilUser() {
                             <li className='m-2 text-3xl'><i className="fa-solid fa-gear"></i></li>
                         </ul>
                     </div>
-                    <div className='general-part3'>
-                        
+                    <div className="ad-space m-12">
+                        <div className="ad-space-area">
+                            <h3>Suscribete a Premium</h3>
+                            <p style={{color: 'rgb(174, 174, 174)'}}>¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
+                        </div>
                     </div>
+                    <Chatlist/>
                 </div>
             </div>
         </div>

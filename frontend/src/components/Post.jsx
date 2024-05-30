@@ -6,20 +6,24 @@ export function Post(){
     return(
         <>
             <div className="principal">
-                <div className="principal-post">
+                <div className="w-[100%] flex justify-center">
+                        <div className="principal-post">
 
-                    <Modelpost/>
-                    
-                    <div className="fyp-interaction-data">
-                        <p>20.000 comentarios</p>
-                        <p>17.654 compartidas</p>
-                        <p>100.000 me gustas</p>
+                        <Modelpost/>
+                        
+                        <div className="fyp-interaction-data">
+                            <p>20.000 comentarios</p>
+                            <p>17.654 compartidas</p>
+                            <p>100.000 me gustas</p>
+                        </div>
+                        <hr className="w-[100%]"/>
+                        <Newcomment/>
+                        <hr className="w-[100%]"/>
+                        
+                        <Modelpost/>
                     </div>
-                    <Newcomment/>
-                    <hr style={{width:"100%"}}/>
-                    
-                    <Modelpost/>
                 </div>
+                
             </div>
         </>
     )

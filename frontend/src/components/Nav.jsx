@@ -1,16 +1,14 @@
 import { useState } from "react"
 import { Newpost } from "./Newpost"
 import { useNavigate } from "react-router-dom"
+import Cookies from 'js-cookie'
+import { Navmenu } from "./Navmenu";
 
-export function Nav() {
+export function Nav({name, username}) {
 
     const navigate = useNavigate();
 
     const [isActive, setIsActive] = useState(false);
-
-    const handleClick = () => {
-        setIsActive(false)
-    }
 
     const [open, setOpen] = useState(false)
 
@@ -18,35 +16,37 @@ export function Nav() {
         setOpen(false)
     }
 
+    const cerrarSesion = () => {
+        try {
+            Cookies.remove('token'); // Elimina la cookie 'token'
+            navigate('/login'); // Redirige al usuario a la página de inicio de sesión
+            console.log('Sesión cerrada correctamente'); // Imprime un mensaje en la consola
+        } catch (error) {
+            console.error('Error al cerrar sesión:', error); // Maneja posibles errores
+        }
+    };
+
     return (
         <>
-        <nav className="nav">
+        <nav className="nav hidden lg:flex lg:w-[20%]">
             
             <div className="nav-perfil">
                 
                 <div className="nav-perfil-avatar"></div>
-                <div className="nav-perfil-bottom">
+                <div className="nav-perfil-bottom" onClick={() => setIsActive(!isActive)}>
                     <div className="nav-perfil-user">
-                        <strong className="perfil-name">Nombre de usuario</strong>
-                        <p className="perfil-username">@username</p>
+                        <strong className="perfil-name">{name}</strong>
+                        <p className="perfil-username">@{username}</p>
                     </div>
-                    <img src="../src/images/down-arrow.png" alt="" style={{width: '25px', height: '25px'}} onClick={() => setIsActive(!isActive)}/>
+                    <img src="../src/images/down-arrow.png" className="w-6 h-6"/>
                 </div>
                 {isActive ? (
                 <div className="optionsSesion">
-                    <a href="">Cerrar la sesión de @username</a>
+                    <a><button onClick={cerrarSesion}>Cerrar la sesión de @{username}</button></a>
                 </div>) : null}
             </div>
-
-            <ul className="menu">
-                <li><a onClick={() => navigate("/explorar")} >Explorar</a></li>
-                <li><a onClick={() => navigate("/interacciones")} >Interacciones</a></li>
-                <li><a onClick={() => navigate("/messages")} >Mensajes</a></li>
-                <li><a onClick={() => navigate("/member")} >Premium</a></li>
-                <li><a onClick={() => navigate("/post")} >Configuración</a></li>
-                
-            </ul>
-            <button className="new-post" style={{width: '200px'}} onClick={() => setOpen(!open)}>Nueva publicación</button>
+            <Navmenu/>
+            <button className="new-post w-[180px] xl:w-[220px]" onClick={() => setOpen(!open)}>Nueva publicación</button>
         </nav>
 
         { open && <Newpost onClose={handleClose}/>  }

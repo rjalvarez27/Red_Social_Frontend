@@ -6,9 +6,7 @@
 }
 
 .principal{
-    width: 64%;
-    height: 100vh;
+    padding-bottom: 30px;
     position: absolute;
-    left: 18%;
     top: 75px;
 }

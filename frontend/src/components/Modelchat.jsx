@@ -4,7 +4,7 @@ export function Modelchat() {
             <div className='messages-chat-img'></div>
             <div>
                 <strong className='perfil-name'>Nombre de usuario</strong>
-                <p style={{color: 'rgb(174, 174, 174)'}}>mensaje mensaje mensaje</p>
+                <p className="decoration-[rgb(174, 174, 174)]">mensaje mensaje mensaje</p>
             </div>
         </div>
     );

@@ -6,6 +6,8 @@ export function FyP(){
 
     const [posts, setPosts] = useState([]);
 
+    
+
     useEffect(() => {
         const GetPost = async () => {
             try{
@@ -13,6 +15,8 @@ export function FyP(){
                 if(response.ok){
                     const data = await response.json();
                     setPosts(data);
+                    console.log(data)
+                    console.log(data.id)
                 }else{
                     console.error('error');
                 }
@@ -20,16 +24,16 @@ export function FyP(){
                 console.error(error);
             }
         }
-
+        
         GetPost();
     }, []);
 
 
     return (
         <>
-            <main className="principal">
+            <main className="principal bg-[#f5f5f5] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
                 
-                <nav className="fyp-nav">
+                <nav className="fyp-nav w-[100%] lg:w-[80%] xl:w-[60%]">
                     <a href="" className="fyp-nav-link"><button>General</button></a>
                     <hr />
                     <a href="" className="fyp-nav-link"><button>Seguidos</button></a>
@@ -37,7 +41,7 @@ export function FyP(){
                 <div className="fyp-area">
                     <section className="fyp-section">
                         {posts.map((post) => (
-                            <Modelpost content={post.content} key={post.id} />
+                            <Modelpost content={post.content} key={post._id} image={post.image}/>
                         ))}
                     </section>
                 </div>

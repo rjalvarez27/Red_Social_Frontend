@@ -1,10 +1,9 @@
 .aside{
-    width: 18%;
+    width: 20%;
     height: 100%;
     background-color: rgb(18, 16, 25);
     position: fixed;
     right: 0;
-    display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
@@ -26,6 +25,7 @@
 .option-space-img{
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
 
 .option-space-search{
@@ -92,7 +92,7 @@
     gap: 10px;
     margin: 0px 10px;
     padding: 10px;
-    border: 2px solid rgba(174, 174, 174, 1);
+    border: 2px solid rgb(224, 189, 29);
     border-radius: 10px;
 }
 
@@ -101,6 +101,7 @@
     font-size: medium;
     font-weight: bold;
     font-style: italic;
+    color: rgb(224, 189, 29);
 }
 
 .ad-space-area p{

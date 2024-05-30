@@ -3,8 +3,18 @@ import { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/general.css'
 import Cookies from 'js-cookie'
+import { Chatlist } from '../components/Chatlist'
+import { Navmenu } from '../components/Navmenu'
+import { Settings } from "../components/Settings"
+import { Trends } from "../components/Trends"
 
 export function Member() {
+
+    const [settings, setSettings] = useState(false)
+
+    const handleSettings = () => {
+        setSettings(false)
+    }
 
     const navigate = useNavigate()
     const [check, setCheck] = useState(false)
@@ -13,7 +23,7 @@ export function Member() {
     const handleCheck = (e) => {
         e.preventDefault()
         if (check === false) {
-            alert("Usuario Free , reedirigiendo al login")
+            alert("Usuario Free , reedirigiendo al inicio")
             setTimeout(() => {
                 navigate('/')
             }, 2000);
@@ -21,14 +31,14 @@ export function Member() {
             Cookies.set('type', 'Premiun')
             alert("Tarifa Premiun activada,  reedirigiendo a la pagina de pago")
             setTimeout(() => {
-                navigate('/payments')
+                navigate('/membershippay')
             }, 2000);
         }
     }
     useEffect(() => {
         const token = Cookies.get('token')
         if (!token) {
-            navigate('/home')
+            navigate('/login')
         }
 
     }, [])
@@ -36,21 +46,14 @@ export function Member() {
         <div>
             <div className="general-content">
                 <div className="general-box1 z-0">
-                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px]' />
-                    <div className="general-part1 ">
-                        <ol className='flex-col '>
-                            <li>Explorar</li>
-                            <li >Interacciones</li>
-                            <li >Premium</li>
-                            <li >Mensaje</li>
-                            <li >Configuracion</li>
-                        </ol>
-                    </div>
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")}/>
+                    <Navmenu />
                     <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
                 </div>
+
                 <div className="general-box2 z-40">
-                    <div className='flex-col w-[100%]'>
-                        <NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
+                    <div className='flex-col w-[100%] mt-[45px]'>
+                        {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
                         <h1 className="text-3xl font-black m-2 text-center">Membresia</h1>
                     </div>
                     <div className='flex'>
@@ -79,22 +82,27 @@ export function Member() {
                                     <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
                                 </tr>
                                 <tr className="border-b-2">
-                                    <th>Promocion de Publicaciones</th>
+                                    <th>Promocion de publicaciones</th>
                                     <td className='text-green-500'></td>
                                     <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
                                 </tr>
                                 <tr className="border-b-2">
+                                    <th>Caracteres ilimitados</th>
+                                    <td className='text-green-500'></td>
+                                    <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
+                                </tr>
+                                {/*<tr className="border-b-2">
                                     <th>IA Publicaciones</th>
                                     <td className='text-green-500'></td>
                                     <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
-                                </tr>
+                                </tr>*/}
                                 <tr className="border-b-2">
-                                    <th>Filtros Personalizados</th>
+                                    <th>Filtros personalizados</th>
                                     <td className='text-green-500'></td>
                                     <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
                                 </tr>
                                 <tr className="border-b-2">
-                                    <th>Comentarios Personalizados</th>
+                                    <th>Comentarios personalizados</th>
                                     <td className='text-green-500'></td>
                                     <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
                                 </tr>
@@ -111,6 +119,7 @@ export function Member() {
                             </tbody>
                         </table>
                     </div>
+                    
                     <div className='flex flex-col text-center'>
                         <h3>Si el usuarios es Premiun por favor marque la casilla para continuar con la membresia</h3>
                     </div>
@@ -122,16 +131,30 @@ export function Member() {
                     </div>
                 </div>
                 <div className="general-box3 z-0">
-                    <div className="flex justify-center w-[100%] ">
-                        <ul className='flex m-5'>
-                            <li className='m-2 text-3xl'><i className="fa-solid fa-bell"></i></li>
-                            <li className='m-2 text-3xl'><i className="fa-solid fa-magnifying-glass"></i></li>
-                            <li className='m-2 text-3xl'><i className="fa-solid fa-gear"></i></li>
-                        </ul>
+                <div className="option-space">
+                        <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img"/>
+                        <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search"/>
+                        <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)}/>
+                
                     </div>
-                    <div className='general-part3'>
-                       
+                    { settings && <Settings onSettings={handleSettings}/>  }
+
+            
+                    <div className="trends-space">
+                        <div style={{display: 'none'}}>
+                            <Trends />
+                        </div>
+                        
                     </div>
+                    
+                    <div className="ad-space">
+                        <div className="ad-space-area">
+                            <h3>Suscribete a Premium</h3>
+                            <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
+                        </div>
+                    </div>
+
+                    <Chatlist/>
                 </div>
             </div>
         </div>

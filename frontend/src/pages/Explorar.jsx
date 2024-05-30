@@ -11,9 +11,10 @@ export function Explorar() {
                 <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search" />
             </header>
             <Nav />
-            <aside className="aside" style={{ justifyContent: "space-between" }}>
-                <img src="src/images/logo.png" alt="Logo Mounts" className="logo-header" style={{ marginTop: "20px" }} />
-                <Chatlist />
+
+            <aside className="aside justify-between">
+                <img src="src/images/logo.png" alt="Logo Mounts" className="logo-header m-5"/>
+                <Chatlist/>
             </aside>
             <div className="principal">
                 <div className="exp-area">
