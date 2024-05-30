@@ -7,8 +7,16 @@ import axios from 'axios'
 import "../styles/recovery.css";
 import { Navmenu } from '../components/Navmenu.jsx';
 import { Chatlist } from '../components/Chatlist.jsx';
+import { Settings } from "../components/Settings"
+import { Trends } from "../components/Trends"
 
 export function PerfilUser() {
+    const [settings, setSettings] = useState(false)
+
+    const handleSettings = () => {
+        setSettings(false)
+    }
+
     const token = Cookies.get('token')
     const navigate = useNavigate()
     const [id, setId] = useState({})
@@ -190,19 +198,29 @@ export function PerfilUser() {
                     </div>
                 </div>
                 <div className="general-box3 z-0">
-                    <div className="flex justify-center w-[100%] ">
-                        <ul className='flex m-5'>
-                            <li className='m-2 text-3xl'><i className="fa-solid fa-bell"></i></li>
-                            <li className='m-2 text-3xl'><i className="fa-solid fa-magnifying-glass"></i></li>
-                            <li className='m-2 text-3xl'><i className="fa-solid fa-gear"></i></li>
-                        </ul>
+                    <div className="option-space">
+                        <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img"/>
+                        <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search"/>
+                        <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)}/>
+                
                     </div>
-                    <div className="ad-space m-12">
+                    { settings && <Settings onSettings={handleSettings}/>  }
+
+            
+                    <div className="trends-space">
+                        <div style={{display: 'none'}}>
+                            <Trends />
+                        </div>
+                        
+                    </div>
+                    
+                    <div className="ad-space">
                         <div className="ad-space-area">
                             <h3>Suscribete a Premium</h3>
-                            <p style={{color: 'rgb(174, 174, 174)'}}>¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
+                            <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
                         </div>
                     </div>
+
                     <Chatlist/>
                 </div>
             </div>
