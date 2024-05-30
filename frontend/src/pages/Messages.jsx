@@ -1,16 +1,20 @@
 import { Header } from '../components/Header.jsx'
 import { Modelchat } from '../components/Modelchat.jsx'
-
+import { io } from 'socket.io-client'
+import axios from 'axios'
+/*
 export function Messages() {
     return (
 
-
+/*
 import io from 'socket.io-client'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+*/
+
+/*
 
 
-export function Messages(){
     /*const [socket, setSocket] = useState()
 
 
@@ -39,10 +43,12 @@ export function Messages(){
         }
         socket.emit('message', message)
         e.target.reset()
-    }*/
+    }
 const socket = io('http://localhost:3000')
 console.log(socket)
+*/
 
+export function Messages(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         const message = e.target[0].value;
