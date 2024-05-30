@@ -39,7 +39,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
     <BrowserRouter>
         <Routes>
-        <Route element={<PrivateRoute />}>
+        <Route element={<PrivateRoute />}
         {/*Rutas Privadas*/}
             <Route path="/member" element={<Member />} />
             <Route path="/membershippay" element={<MembershipPay />} />
@@ -59,7 +59,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/login" element={<Login />} />.
         <Route path="/register" element={<Register />} />.
         <Route path="/recoverEmail" element={<RecoverEmail />} /> .
-        
+
         </Routes>
     </BrowserRouter>
     </React.StrictMode>,

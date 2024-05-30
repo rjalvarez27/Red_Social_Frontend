@@ -8,9 +8,10 @@ export function Explorar() {
     return (
         <>
             <header className="header">
-            <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search"/>
+                <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search" />
             </header>
             <Nav />
+
             <aside className="aside justify-between">
                 <img src="src/images/logo.png" alt="Logo Mounts" className="logo-header m-5"/>
                 <Chatlist/>
@@ -18,7 +19,7 @@ export function Explorar() {
             <div className="principal">
                 <div className="exp-area">
                     <section className="exp-section">
-                        <Trends/>
+                        <Trends />
                     </section>
                 </div>
             </div>
