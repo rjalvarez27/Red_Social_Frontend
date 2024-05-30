@@ -55,7 +55,6 @@ export function Home(){
       <>
         <Header/>
         {<Nav name={user?.name} username={user?.username}/>}
-		{/*<Nav/>*/}
         <Aside />
         <FyP/>
       </>

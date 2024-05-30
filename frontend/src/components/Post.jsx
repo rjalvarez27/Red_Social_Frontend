@@ -5,6 +5,10 @@ import { useState, useEffect } from "react";
 
 export function Post(){
 
+
+
+
+
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
@@ -31,7 +35,7 @@ export function Post(){
         <>
             <div className="principal bg-[#f5f5f5] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
                 <div className="w-[100%] flex justify-center">
-                        <div className="principal-post">
+                        <div className="principal-post rounded-b-lg">
 
                         <Modelpost/>
                         
@@ -46,6 +50,7 @@ export function Post(){
                         <div className="flex flex-col-reverse">
                             {comments.map((comment) => (
                             <Modelcomment content={comment.content} key={comment._id} image={comment.image}/>
+                            
                         ))}
                         </div>
                 

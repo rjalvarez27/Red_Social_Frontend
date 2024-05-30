@@ -5,6 +5,8 @@ export function Modelcomment({content, image }){
     console.log(image)
 
     return(
+        <>
+        <hr />
             <div onClick={() => navigate("/post")} className="fyp-section-post w-[570px] sm:bg-red-600">
                 <div className="fyp-section-post-area">
                     <div className="fyp-section-post-user">
@@ -29,5 +31,8 @@ export function Modelcomment({content, image }){
                     </div>
                 </div>   
             </div>
+            
+        </>
+
     )
 }
