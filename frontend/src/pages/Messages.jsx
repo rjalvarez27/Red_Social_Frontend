@@ -64,8 +64,7 @@ const socket = io('http://localhost:3000')
     }*/
 /*const socket = io('http://localhost:3000')*/
 
-console.log(socket)
-*/
+
 
 export function Messages(){
     const handleSubmit = async (e) => {
