@@ -21,7 +21,6 @@ export function PrivateRoute() {
         const info = response.data;
         if (info) {
           setToken(true);
-          console.log(token)
         }
       } catch (error) {
         setToken(false);

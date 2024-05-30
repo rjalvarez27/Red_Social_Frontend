@@ -31,9 +31,6 @@ import { RecoverEmail } from './pages/RecoverEmail.jsx'
 import { RecoverPassword } from './pages/RecoverPassword.jsx'
 import { Interacciones } from './pages/Interacciones.jsx'
 
-
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
     <BrowserRouter>

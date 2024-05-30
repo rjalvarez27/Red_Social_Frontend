@@ -22,6 +22,32 @@ export function PerfilUser() {
     const [email, setEmail] = useState({
         email: ''
     })
+    
+    const [data, setData] = useState({
+        id_user: "",
+        avatar:""
+    });
+  
+    const handleImg = async (e) => {
+        e.preventDefault();
+            try {
+                data.id_user = id
+                const response = await axios.post('http://localhost:3000/social/avatar', data, {headers: { 'Content-Type': 'multipart/form-data' }});
+                console.log(response)
+                if(response){
+                    console.log(response)
+                    alert('Post creado con exito')
+                }else{
+                    alert('Error')
+                };
+                
+            } catch (error) {
+                setTimeout(function () {
+                    window.location.reload();
+                }, 2000);
+                return
+            }
+         };
 
     const hanledname = async (e) => {
         e.preventDefault();
@@ -167,8 +193,10 @@ export function PerfilUser() {
                         </div>
                         <div className='flex flex-col '>
                             <h3 className="text-lg font-black items-start m-1">Cambiar Imagen de Perfil</h3>
-                            <label className="block w-full text-base text-[#f5f5f5] border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2" htmlFor="file_input" >Upload file</label>
-                            <input className="hidden" id="file_input" type="file" />
+                            <label className="block w-full text-base text-[#f5f5f5] border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2" >Upload file
+                            <input type="file" name="image" id="image" onChange={(e) => { handleImg(e); setData({ ...data, avatar: e.target.files[0] })
+                                }} multiple max={1}/>
+                            </label>
                         </div>
                     </div>
                     <div className='flex flex-col'>
