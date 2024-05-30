@@ -61,7 +61,7 @@ ol li:hover {
 
 @media screen and (max-width: 750px) {
     * {
-        font-size: 11px;
+        font-size: 15px;
     }
 
     .general-box1 {

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { Imagen } from "./Imagen";
 
 export function Newpost({onClose}) {
     const handleClose = () => {
@@ -38,20 +37,20 @@ export function Newpost({onClose}) {
                 const [errorMessage, setErrorMessage] = useState('');
               
                 const handleImageChange = (e) => {
-                  const selectedFile = e.target.files[0];
-              
-                  if (selectedFile) {
-                    const type = selectedFile.type;
-                    if (type !== 'image/jpeg' && type !== 'image/jpg' && type !== 'image/png') {
-                      setErrorMessage('El archivo no es válido.');
-                      setImageUrl('');
-                    } else {
-                      setErrorMessage('');
-                      const objectUrl = URL.createObjectURL(selectedFile);
-                      setImageUrl(objectUrl);
+                    const selectedFile = e.target.files[0];
+                
+                    if (selectedFile) {
+                        const type = selectedFile.type;
+                        if (type !== 'image/jpeg' && type !== 'image/jpg' && type !== 'image/png') {
+                        setErrorMessage('El archivo no es válido.');
+                        setImageUrl('');
+                        } else {
+                        setErrorMessage('');
+                        const objectUrl = URL.createObjectURL(selectedFile);
+                        setImageUrl(objectUrl);
+                        }
                     }
-                  }
-                };
+                    };
                   
     
     return (

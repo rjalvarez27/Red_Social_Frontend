@@ -1,5 +1,4 @@
 .fyp-nav{
-    width: 64%;
     height: 60px;
     display: flex;
     justify-content: center;
@@ -46,7 +45,7 @@
 }
 
 .fyp-section{
-    width: 76%;
+    width: 100%;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -55,7 +54,7 @@
 
 .fyp-section-post{
     background-color: rgb(18, 16, 25);
-    width: 750px;
+
     padding: 25px;
     display: flex;
     border-radius: 15px;
@@ -133,7 +132,7 @@
 
 .principal-post{
     background-color: rgb(18, 16, 25);
-    width: 100%;
+    width: 90%;
     padding: 25px;
     display: flex;
     flex-direction: column;

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Newpost } from "./Newpost"
 import { useNavigate } from "react-router-dom"
 import Cookies from 'js-cookie'
+import { Navmenu } from "./Navmenu";
 
 export function Nav({name, username}) {
 
@@ -15,15 +16,19 @@ export function Nav({name, username}) {
         setOpen(false)
     }
 
-    const cerrarSession = () => {
-        Cookies.remove('token')
-        navigate('/login')
-        console.log('cerrando sesion')
-    }
+    const cerrarSesion = () => {
+        try {
+            Cookies.remove('token'); // Elimina la cookie 'token'
+            navigate('/login'); // Redirige al usuario a la página de inicio de sesión
+            console.log('Sesión cerrada correctamente'); // Imprime un mensaje en la consola
+        } catch (error) {
+            console.error('Error al cerrar sesión:', error); // Maneja posibles errores
+        }
+    };
 
     return (
         <>
-        <nav className="nav">
+        <nav className="nav hidden lg:flex lg:w-[20%]">
             
             <div className="nav-perfil">
                 
@@ -37,18 +42,11 @@ export function Nav({name, username}) {
                 </div>
                 {isActive ? (
                 <div className="optionsSesion">
-                    <a><button onClick={cerrarSession}>Cerrar la sesión de @{username}</button></a>
+                    <a><button onClick={cerrarSesion}>Cerrar la sesión de @{username}</button></a>
                 </div>) : null}
             </div>
-
-            <ul className="menu">
-                <li><div className="decoracion -white"></div><a onClick={() => navigate("/profile")} >Perfil de usuario</a></li>
-                <li><div className="decoracion -white"></div><a onClick={() => navigate("/explorar")} >Explorar</a></li>
-                <li><div className="decoracion -white"></div><a onClick={() => navigate("/interacciones")} >Interacciones</a></li>
-                <li><div className="decoracion -white"></div><a onClick={() => navigate("/messages")} >Mensajes</a></li>
-                <li><div className="decoracion -gold"></div><a onClick={() => navigate("/member")} >Premium</a></li>
-            </ul>
-            <button className="new-post w-[200px]" onClick={() => setOpen(!open)}>Nueva publicación</button>
+            <Navmenu/>
+            <button className="new-post w-[180px] xl:w-[220px]" onClick={() => setOpen(!open)}>Nueva publicación</button>
         </nav>
 
         { open && <Newpost onClose={handleClose}/>  }

@@ -30,6 +30,7 @@ import { Rates } from './pages/ratesP.jsx'
 import { RecoverEmail } from './pages/RecoverEmail.jsx'
 import { RecoverPassword } from './pages/RecoverPassword.jsx'
 import { Interacciones } from './pages/Interacciones.jsx'
+import { Settings } from './pages/Settings.jsx'
 
 
 
@@ -40,24 +41,26 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
         <Route element={<PrivateRoute />}>
         {/*Rutas Privadas*/}
-            <Route path="/login" element={<Login />} />.
-            <Route path="/register" element={<Register />} />.
-            <Route path="/recoverEmail" element={<RecoverEmail />} /> .
+            <Route path="/member" element={<Member />} />
+            <Route path="/membershippay" element={<MembershipPay />} />
+            <Route path="/payments" element={<Payments />} />
+            <Route path="/perfiladmin" element={<PerfilAdmin />} />
+            <Route path="/perfiluser" element={<PerfilUser />} />
+            <Route path="/rates" element={<Rates />} />
+            <Route path="/recoverPassword/:code" element={<RecoverPassword />} />
+            <Route path='/' element={<Home/>}/>
+            <Route path='/messages' element={<Messages/>}/>
+            <Route path='/post' element={<Publication/>}/>
+            <Route path='/explorar' element={<Explorar/>}/>
+            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/interacciones' element={<Interacciones/>}/>
+            <Route path='/settings' element={<Settings/>}/>
         </Route>
         {/*Rutas Publicas*/}
-        <Route path="/member" element={<Member />} />
-        <Route path="/membershipPay" element={<MembershipPay />} />
-        <Route path="/payments" element={<Payments />} />
-        <Route path="/perfiladmin" element={<PerfilAdmin />} />
-        <Route path="/perfiluser" element={<PerfilUser />} />
-        <Route path="/rates" element={<Rates />} />
-        <Route path="/recoverPassword/:code" element={<RecoverPassword />} />
-        <Route path='/' element={<Home/>}/>
-        <Route path='/messages' element={<Messages/>}/>
-        <Route path='/post' element={<Publication/>}/>
-        <Route path='/explorar' element={<Explorar/>}/>
-        <Route path='/profile' element={<Profile/>}/>
-        <Route path='/interacciones' element={<Interacciones/>}/>
+        <Route path="/login" element={<Login />} />.
+        <Route path="/register" element={<Register />} />.
+        <Route path="/recoverEmail" element={<RecoverEmail />} /> .
+        
         </Routes>
     </BrowserRouter>
     </React.StrictMode>,

@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import '../styles/general.css'
+import { Chatlist } from '../components/Chatlist'
+import { Navmenu } from '../components/Navmenu'
 
 export function MembershipPay() {
     const [id, setId] = useState()
@@ -89,22 +91,15 @@ export function MembershipPay() {
     }, [token, id]);
     return (
         <div className="general-content">
-            <div className="general-box1">
-                <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px]' />
-                <div className="general-part1">
-                    <ol className='flex flex-col '>
-                        <li>Explorar</li>
-                        <li >Interacciones</li>
-                        <li >Premium</li>
-                        <li >Mensaje</li>
-                        <li >Configuracion</li>
-                    </ol>
-                </div>
+            <div className="general-box1 z-0">
+                <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")}/>
+                <Navmenu />
                 <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
             </div>
-            <div className="general-box2">
-                <div className='flex-col'>
-                    <NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
+
+            <div className="general-box2  p-[10px]">
+                <div className='flex-col mt-[45px]'>
+                    {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
                     <h1 className="text-3xl font-black  text-center m-1">Pago de la Membresia Premiun</h1>
                 </div>
                 <div className='flex-col text-center'>
@@ -146,18 +141,22 @@ export function MembershipPay() {
                     <h1 className="text-sm text-center m-2 ">© 2024 Copyright: Mounts</h1>
                 </div>
             </div>
-            <div className="general-box3">
-                <div className="flex justify-center w-[100%] ">
-                    <ul className='flex m-5'>
-                        <li className='m-2 text-3xl'><i className="fa-solid fa-bell"></i></li>
-                        <li className='m-2 text-3xl'><i className="fa-solid fa-magnifying-glass"></i></li>
-                        <li className='m-2 text-3xl'><i className="fa-solid fa-gear"></i></li>
-                    </ul>
+            <div className="general-box3 z-0">
+                    <div className="flex justify-center w-[100%] ">
+                        <ul className='flex m-5'>
+                            <li className='m-2 text-3xl'><i className="fa-solid fa-bell"></i></li>
+                            <li className='m-2 text-3xl'><i className="fa-solid fa-magnifying-glass"></i></li>
+                            <li className='m-2 text-3xl'><i className="fa-solid fa-gear"></i></li>
+                        </ul>
+                    </div>
+                    <div className="ad-space m-12">
+                        <div className="ad-space-area">
+                            <h3>Suscribete a Premium</h3>
+                            <p style={{color: 'rgb(174, 174, 174)'}}>¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
+                        </div>
+                    </div>
+                    <Chatlist/>
                 </div>
-                <div className='general-part3'>
-                   
-                </div>
-            </div>
         </div>
     );
 }

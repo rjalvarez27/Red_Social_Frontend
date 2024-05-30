@@ -32,15 +32,53 @@ export function Newcomment() {
                 }
              };
 
+             const [imageUrl, setImageUrl] = useState('');
+                const [errorMessage, setErrorMessage] = useState('');
+              
+                const handleImageChange = (e) => {
+                    const selectedFile = e.target.files[0];
+                
+                    if (selectedFile) {
+                        const type = selectedFile.type;
+                        if (type !== 'image/jpeg' && type !== 'image/jpg' && type !== 'image/png') {
+                        setErrorMessage('El archivo no es válido.');
+                        setImageUrl('');
+                        } else {
+                        setErrorMessage('');
+                        const objectUrl = URL.createObjectURL(selectedFile);
+                        setImageUrl(objectUrl);
+                        }
+                    }
+                    };
+
     return (
 
-        <form className="fyp-section-post-form" encType="multipart/form-data" onSubmit={handleSubmit}>
-            <p>Estas respondien a @username</p>
-            <textarea type="text" name="content" id="content" placeholder="Escribe un comentario..." onChange={(e) => setData({ ...data, content: e.target.value })}></textarea>
-            
-            <input type="file" name="image" id="image" onChange={(e) => setData({ ...data, image: e.target.files[0] })} multiple/>
-
-            <input type="submit" className="new-post w-[100px]"/>
-        </form>
+        <div className="new-post-form-area">
+                    <form encType="multipart/form-data" onSubmit={handleSubmit} className="new-post-form">
+                        <div className="new-post-form-top">
+                            <div className="new-post-user">
+                                <div className="perfil-img">
+                                </div>
+                            </div>
+                            <textarea name="contenido" id="contenido" rows="5" placeholder="¿Qué estás pensando?" onChange={(e) => setData({ ...data, content: e.target.value })} className="h-[100px]"></textarea>
+                        </div>
+                        
+                        <div className="new-post-form-interaction">
+                            
+                            <div className="new-post-form-interaction-photo">
+                                {errorMessage && <p className="errorArchivo">{errorMessage}</p>}
+                                {imageUrl && <img src={imageUrl} alt="Imagen subida" className="new-post-form-interaction-img"/>}
+                            </div>
+                            <div className="new-post-form-interaction-bottom">
+                                <label htmlFor="image"><img src="src/images/imagen.png" alt="" className="label-image"/></label>
+                                <input type="file" name="image" id="image" onChange={(e) => { handleImageChange(e); setData({ ...data, image: e.target.files[0] })
+                                }} multiple max={4}/>
+                                <input type="submit" value="Publicar" className="new-post w-[100px]"/>
+                            </div>
+                            
+                        </div>
+                    </form>
+                    
+                </div>
     )
 }

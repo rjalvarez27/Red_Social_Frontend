@@ -6,10 +6,7 @@
 }
 
 .principal{
-    width: 64%;
-    height: 100vh;
+
     position: absolute;
-    left: 18%;
     top: 75px;
-    background-color: whitesmoke;
 }

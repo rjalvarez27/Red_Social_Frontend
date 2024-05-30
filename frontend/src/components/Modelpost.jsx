@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
-export function Modelpost({content, image}){
+export function Modelpost({content, image }){
     const navigate = useNavigate()
+
+    console.log(image)
+
     return(
-            <div onClick={() => navigate("/post")} className="fyp-section-post">
+            <div onClick={() => navigate("/post")} className="fyp-section-post w-[570px] sm:bg-red-600">
                 <div className="fyp-section-post-area">
                     <div className="fyp-section-post-user">
                         <img src="" alt="imagen" className="perfil-img"/>
@@ -15,7 +18,6 @@ export function Modelpost({content, image}){
                         {content}
                     </span>
                     <div className="fyp-section-post-image" >
-                        <p>{image}</p>
                     </div>
                 </div>
                     

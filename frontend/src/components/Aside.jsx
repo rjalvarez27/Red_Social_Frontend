@@ -3,7 +3,7 @@ import { Trends } from "./Trends";
 export function Aside() {
 
     return (
-        <aside className="aside">
+        <aside className="aside hidden xl:flex">
             <div className="option-space">
                 <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img"/>
                 <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search"/>

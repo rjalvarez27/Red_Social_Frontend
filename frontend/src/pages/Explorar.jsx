@@ -10,7 +10,7 @@ export function Explorar() {
             <header className="header">
             <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search"/>
             </header>
-            <Nav/>
+            <Nav />
             <aside className="aside justify-between">
                 <img src="src/images/logo.png" alt="Logo Mounts" className="logo-header m-5"/>
                 <Chatlist/>

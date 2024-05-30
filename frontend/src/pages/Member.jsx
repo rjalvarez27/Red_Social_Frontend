@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/general.css'
 import Cookies from 'js-cookie'
 import { Chatlist } from '../components/Chatlist'
+import { Navmenu } from '../components/Navmenu'
 
 export function Member() {
 
@@ -38,18 +39,12 @@ export function Member() {
             <div className="general-content">
                 <div className="general-box1 z-0">
                     <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")}/>
-                    <ul className="menu">
-                        <li><div className="decoracion -white"></div><a onClick={() => navigate("/profile")} >Perfil de usuario</a></li>
-                        <li><div className="decoracion -white"></div><a onClick={() => navigate("/explorar")} >Explorar</a></li>
-                        <li><div className="decoracion -white"></div><a onClick={() => navigate("/interacciones")} >Interacciones</a></li>
-                        <li><div className="decoracion -white"></div><a onClick={() => navigate("/messages")} >Mensajes</a></li>
-                        <li><div className="decoracion -gold"></div><a onClick={() => navigate("/member")} >Premium</a></li>
-                    </ul>
+                    <Navmenu />
                     <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
                 </div>
 
                 <div className="general-box2 z-40">
-                    <div className='flex-col w-[100%] m-[45px]'>
+                    <div className='flex-col w-[100%] mt-[45px]'>
                         {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
                         <h1 className="text-3xl font-black m-2 text-center">Membresia</h1>
                     </div>
