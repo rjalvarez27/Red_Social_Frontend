@@ -162,7 +162,7 @@ export function PerfilUser() {
                 <div className="general-box2 p-[20px] overflow-y-visible">
                     <div className='flex flex-col'>
                         <div className='flex-col w-[100%]'>
-                            <Perfil />
+                            < Perfil id={user._id} />
                             {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
                             <h1 className="text-3xl font-black m-2 text-center">Bienvenido {user.name}</h1>
                         </div>

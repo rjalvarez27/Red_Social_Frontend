@@ -8,7 +8,7 @@ export function FyP(){
 
     
 
-    useEffect(() => {
+    useEffect(() => { // traer informacion de imagen de base datos 
         const GetPost = async () => {
             try{
                 const response = await fetch('http://localhost:3000/social/publicaciones');
