@@ -1,13 +1,41 @@
+import { Modelcomment } from "./Modelcomment";
 import { Modelpost } from "./Modelpost";
 import { Newcomment } from "./Newcomment";
+import { useState, useEffect } from "react";
 
 export function Post(){
 
+
+
+
+
+    const [comments, setComments] = useState([]);
+
+    useEffect(() => {
+        const GetPost = async () => {
+            try{
+                const response = await fetch('http://localhost:3000/social/comments');
+                if(response.ok){
+                    const data = await response.json();
+                    setComments(data);
+                    console.log(data)
+                    console.log(data[0].image[0].data)
+                }else{
+                    console.error('error');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        
+        GetPost();
+    }, []);
+
     return(
         <>
-            <div className="principal">
+            <div className="principal bg-[#f5f5f5] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
                 <div className="w-[100%] flex justify-center">
-                        <div className="principal-post">
+                        <div className="principal-post rounded-b-lg">
 
                         <Modelpost/>
                         
@@ -19,8 +47,13 @@ export function Post(){
                         <hr className="w-[100%]"/>
                         <Newcomment/>
                         <hr className="w-[100%]"/>
-                        
-                        <Modelpost/>
+                        <div className="flex flex-col-reverse">
+                            {comments.map((comment) => (
+                            <Modelcomment content={comment.content} key={comment._id} image={comment.image}/>
+                            
+                        ))}
+                        </div>
+                
                     </div>
                 </div>
                 

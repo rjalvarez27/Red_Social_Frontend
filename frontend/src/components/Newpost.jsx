@@ -19,7 +19,7 @@ export function Newpost({onClose}) {
                     console.log(response)
                     if(response){
                         console.log(response)
-                        alert('Post creado con exito')
+                        window.location.reload();
                     }else{
                         alert('Error')
                     };

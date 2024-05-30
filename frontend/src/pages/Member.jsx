@@ -112,7 +112,7 @@ export function Member() {
                                     <td className='font-bold'>10$</td>
                                 </tr>
                                 <tr className="border-b-2">
-                                    <th>Precios</th>
+                                    <th>Seleccione su plan</th>
                                     <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
                                     <td><input type="checkbox" name="Premiun" id="Premiun" className=' bg-white  hover:accent-black' onChange={(e) => setCheck(e.target.checked)} /></td>
                                 </tr>

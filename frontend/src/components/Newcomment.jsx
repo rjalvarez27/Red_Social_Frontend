@@ -9,6 +9,13 @@ export function Newcomment() {
             image:""
         });
 
+
+        const [input, setInput] = useState('');
+
+        const vaciar = () => {
+            setInput('')
+        }
+
         console.log(data)
         const handleSubmit = async (e) => {
             e.preventDefault();
@@ -17,8 +24,8 @@ export function Newcomment() {
                     console.log(response)
                     if(response){
                         console.log(response)
-                        alert('Comentario creado con exito')
-                        navigate('/post')
+                        
+                        window.location.reload();
                         
                     }else{
                         alert('Error')
@@ -73,7 +80,7 @@ export function Newcomment() {
                                 <label htmlFor="image"><img src="src/images/imagen.png" alt="" className="label-image"/></label>
                                 <input type="file" name="image" id="image" onChange={(e) => { handleImageChange(e); setData({ ...data, image: e.target.files[0] })
                                 }} multiple max={4}/>
-                                <input type="submit" value="Publicar" className="new-post w-[100px]"/>
+                                <input type="submit" value="Publicar" className="new-post w-[100px]" onClick={vaciar}/>
                             </div>
                             
                         </div>
