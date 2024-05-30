@@ -63,32 +63,6 @@ export function Home(){
     hanledUser()
 }, [token, id]);
 
-/*useEffect(() => {
-    const hanledData = async () => {
-        if (!token) {
-            alert('Por favor inicia sesión');
-            setTimeout(() => {
-                navigate('/login');
-            }, 2000);
-            return;
-        }
-
-        try {
-            const tokenResponse = await axios.get(`http://localhost:3000/social/recovery/${token}`);
-            const userId = tokenResponse.data.message;
-
-            if (userId) {
-                const userResponse = await axios.get(`http://localhost:3000/social/user/${userId}`);
-                setUser(userResponse.data);
-            }
-        } catch (error) {
-            console.error('Error al obtener datos:', error.message);
-        }
-    };
-
-    hanledData();
-}, [token]);*/
-
   return(
       <>
         <Header/>
