@@ -40,7 +40,7 @@ export function Messages(){
         socket.emit('message', message)
         e.target.reset()
     }*/
-const socket = io('http://localhost:3000')
+/*const socket = io('http://localhost:3000')*/
 console.log(socket)
 
     const handleSubmit = async (e) => {
