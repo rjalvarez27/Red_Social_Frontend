@@ -9,6 +9,7 @@ import { Navmenu } from '../components/Navmenu.jsx';
 import { Chatlist } from '../components/Chatlist.jsx';
 import { Settings } from "../components/Settings"
 import { Trends } from "../components/Trends"
+import { Perfil } from '../components/perfil.jsx';
 
 export function PerfilUser() {
     const [settings, setSettings] = useState(false)
@@ -30,32 +31,37 @@ export function PerfilUser() {
     const [email, setEmail] = useState({
         email: ''
     })
-    
+
     const [data, setData] = useState({
         id_user: "",
-        avatar:""
+        avatar: ""
     });
-  
+
     const handleImg = async (e) => {
         e.preventDefault();
+        if (!data.avatar) {
+            alert('Por favor rellene el campo');
+            return
+        } else {
             try {
                 data.id_user = id
-                const response = await axios.post('http://localhost:3000/social/avatar', data, {headers: { 'Content-Type': 'multipart/form-data' }});
+                const response = await axios.post('http://localhost:3000/social/avatar', data, { headers: { 'Content-Type': 'multipart/form-data' } });
                 console.log(response)
-                if(response){
-                    console.log(response)
-                    alert('Post creado con exito')
-                }else{
+                if (response) {
+                    alert('Imagene de perfil subida con exito')
+                    window.location.replace('');
+                } else {
                     alert('Error')
                 };
-                
+
             } catch (error) {
                 setTimeout(function () {
                     window.location.reload();
                 }, 2000);
                 return
             }
-         };
+        }
+    };
 
     const hanledname = async (e) => {
         e.preventDefault();
@@ -76,7 +82,7 @@ export function PerfilUser() {
         }
     }
 
-    const hamledusername = async (e) => {
+    const hanledusername = async (e) => {
         e.preventDefault();
         if (!username.username) {
             alert('Por favor rellene el campo')
@@ -95,7 +101,7 @@ export function PerfilUser() {
         }
     }
 
-    const hamledemail = async (e) => {
+    const hanledemail = async (e) => {
         e.preventDefault();
         if (!email.email) {
             alert('Por favor rellene el campo')
@@ -147,8 +153,8 @@ export function PerfilUser() {
     return (
         <div>
             <div className="general-content">
-            <div className="general-box1 z-0 ">
-                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")}/>
+                <div className="general-box1 z-0 ">
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")} />
                     <Navmenu />
                     <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
                 </div>
@@ -156,6 +162,7 @@ export function PerfilUser() {
                 <div className="general-box2 p-[20px] overflow-y-visible">
                     <div className='flex flex-col'>
                         <div className='flex-col w-[100%]'>
+                            <Perfil />
                             {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
                             <h1 className="text-3xl font-black m-2 text-center">Bienvenido {user.name}</h1>
                         </div>
@@ -167,7 +174,7 @@ export function PerfilUser() {
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
                                 <input type="text" className='p-1 rounded-md text-center' name="name" id="name" placeholder='Nombre Nuevo' onChange={(e) => setName({ ...name, name: e.target.value })} />
                             </label>
-                            <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hanledname}> Aceptar</button>
+                            <button type="submit" value="Aceptar" className='bg-black text-white font-bold py-2 px-4 rounded'><i className="fa-solid fa-circle-check text-green-500" onClick={hanledname}></i></button>
                         </form>
                         <h3 className="text-lg font-black items-start">Username</h3>
                         <form className='flex flex-row  place-items-start gap-2 '>
@@ -175,7 +182,7 @@ export function PerfilUser() {
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
                                 <input type="text" className='p-1 rounded-md text-center' name="username" id="username" placeholder='Username Nuevo' onChange={(e) => setUsername({ ...username, username: e.target.value })} />
                             </label>
-                            <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hamledusername}> Aceptar</button>
+                            <button type="submit" value="Aceptar" className='bg-black text-white font-bold py-2 px-4 rounded'><i className="fa-solid fa-circle-check text-green-500" onClick={hanledusername}></i></button>
                         </form>
                         <h3 className="text-lg font-black items-start">Correo electronico</h3>
                         <form className='flex flex-row  place-items-start gap-2 '>
@@ -183,7 +190,7 @@ export function PerfilUser() {
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
                                 <input type="Email" className='p-1 rounded-md text-center' name="email" id="email" placeholder='Nombre Nuevo' onChange={(e) => setEmail({ ...email, email: e.target.value })} />
                             </label>
-                            <button type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded' onClick={hamledemail}> Aceptar</button>
+                            <button type="submit" value="Aceptar" className='bg-black text-white font-bold py-2 px-4 rounded'><i className="fa-solid fa-circle-check text-green-500" onClick={hanledemail}></i></button>
                         </form>
                         <p className='text-sm font-black text-center m-2'>Por favor Introduzca en las casillas los datos que desea cambiar y presione para confirmar los cambios</p>
                     </div>
@@ -201,10 +208,14 @@ export function PerfilUser() {
                         </div>
                         <div className='flex flex-col '>
                             <h3 className="text-lg font-black items-start m-1">Cambiar Imagen de Perfil</h3>
-                            <label className="block w-full text-base text-[#f5f5f5] border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2" >Upload file
-                            <input type="file" name="image" id="image" onChange={(e) => { handleImg(e); setData({ ...data, avatar: e.target.files[0] })
-                                }} multiple max={1}/>
-                            </label>
+                            <form action="" className='flex flex-row gap-2' encType="multipart/form-data" onSubmit={handleImg}>
+                                <label className="block w-full text-base text-[#f5f5f5] border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2" >Upload file
+                                    <input type="file" name="image" id="image" onChange={(e) => {
+                                        (e); setData({ ...data, avatar: e.target.files[0] })
+                                    }} multiple max={1} />
+                                </label>
+                                <button type="submit" value="Aceptar" className='bg-black text-white font-bold py-2 px-4 rounded'><i className="fa-solid fa-circle-check text-green-500" onClick={handleImg}></i></button>
+                            </form>
                         </div>
                     </div>
                     <div className='flex flex-col'>
@@ -227,21 +238,21 @@ export function PerfilUser() {
                 </div>
                 <div className="general-box3 z-0">
                     <div className="option-space">
-                        <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img"/>
-                        <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search"/>
-                        <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)}/>
-                
-                    </div>
-                    { settings && <Settings onSettings={handleSettings}/>  }
+                        <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img" />
+                        <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search" />
+                        <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)} />
 
-            
+                    </div>
+                    {settings && <Settings onSettings={handleSettings} />}
+
+
                     <div className="trends-space">
-                        <div style={{display: 'none'}}>
+                        <div style={{ display: 'none' }}>
                             <Trends />
                         </div>
-                        
+
                     </div>
-                    
+
                     <div className="ad-space">
                         <div className="ad-space-area">
                             <h3>Suscribete a Premium</h3>
@@ -249,7 +260,7 @@ export function PerfilUser() {
                         </div>
                     </div>
 
-                    <Chatlist/>
+                    <Chatlist />
                 </div>
             </div>
         </div>
