@@ -33,7 +33,7 @@ export function Nav({name, username}) {
                         <strong className="perfil-name">{name}</strong>
                         <p className="perfil-username">@{username}</p>
                     </div>
-                    <img src="../src/images/down-arrow.png" alt="" style={{width: '25px', height: '25px'}}/>
+                    <img src="../src/images/down-arrow.png" className="w-6 h-6"/>
                 </div>
                 {isActive ? (
                 <div className="optionsSesion">
@@ -42,13 +42,13 @@ export function Nav({name, username}) {
             </div>
 
             <ul className="menu">
-                <li><a onClick={() => navigate("/profile")} >Perfil de usuario</a></li>
-                <li><a onClick={() => navigate("/explorar")} >Explorar</a></li>
-                <li><a onClick={() => navigate("/interacciones")} >Interacciones</a></li>
-                <li><a onClick={() => navigate("/messages")} >Mensajes</a></li>
-                <li><a onClick={() => navigate("/member")} >Premium</a></li>
+                <li><div className="decoracion -white"></div><a onClick={() => navigate("/profile")} >Perfil de usuario</a></li>
+                <li><div className="decoracion -white"></div><a onClick={() => navigate("/explorar")} >Explorar</a></li>
+                <li><div className="decoracion -white"></div><a onClick={() => navigate("/interacciones")} >Interacciones</a></li>
+                <li><div className="decoracion -white"></div><a onClick={() => navigate("/messages")} >Mensajes</a></li>
+                <li><div className="decoracion -gold"></div><a onClick={() => navigate("/member")} >Premium</a></li>
             </ul>
-            <button className="new-post" style={{width: '200px'}} onClick={() => setOpen(!open)}>Nueva publicación</button>
+            <button className="new-post w-[200px]" onClick={() => setOpen(!open)}>Nueva publicación</button>
         </nav>
 
         { open && <Newpost onClose={handleClose}/>  }

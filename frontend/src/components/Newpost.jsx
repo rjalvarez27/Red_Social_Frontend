@@ -81,7 +81,7 @@ export function Newpost({onClose}) {
                                 <label htmlFor="image"><img src="src/images/imagen.png" alt="" className="label-image"/></label>
                                 <input type="file" name="image" id="image" onChange={(e) => { handleImageChange(e); setData({ ...data, image: e.target.files[0] })
                                 }} multiple max={4}/>
-                                <input type="submit" value="Publicar" className="new-post" style={{width: "100px"}}/>
+                                <input type="submit" value="Publicar" className="new-post w-[100px]"/>
                             </div>
                             
                         </div>

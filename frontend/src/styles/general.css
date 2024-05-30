@@ -14,7 +14,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #000000;
+    background: rgb(18, 16, 25);
     color: white;
     justify-content: center;
     align-items: center;
@@ -43,7 +43,7 @@ ol li:hover {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    background-color: whitesmoke;
 }
 
 .general-box3 {
@@ -51,9 +51,8 @@ ol li:hover {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #000000;
+    background: rgb(18, 16, 25);
     color: white;
-    justify-content: center;
     align-items: center;
     justify-content: space-between;
 }

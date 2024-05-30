@@ -1,17 +1,17 @@
 import { Header } from '../components/Header.jsx'
 import { Modelchat } from '../components/Modelchat.jsx'
-
-export function Messages() {
-    return (
-
-
-import io from 'socket.io-client'
+import {io} from 'socket.io-client'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+export function Messages() {
 
 
-export function Messages(){
-    /*const [socket, setSocket] = useState()
+
+
+
+
+/*export function Messages(){
+    const [socket, setSocket] = useState()
 
 
 

@@ -82,7 +82,7 @@
 
 .menu{
     width: 100%;
-    margin-left: 40px;
+
 }
 
 .menu li{
@@ -91,6 +91,29 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.menu li:hover{
+    background-color: rgb(32, 30, 41);
+}
+
+.menu li:hover .decoracion{
+    display: flex;
+}
+
+.decoracion{
+    display: none;
+    width: 5px;
+    height: 100%;
+}
+
+.-white{
+    background-color: whitesmoke;
+}
+
+.-gold{
+    background-color: rgb(224, 189, 29);
 }
 
 .menu a{
@@ -102,6 +125,7 @@
     font-weight: medium;
     font-style: italic;
     font-size: larger;
+    padding: 10px 10px 10px 40px;
 }
 
 /* BOTON NUEVA PUBLICACION */

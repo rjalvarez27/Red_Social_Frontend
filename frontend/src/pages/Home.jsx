@@ -15,7 +15,7 @@ export function Home(){
 
   console.log(id)
   console.log(user)
-  console.log(user.name)
+  //console.log(user.name)
 
   useEffect(() => {
     const hanledToken = async () => {
@@ -51,8 +51,8 @@ export function Home(){
   return(
       <>
         <Header/>
-        {user(<Nav name = {user.name} username = {user.username}/>)}
-
+        {/*<Nav name = {user.name} username = {user.username}/>*/}
+		<Nav/>
         <Aside/>
         <FyP/>
       </>

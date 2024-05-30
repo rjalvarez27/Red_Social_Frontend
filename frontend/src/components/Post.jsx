@@ -16,7 +16,7 @@ export function Post(){
                         <p>100.000 me gustas</p>
                     </div>
                     <Newcomment/>
-                    <hr style={{width:"100%"}}/>
+                    <hr className="w-[100%]"/>
                     
                     <Modelpost/>
                 </div>

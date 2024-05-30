@@ -18,7 +18,7 @@ export function Aside() {
             <div className="ad-space">
                 <div className="ad-space-area">
                     <h3>Suscribete a Premium</h3>
-                    <p style={{color: 'rgb(174, 174, 174)'}}>¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
+                    <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
                 </div>
             </div>
 

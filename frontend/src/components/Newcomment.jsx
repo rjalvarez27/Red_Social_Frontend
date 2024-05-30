@@ -40,7 +40,7 @@ export function Newcomment() {
             
             <input type="file" name="image" id="image" onChange={(e) => setData({ ...data, image: e.target.files[0] })} multiple/>
 
-            <input type="submit" className="new-post" style={{width: "100px"}}/>
+            <input type="submit" className="new-post w-[100px]"/>
         </form>
     )
 }
