@@ -5,12 +5,12 @@ export function Profile() {
     return (
         <>
             <div className='header-profile'>
-                <Header/>
+                <Header />
             </div>
 
             <nav className='nav-profile'>
                 <div className='img-profile'>
-                
+
                 </div>
                 <section className='datos-profile'>
                     <div className='user-profile'>
@@ -43,12 +43,12 @@ export function Profile() {
 
             <main className='main-profile'>
                 <div className='post-profile'>
-                    <Modelpost/>
-                    <Modelpost/>
-                    <Modelpost/>
-                    <Modelpost/>
-                    <Modelpost/>
-                    <Modelpost/>
+                    <Modelpost />
+                    <Modelpost />
+                    <Modelpost />
+                    <Modelpost />
+                    <Modelpost />
+                    <Modelpost />
                 </div>
             </main>
         </>

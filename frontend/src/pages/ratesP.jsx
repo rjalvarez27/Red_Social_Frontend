@@ -1,36 +1,36 @@
 //Pagina para las tarifas de Publicidad 
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { NavLink, useNavigate} from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/general.css'
 import Cookies from 'js-cookie'
 
 export function Rates() {
-   const navigate = useNavigate()
-   const[checkB, setCheckB] = useState(false)
-   const[checkP, setCheckP] = useState(false)
-   
-   
-   const handleCheck = () => {
-    if(!checkB && !checkP){
-        alert("Por favor seleccione una tarifa")
+    const navigate = useNavigate()
+    const [checkB, setCheckB] = useState(false)
+    const [checkP, setCheckP] = useState(false)
+
+
+    const handleCheck = () => {
+        if (!checkB && !checkP) {
+            alert("Por favor seleccione una tarifa")
+        }
+        if (checkB == true && checkP == true) {
+            alert("Estan marcadas las dos casillas, por favor marque solo una casilla")
+        } else if (checkB == true) {
+            Cookies.set('type', 'basic')
+            alert("Tarifa basica activada,  reedirigiendo al pago")
+            setTimeout(() => {
+                navigate('/payments')
+            }, 2000);
+        } else if (checkP == true) {
+            Cookies.set('type', 'premiun')
+            alert("Tarifa Premium activada,  reedirigiendo al pago")
+            setTimeout(() => {
+                navigate('/payments')
+            }, 2000);
+        }
     }
-    if(checkB == true && checkP == true){
-        alert("Estan marcadas las dos casillas, por favor marque solo una casilla")
-   }else if(checkB == true){
-       Cookies.set('Type', 'basic')
-       alert ("Tarifa basica activada,  reedirigiendo al pago")
-       setTimeout(() => {
-       navigate('/payments') 
-       }, 2000);
-   } else if(checkP == true){
-    Cookies.set('type', 'premiun')
-    alert ("Tarifa Premium activada,  reedirigiendo al pago")
-    setTimeout(() => {
-    navigate('/payments') 
-    }, 2000);
-   }
-}
     useEffect(() => {
         const token = Cookies.get('token')
         if (!token) {
@@ -106,7 +106,7 @@ export function Rates() {
                         <h3>Seleccione que plan de publicidad desea adquirir por un mes y haga click en confirmar para seguir con el proceso de pago</h3>
                     </div>
                     <div className='flex justify-center w-[100%]' >
-                       <button className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-8 rounded-lg m-4" onClick={handleCheck}>Confirmar</button>
+                        <button className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-8 rounded-lg m-4" onClick={handleCheck}>Confirmar</button>
                     </div>
                     <div className="sticky top-[100vh] conten3">
                         <h1 className="text-sm text-center m-2 ">© 2024 Copyright: Mounts</h1>
@@ -121,12 +121,7 @@ export function Rates() {
                         </ul>
                     </div>
                     <div className='general-part3'>
-                        <h1>Mensaje</h1>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
+                      
                     </div>
                 </div>
             </div>

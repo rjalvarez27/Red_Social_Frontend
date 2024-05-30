@@ -130,12 +130,7 @@ export function Member() {
                         </ul>
                     </div>
                     <div className='general-part3'>
-                        <h1>Mensaje</h1>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
-                        <p>Aqui va el mensaje</p>
+                       
                     </div>
                 </div>
             </div>
