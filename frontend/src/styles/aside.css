@@ -43,7 +43,7 @@
 
 .trends-space{
     width: 100%;
-    height: 44%;
+    height: 240px;
 }
 
 .trends-space-area{
@@ -80,6 +80,33 @@
     justify-content: start;
     text-decoration: none;
 }
+
+.ad-space{
+    width: 100%;
+    height: 175px;
+}
+
+.ad-space-area{
+    display: flex;
+    flex-direction: column;    
+    gap: 10px;
+    margin: 0px 10px;
+    padding: 10px;
+    border: 2px solid rgba(174, 174, 174, 1);
+    border-radius: 10px;
+}
+
+.ad-space-area h3{
+    font-family: "Inter", sans-serif;
+    font-size: medium;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.ad-space-area p{
+    font-size: 14px;
+}
+
 
 /* MESSAGES SITE */
 

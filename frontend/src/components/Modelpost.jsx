@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 export function Modelpost({content, image}){
+    const navigate = useNavigate()
     return(
-            <div className="fyp-section-post">
+            <div onClick={() => navigate("/post")} className="fyp-section-post">
                 <div className="fyp-section-post-area">
                     <div className="fyp-section-post-user">
                         <img src="" alt="imagen" className="perfil-img"/>

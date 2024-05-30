@@ -8,7 +8,6 @@ export function Trends() {
                 <li><a>Tendencia 2</a></li>
                 <li><a>Tendencia 3</a></li>
                 <li><a>Tendencia 4</a></li>
-                <li><a>Tendencia 5</a></li>
             </ul>
         </div>
     );
