@@ -5,8 +5,16 @@ import '../styles/general.css'
 import Cookies from 'js-cookie'
 import { Chatlist } from '../components/Chatlist'
 import { Navmenu } from '../components/Navmenu'
+import { Settings } from "../components/Settings"
+import { Trends } from "../components/Trends"
 
 export function Member() {
+
+    const [settings, setSettings] = useState(false)
+
+    const handleSettings = () => {
+        setSettings(false)
+    }
 
     const navigate = useNavigate()
     const [check, setCheck] = useState(false)
@@ -15,7 +23,7 @@ export function Member() {
     const handleCheck = (e) => {
         e.preventDefault()
         if (check === false) {
-            alert("Usuario Free , reedirigiendo al login")
+            alert("Usuario Free , reedirigiendo al inicio")
             setTimeout(() => {
                 navigate('/')
             }, 2000);
@@ -23,7 +31,7 @@ export function Member() {
             Cookies.set('type', 'Premiun')
             alert("Tarifa Premiun activada,  reedirigiendo a la pagina de pago")
             setTimeout(() => {
-                navigate('/payments')
+                navigate('/membershippay')
             }, 2000);
         }
     }
@@ -123,19 +131,29 @@ export function Member() {
                     </div>
                 </div>
                 <div className="general-box3 z-0">
-                    <div className="flex justify-center w-[100%] ">
-                        <ul className='flex m-5'>
-                            <li className='m-2 text-3xl'><i className="fa-solid fa-bell"></i></li>
-                            <li className='m-2 text-3xl'><i className="fa-solid fa-magnifying-glass"></i></li>
-                            <li className='m-2 text-3xl'><i className="fa-solid fa-gear"></i></li>
-                        </ul>
+                <div className="option-space">
+                        <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img"/>
+                        <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search"/>
+                        <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)}/>
+                
                     </div>
-                    <div className="ad-space m-12">
+                    { settings && <Settings onSettings={handleSettings}/>  }
+
+            
+                    <div className="trends-space">
+                        <div style={{display: 'none'}}>
+                            <Trends />
+                        </div>
+                        
+                    </div>
+                    
+                    <div className="ad-space">
                         <div className="ad-space-area">
                             <h3>Suscribete a Premium</h3>
-                            <p style={{color: 'rgb(174, 174, 174)'}}>¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
+                            <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
                         </div>
                     </div>
+
                     <Chatlist/>
                 </div>
             </div>

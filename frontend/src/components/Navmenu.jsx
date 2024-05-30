@@ -10,7 +10,6 @@ export function Navmenu(){
             <li><div className="decoracion -white"></div><a onClick={() => navigate("/interacciones")} >Interacciones</a></li>
             <li><div className="decoracion -white"></div><a onClick={() => navigate("/messages")} >Mensajes</a></li>
             <li><div className="decoracion -gold"></div><a onClick={() => navigate("/member")} >Premium</a></li>
-            <li><div className="decoracion -white"></div><a onClick={() => navigate("/settings")} >Configuración</a></li>
         </ul>
     )
 }

@@ -30,7 +30,7 @@ import { Rates } from './pages/ratesP.jsx'
 import { RecoverEmail } from './pages/RecoverEmail.jsx'
 import { RecoverPassword } from './pages/RecoverPassword.jsx'
 import { Interacciones } from './pages/Interacciones.jsx'
-import { Settings } from './pages/Settings.jsx'
+import { Settings } from './components/Settings.jsx'
 
 
 
@@ -54,7 +54,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path='/explorar' element={<Explorar/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/interacciones' element={<Interacciones/>}/>
-            <Route path='/settings' element={<Settings/>}/>
         </Route>
         {/*Rutas Publicas*/}
         <Route path="/login" element={<Login />} />.
