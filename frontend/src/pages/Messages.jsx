@@ -1,6 +1,6 @@
 import { Header } from '../components/Header.jsx'
 import { Modelchat } from '../components/Modelchat.jsx'
-
+import { useEffect } from 'react'
 import { io } from 'socket.io-client'
 import axios from 'axios'
 /*
@@ -120,8 +120,8 @@ return (
 
                 </div>
                 <div className='chat-messages-area'>
-                    <div className='chat-messages messages-receive'>
-
+                    <div className='chat-messages messages-receive decoration-white font-[550]'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sapiente laborum sit et vitae incidunt aperiam quisquam eius velit eos. Neque earum aut minus cumque quo aliquam exercitationem maiores tempore.
                     </div>
                 </div>
                 <div className='chat-messages-input'>

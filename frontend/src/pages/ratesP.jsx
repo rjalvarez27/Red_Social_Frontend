@@ -83,7 +83,7 @@ export function Rates() {
                                     <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
                                 </tr>
                                 <tr className="border-b-2">
-                                    <th>Estadisricas de alcance</th>
+                                    <th>Estadisticas de alcance</th>
                                     <td className='text-green-500'> </td>
                                     <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
                                 </tr>

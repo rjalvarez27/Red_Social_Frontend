@@ -54,7 +54,7 @@ export function Home(){
   return(
       <>
         <Header/>
-        {<Nav name={user?.name} username={user?.username}/>}
+        {<Nav name={user?.name} username={user?.username} id={id}/>}
         <Aside />
         <FyP/>
       </>

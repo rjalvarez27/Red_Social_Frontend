@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Newpost } from "./Newpost"
 import { useNavigate } from "react-router-dom"
 import Cookies from 'js-cookie'
 import { Navmenu } from "./Navmenu";
+import { Online } from "./Online";
 
-export function Nav({name, username}) {
+export function Nav({name, username, id}) {
 
     const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ export function Nav({name, username}) {
                 
                 <div className="nav-perfil-avatar"></div>
                 <div className="nav-perfil-bottom" onClick={() => setIsActive(!isActive)}>
+                    <Online/>
                     <div className="nav-perfil-user">
                         <strong className="perfil-name">{name}</strong>
                         <p className="perfil-username">@{username}</p>

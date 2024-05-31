@@ -106,23 +106,23 @@ export function MembershipPay() {
                 <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
             </div>
 
-            <div className="general-box2  p-[10px]">
+            <div className="general-box2 flex gap-2 p-[10px] font-[500]">
                 <div className='flex-col mt-[45px]'>
                     {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
                     <h1 className="text-3xl font-black  text-center m-1">Pago de la Membresia Premiun</h1>
                 </div>
                 <div className='flex-col text-center'>
                     <p className="m-1 text-justify">Seleccione su metodo de Pago</p>
-                    <div className='flex-col w-full'>
-                        <label className='m-2' >
+                    <div className='flex justify-center w-full'>
+                        <label className='m-2 flex gap-2' >
                             <input type="checkbox" name="basic" id="basic" className=' bg-white  hover:accent-black ' onChange={(e) => setpagoMovil(e.target.checked)} /> Pago movil</label>
-                        <label className='m-2'>
+                        <label className='m-2 flex gap-2'>
                             <input type="checkbox" name="Premiun" id="Premiun" className=' bg-white  hover:accent-black' onChange={(e) => setPagoP(e.target.checked)} />PayPal</label>
                     </div>
                 </div>
                 <div className='flex-col text-center '>
                     <p className=" m-1 text-justify" >Si es por paypal por favor Presione el boton para proceder con la forma de pago:</p>
-                    <a href="https://www.paypal.com/ve/home"><button className='text-blue-500 bg-yellow-300 w-36 m-3 p-2 rounded-md'>PayPal</button></a>
+                    <a href="https://www.paypal.com/ve/home"><button className='text-blue-700 font-bold shadow-md bg-yellow-300 w-36 m-3 p-2 rounded-md'>PayPal</button></a>
                     <p className="text-justify" >Si es por pago Movil verifique que los datos son correctos e ingrese los datos en la siguiente formulario:</p>
                 </div>
                 <div className='flex flex-col items-center '>
@@ -144,7 +144,7 @@ export function MembershipPay() {
                         Si tiene algun problema con el pago por favor ingrese al siguien link:
                     </p>
 
-                    <a href="https://www.whatsapp.com/?lang=es_LA"><button className='text-white bg-green-500 w-36 m-3 p-2'>WhatsApp</button></a>
+                    <a href="https://www.whatsapp.com/?lang=es_LA"><button className='text-white bg-green-700 shadow-md w-36 m-3 p-2 rounded-md'>WhatsApp</button></a>
                 </div>
                 <div className="sticky top-[100vh] conten3">
                     <h1 className="text-sm text-center m-2 ">© 2024 Copyright: Mounts</h1>

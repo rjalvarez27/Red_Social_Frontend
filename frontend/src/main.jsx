@@ -43,7 +43,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/perfiladmin" element={<PerfilAdmin />} />
         <Route path="/perfiluser" element={<PerfilUser />} />
         <Route path="/rates" element={<Rates />} />
-        <Route path="/recoverPassword/:code" element={<RecoverPassword />} />
+        
         <Route path='/' element={<Home/>}/>
         <Route path='/messages' element={<Messages/>}/>
         <Route path='/post' element={<Publication/>}/>
@@ -55,6 +55,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/recoverEmail" element={<RecoverEmail />} />
+        <Route path="/recoverPassword/:code" element={<RecoverPassword />} />
         </Routes>
     </BrowserRouter>
     </React.StrictMode>,

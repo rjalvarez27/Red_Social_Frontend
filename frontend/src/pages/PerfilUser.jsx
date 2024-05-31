@@ -10,6 +10,7 @@ import { Chatlist } from '../components/Chatlist.jsx';
 import { Settings } from "../components/Settings"
 import { Trends } from "../components/Trends"
 import { Perfil } from '../components/perfil.jsx';
+import { Online } from '../components/Online.jsx';
 
 export function PerfilUser() {
     const [settings, setSettings] = useState(false)
@@ -154,12 +155,18 @@ export function PerfilUser() {
         <div>
             <div className="general-content">
                 <div className="general-box1 z-0 ">
-                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")} />
+                    <div>
+                        <div className='my-[60px] rounded-[50%] flex flex-col items-end'>
+                            <img src="../src/images/principales/logo.png" alt="" className='w-[150px]  cursor-pointer' onClick={() => navigate("/")} />
+                        <Online/>
+                        </div>
+                    </div>
+                    
                     <Navmenu />
                     <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
                 </div>
 
-                <div className="general-box2 p-[20px] overflow-y-visible">
+                <div className="general-box2 p-[20px] ">
                     <div className='flex flex-col'>
                         <div className='flex-col w-[100%]'>
                             < Perfil id={user._id} />
@@ -170,7 +177,7 @@ export function PerfilUser() {
                     <div className='flex flex-col'>
                         <h3 className="text-lg font-black ">Nombre de usuario</h3>
                         <form className='flex flex-row  place-items-start gap-2 '>
-                            <p className='font-black items-start m-2'>{user.name}</p>
+                            <p className='font-[600] items-start m-2'>{user.name}</p>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
                                 <input type="text" className='p-1 rounded-md text-center' name="name" id="name" placeholder='Nombre Nuevo' onChange={(e) => setName({ ...name, name: e.target.value })} />
                             </label>
@@ -178,7 +185,7 @@ export function PerfilUser() {
                         </form>
                         <h3 className="text-lg font-black items-start">Username</h3>
                         <form className='flex flex-row  place-items-start gap-2 '>
-                            <p className='font-black items-start m-2'>{user.username}</p>
+                            <p className='font-[600] items-start m-2'>{user.username}</p>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
                                 <input type="text" className='p-1 rounded-md text-center' name="username" id="username" placeholder='Username Nuevo' onChange={(e) => setUsername({ ...username, username: e.target.value })} />
                             </label>
@@ -186,18 +193,18 @@ export function PerfilUser() {
                         </form>
                         <h3 className="text-lg font-black items-start">Correo electronico</h3>
                         <form className='flex flex-row  place-items-start gap-2 '>
-                            <p className='font-black items-start m-2'>{user.email}</p>
+                            <p className='font-[600]  items-start m-2'>{user.email}</p>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
                                 <input type="Email" className='p-1 rounded-md text-center' name="email" id="email" placeholder='Nombre Nuevo' onChange={(e) => setEmail({ ...email, email: e.target.value })} />
                             </label>
                             <button type="submit" value="Aceptar" className='bg-black text-white font-bold py-2 px-4 rounded'><i className="fa-solid fa-circle-check text-green-500" onClick={hanledemail}></i></button>
                         </form>
-                        <p className='text-sm font-black text-center m-2'>Por favor Introduzca en las casillas los datos que desea cambiar y presione para confirmar los cambios</p>
+                        <p className='text-sm font-[600]  text-center m-2'>Por favor Introduzca en las casillas los datos que desea cambiar y presione para confirmar los cambios</p>
                     </div>
                     <div className='flex flex-col'>
                         <h3 className="text-lg font-black items-start">Cambiar Password</h3>
                         <div className='flex flex-col w-full items-center' >
-                            <p className='text-sm font-black text-center m-2'>Para cambiar la contraseña, haga click en el siguiente boton</p>
+                            <p className='text-sm font-[600] text-center m-2'>Para cambiar la contraseña, haga click en el siguiente boton</p>
                             <NavLink to="/recoverEmail" className="w-[200px]"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded'> Cambiar Password </button></NavLink>
                         </div>
                     </div>
@@ -221,14 +228,14 @@ export function PerfilUser() {
                     <div className='flex flex-col'>
                         <h3 className="text-lg font-black items-start">Promocionar Publicaciones</h3>
                         <div className='flex flex-col w-full items-center'>
-                            <p className='text-sm font-black m-2'>Para promocionar tu publicacion, haga click en el siguiente boton</p>
+                            <p className='text-sm font-[600]  m-2'>Para promocionar tu publicacion, haga click en el siguiente boton</p>
                             <NavLink to="/rates"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded'> Publicaciones </button></NavLink>
                         </div>
                     </div>
                     <div className='flex flex-col'>
                         <h3 className="text-lg font-black items-start">Usuario Premium</h3>
                         <div className='flex flex-col w-full items-center'>
-                            <p className='text-sm font-black m-2'>Si no eres usuario Premiun por favor, haz click en el siguiente boton</p>
+                            <p className='text-sm font-[600]  m-2'>Si no eres usuario Premiun por favor, haz click en el siguiente boton</p>
                             <NavLink to="/member"><button className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded m-2'>Usuarios Premium</button></NavLink>
                         </div>
                     </div>

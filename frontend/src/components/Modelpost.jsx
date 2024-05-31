@@ -1,12 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 export function Modelpost({content, image }){
     const navigate = useNavigate()
 
-    console.log(image)
+    const [liked, setLiked] = useState(false)
+
+    const like = liked ? "src/images/like-white.png" : "src/images/like-red.png"
+
+    const [shared, setShared] = useState(false)
+
+    const share = shared ? "src/images/share_white.png" : "src/images/share_green.png"
 
     return(
-            <div onClick={() => navigate("/post")} className="fyp-section-post w-[570px] sm:bg-red-600">
-                <div className="fyp-section-post-area">
+            <div className="fyp-section-post w-[570px] sm:bg-red-600">
+                <div className="fyp-section-post-area" onClick={() => navigate("/post")} >
                     <div className="fyp-section-post-user">
                         <img src="" alt="imagen" className="perfil-img"/>
                         <div>
@@ -24,8 +31,8 @@ export function Modelpost({content, image }){
                 <div className="fyp-section-post-interaction">
                     <img src="src/images/down-arrow.png" alt="" />
                     <div className="fyp-interaction">
-                        <img src="src/images/share_white.png" alt="" />
-                        <img src="src/images/like-white.png" alt="" />
+                        <img src={share} alt="" onClick={() => setShared(!shared)}/>
+                        <img src={like} alt="" onClick={() => setLiked(!liked)}/>
                     </div>
                 </div>   
             </div>
