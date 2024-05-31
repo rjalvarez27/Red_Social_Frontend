@@ -9,7 +9,6 @@ import { Navmenu } from '../components/Navmenu.jsx';
 import { Chatlist } from '../components/Chatlist.jsx';
 import { Settings } from "../components/Settings"
 import { Trends } from "../components/Trends"
-import { Perfil } from '../components/Perfil.jsx';
 import { Online } from '../components/Online.jsx';
 
 export function PerfilUser() {
@@ -23,6 +22,7 @@ export function PerfilUser() {
     const navigate = useNavigate()
     const [id, setId] = useState({})
     const [user, setUser] = useState({})
+    const[img, setImg] = useState({})
     const [name, setName] = useState({
         name: '',
     })
@@ -49,7 +49,7 @@ export function PerfilUser() {
                 const response = await axios.post('http://localhost:3000/social/avatar', data, { headers: { 'Content-Type': 'multipart/form-data' } });
                 console.log(response)
                 if (response) {
-                    alert('Imagene de perfil subida con exito')
+                    alert('Imagen de perfil subida con exito')
                     window.location.replace('');
                 } else {
                     alert('Error')
@@ -121,6 +121,8 @@ export function PerfilUser() {
         }
     }
 
+    
+
     useEffect(() => {
         const hanledToken = async () => {
             if (!token) {
@@ -148,16 +150,27 @@ export function PerfilUser() {
                 }
             }
         }
+        const getImage = async () => {
+        try{
+           const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
+           setImg(response.data[0].path)
+           console.log(response.data[0].path)
+        }catch(error){
+            console.error('error:', error.message);
+        }
+    }  
         hanledToken()
         hanledUser()
+        getImage()
     }, [token, id]);
     return (
         <div>
             <div className="general-content">
                 <div className="general-box1 z-0 ">
                     <div>
+                        
                         <div className='my-[60px] rounded-[50%] flex flex-col items-end'>
-                            <img src="../src/images/principales/logo.png" alt="" className='w-[150px]  cursor-pointer' onClick={() => navigate("/")} />
+                            <img src="" alt="" className='w-[150px]  cursor-pointer' onClick={() => navigate("/")} />
                         <Online/>
                         </div>
                     </div>
@@ -168,7 +181,6 @@ export function PerfilUser() {
                 <div className="general-box2 p-[20px] ">
                     <div className='flex flex-col'>
                         <div className='flex-col w-[100%]'>
-                            < Perfil id={user._id} />
                             {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
                             <h1 className="text-3xl font-black m-2 text-center">Bienvenido {user.name}</h1>
                         </div>
