@@ -9,7 +9,7 @@ import { Navmenu } from '../components/Navmenu.jsx';
 import { Chatlist } from '../components/Chatlist.jsx';
 import { Settings } from "../components/Settings"
 import { Trends } from "../components/Trends"
-import { Perfil } from '../components/perfil.jsx';
+import { Perfil } from '../components/Perfil.jsx';
 import { Online } from '../components/Online.jsx';
 
 export function PerfilUser() {
@@ -161,7 +161,6 @@ export function PerfilUser() {
                         <Online/>
                         </div>
                     </div>
-                    
                     <Navmenu />
                     <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
                 </div>
