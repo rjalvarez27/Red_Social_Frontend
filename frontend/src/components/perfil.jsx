@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Cookies from 'js-cookie'
 import axios from 'axios'
+const fs = require('fs');
 
 
 
@@ -14,7 +15,7 @@ export function Perfil({id}) {
            try {
                const response = await axios.get (`http://localhost:3000/social/avatar/${id}`);
                console.log(response.data)
-             
+              console.log(response.data.avatar[0].data)
                
                
               
@@ -22,8 +23,14 @@ export function Perfil({id}) {
                console.error('error:', error.message);
    }       }
        hanledImage()
-   }, [id !== null])
+   }, [id])
     return (
-    <div></div>
+    <div>
+    
+        
+            
+          <img src="response.data.avatar[0].data" alt="" /> 
+        
+    </div>
     )
 }   
