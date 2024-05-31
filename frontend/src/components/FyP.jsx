@@ -5,14 +5,7 @@ import { Modelpost } from "./Modelpost";
 export function FyP(){
 
     const [posts, setPosts] = useState([]);
-
-<<<<<<< HEAD
-    
-
     useEffect(() => { // traer informacion de imagen de base datos 
-=======
-    useEffect(() => {
->>>>>>> 3ff47a402dc875f8ae3886d7da5fba9996a020b8
         const GetPost = async () => {
             try{
                 const response = await fetch('http://localhost:3000/social/publicaciones');
