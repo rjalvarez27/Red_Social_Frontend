@@ -121,7 +121,17 @@ export function PerfilUser() {
         }
     }
 
-    console.log(img.data)
+    const hanledDelete = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.delete(`http://localhost:3000/social/avatar/${id}`)
+            console.log(response.data)
+            alert('Se ha eliminado la imagen')
+            window.location.replace('');
+        } catch (error) {
+            console.error('error:', error.message);
+        }
+    }
 
     useEffect(() => {
         const hanledToken = async () => {
@@ -231,6 +241,7 @@ export function PerfilUser() {
                                     }} multiple max={1} />
                                 </label>
                                 <button type="submit" value="Aceptar" className='bg-black text-white font-bold py-2 px-4 rounded'><i className="fa-solid fa-circle-check text-green-500" onClick={handleImg}></i></button>
+                                <button type="submit" value="Aceptar" className='bg-black text-white font-bold py-2 px-4 rounded'><i className="fa-regular fa-circle-xmark text-red-500" onClick={hanledDelete }></i></button>
                             </form>
                         </div>
                     </div>

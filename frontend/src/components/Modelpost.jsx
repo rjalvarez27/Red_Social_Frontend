@@ -2,13 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 export function Modelpost({content, image }){
     const navigate = useNavigate()
-
     const [liked, setLiked] = useState(false)
-
     const like = liked ? "src/images/like-white.png" : "src/images/like-red.png"
-
     const [shared, setShared] = useState(false)
-
     const share = shared ? "src/images/share_white.png" : "src/images/share_green.png"
 
     return(

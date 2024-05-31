@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom"
 import Cookies from 'js-cookie'
 import { Navmenu } from "./Navmenu";
 import { Online } from "./Online";
+import axios from 'axios'
 
 export function Nav({name, username, id}) {
-
+    const token = Cookies.get('token')
     const navigate = useNavigate();
-
     const [isActive, setIsActive] = useState(false);
-
     const [open, setOpen] = useState(false)
+    const [img, setImg] = useState({})
 
     const handleClose = () => {
         setOpen(false)
@@ -27,12 +27,24 @@ export function Nav({name, username, id}) {
         }
     };
 
+    useEffect(() => {
+        const getImage = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
+                setImg(response)
+                console.log(response.data)
+            } catch (error) {
+                console.error('error:', error.message);
+            }
+        }
+        getImage()
+    }, [token, id]);
+
     return (
         <>
         <nav className="nav hidden lg:flex lg:w-[20%]">
-            
             <div className="nav-perfil">
-                
+                <img src={img.data} alt="avatar" className='w-[40px] cursor-pointer rounded-full' onClick={() => navigate("/")} />
                 <div className="nav-perfil-avatar"></div>
                 <div className="nav-perfil-bottom" onClick={() => setIsActive(!isActive)}>
                     <Online/>
