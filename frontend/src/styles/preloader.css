@@ -1,0 +1,20 @@
+.preloader{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(18, 16, 25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.loader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

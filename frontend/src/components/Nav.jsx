@@ -44,8 +44,9 @@ export function Nav({name, username, id}) {
         <>
         <nav className="nav hidden lg:flex lg:w-[20%]">
             <div className="nav-perfil">
-                <img src={img.data} alt="avatar" className='w-[40px] cursor-pointer rounded-full' onClick={() => navigate("/")} />
-                <div className="nav-perfil-avatar"></div>
+                <div className="nav-perfil-avatar flex justify-center items-center p-[2px]">
+                    <img src={img.data} alt="avatar" className='w-[100%] h-[100%] cursor-pointer rounded-full' onClick={() => navigate("/")} />
+                </div>
                 <div className="nav-perfil-bottom" onClick={() => setIsActive(!isActive)}>
                     <Online/>
                     <div className="nav-perfil-user">

@@ -11,6 +11,7 @@ import './styles/newpost.css'
 import './styles/explorar.css'
 import './styles/profile.css'
 import './styles/messages.css'
+import './styles/preloader.css'
 import "../src/styles/index.css"
 
 import {Home} from './pages/Home.jsx'

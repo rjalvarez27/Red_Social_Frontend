@@ -3,9 +3,10 @@ import { useState } from "react";
 export function Modelpost({content, image }){
     const navigate = useNavigate()
     const [liked, setLiked] = useState(false)
-    const like = liked ? "src/images/like-white.png" : "src/images/like-red.png"
+    const like = liked ? "src/images/like-red.png" : "src/images/like-white.png"
     const [shared, setShared] = useState(false)
-    const share = shared ? "src/images/share_white.png" : "src/images/share_green.png"
+    const share = shared ? "src/images/share_green.png" : "src/images/share_white.png"
+
 
     return(
             <div className="fyp-section-post w-[570px] sm:bg-red-600">

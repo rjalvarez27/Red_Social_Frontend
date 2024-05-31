@@ -9,7 +9,6 @@ import { Newpost } from '../components/Newpost.jsx'
 
 
 export function Profile() {
-
     const [open, setOpen] = useState(false)
 
     const handleClose = () => {
@@ -20,7 +19,7 @@ export function Profile() {
     const token = Cookies.get('token')
     const [id, setId] = useState()
     const [user, setUser] = useState()
-
+    const [img, setImg] = useState({})
 
 	//const token = Cookies.set('token', 1234)
 
@@ -78,9 +77,20 @@ useEffect(() => {
             console.error(error);
         }
     }
+        const getImage = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
+            setImg(response)
+            console.log(response.data)
+        } catch (error) {
+            console.error('error:', error.message);
+        }
+    }
     
     GetPost();
-}, []);
+    getImage()
+    
+}, [token, id]);
 
     return (
         <>
@@ -89,8 +99,8 @@ useEffect(() => {
             </div>
 
             <nav className='nav-profile'>
-                <div className='img-profile'>
-
+                <div className='img-profile flex justify-center items-center p-[2px]'>
+                    <img src={img.data} alt="avatar" className='w-[100%] h-[100%] cursor-pointer rounded-full' onClick={() => navigate("/")} />
                 </div>
                 <section className='datos-profile'>
                     <div className='user-profile'>
@@ -112,13 +122,12 @@ useEffect(() => {
                     <ul className="menu">
                         <li><div className="decoracion -white"></div><a onClick={() => navigate("/profile")}>Publicaciones</a></li>
                         <li><div className="decoracion -white"></div><a onClick={() => navigate("/profile")}>Fotos o videos</a></li>
-                        <li><div className="decoracion -white"></div><a onClick={() => navigate("/profile")}>Destacados</a></li>                        
-                        <li><div className="decoracion -white"></div><a onClick={() => navigate("/profile")} >Más Información</a></li>
                         <li><div className="decoracion -gold"></div><a onClick={() => navigate("/member")} >Premium</a></li>
                         <li><div className="decoracion -white"></div><a onClick={() => navigate("/perfiluser")} >Configuración</a></li>
                     </ul>
+                    <button className="new-post w-[180px] xl:w-[220px]" onClick={() => setOpen(!open)}>Nueva publicación</button>
                 </div>
-                <button className="new-post w-[180px] xl:w-[220px]" onClick={() => setOpen(!open)}>Nueva publicación</button>
+                
             </aside>
 
             <main className='main-profile'>

@@ -178,8 +178,8 @@ export function PerfilUser() {
             <div className="general-content">
                 <div className="general-box1 h-[100%]">
                     <div className='flex flex-col items-start' >
-                        <div className='flex flex-col items-end  justify-start'>
-                            <img src={img.data} alt="avatar" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
+                        <div className='flex flex-col items-end justify-start mt-5'>
+                            <img src={img.data} alt="avatar" className='w-[150px] h-[150px] border-[2px] cursor-pointer rounded-full ' onClick={() => navigate("/")} />
                             <Online />
                         </div>
                     </div>

@@ -23,7 +23,7 @@ export function Preloader() {
             y: '100vh'
             }, '-=0.7');
         tl.from('.loading', {
-            duration:5,
+            duration:3.5,
             ease: "circ.out",
             y: '100vh'
             }, '-=0.2');

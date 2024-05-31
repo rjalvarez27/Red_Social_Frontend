@@ -9,6 +9,7 @@ import { Navmenu } from '../components/Navmenu'
 import { Settings } from "../components/Settings"
 import { Trends } from "../components/Trends"
 import axios from 'axios'
+import { Online } from '../components/Online'
 
 
 export function Rates() {
@@ -92,10 +93,15 @@ export function Rates() {
     return (
         <div>
             <div className="general-content">
-                <div className="general-box1 z-0">
-                    <img src={img.data} alt="" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")}/>
+            <div className="general-box1 h-[100%]">
+                    <div className='flex flex-col items-start' >
+                        <div className='flex flex-col items-end justify-start mt-5'>
+                            <img src={img.data} alt="avatar" className='w-[150px] h-[150px] border-[2px] cursor-pointer rounded-full ' onClick={() => navigate("/")} />
+                            <Online />
+                        </div>
+                    </div>
                     <Navmenu />
-                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] m-10' />
+                    <img src="../src/images/principales/logo.png" alt="logo" className='w-[150px] m-10' />
                 </div>
                 <div className="general-box2 z-40">
                     <div className='flex-col w-[100%] mt-[45px]'>
