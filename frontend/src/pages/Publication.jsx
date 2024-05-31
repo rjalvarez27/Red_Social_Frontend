@@ -40,8 +40,18 @@ export function Publication() {
                 }
             }
         }
+        const getImage = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
+                setImg(response)
+                console.log(response.data)
+            } catch (error) {
+                console.error('error:', error.message);
+            }
+        }
         hanledToken()
         hanledUser()
+        getImage()
     }, [token, id]);
 
     return (

@@ -7,9 +7,13 @@ import { Chatlist } from '../components/Chatlist'
 import { Navmenu } from '../components/Navmenu'
 import { Settings } from "../components/Settings"
 import { Trends } from "../components/Trends"
+import axios from 'axios'
 
 export function Member() {
-
+    const token = Cookies.get('token')
+    const [id, setId] = useState({})
+    const [user, setUser] = useState({})
+    const [img, setImg] = useState({})
     const [settings, setSettings] = useState(false)
 
     const handleSettings = () => {
@@ -36,19 +40,53 @@ export function Member() {
         }
     }
     useEffect(() => {
-        const token = Cookies.get('token')
-        if (!token) {
-            navigate('/login')
+        const hanledToken = async () => {
+            if (!token) {
+                alert('Por favor inicia sesion')
+                setTimeout(function () {
+                    navigate("/login");
+                }, 2000);
+                return
+            } else {
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
+                    setId(response.data.message)
+                    console.log(response.data.message)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
         }
-
-    }, [])
+        const hanledUser = async () => {
+            if (id) {
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/user/${id}`);
+                    setUser(response.data)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
+        }
+        const getImage = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
+                setImg(response)
+                console.log(response.data)
+            } catch (error) {
+                console.error('error:', error.message);
+            }
+        }
+        hanledToken()
+        hanledUser()
+        getImage()
+    }, [token, id]);
     return (
         <div>
             <div className="general-content">
                 <div className="general-box1 z-0">
-                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")}/>
+                    <img src={img.data} alt="" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
                     <Navmenu />
-                    <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] m-10' />
                 </div>
 
                 <div className="general-box2 z-40">
@@ -119,7 +157,7 @@ export function Member() {
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div className='flex flex-col text-center'>
                         <h3>Si el usuarios es Premiun por favor marque la casilla para continuar con la membresia</h3>
                     </div>
@@ -131,22 +169,22 @@ export function Member() {
                     </div>
                 </div>
                 <div className="general-box3 z-0">
-                <div className="option-space">
-                        <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img"/>
-                        <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search"/>
-                        <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)}/>
-                
-                    </div>
-                    { settings && <Settings onSettings={handleSettings}/>  }
+                    <div className="option-space">
+                        <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img" />
+                        <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search" />
+                        <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)} />
 
-            
+                    </div>
+                    {settings && <Settings onSettings={handleSettings} />}
+
+
                     <div className="trends-space">
-                        <div style={{display: 'none'}}>
+                        <div style={{ display: 'none' }}>
                             <Trends />
                         </div>
-                        
+
                     </div>
-                    
+
                     <div className="ad-space">
                         <div className="ad-space-area">
                             <h3>Suscribete a Premium</h3>
@@ -154,7 +192,7 @@ export function Member() {
                         </div>
                     </div>
 
-                    <Chatlist/>
+                    <Chatlist />
                 </div>
             </div>
         </div>

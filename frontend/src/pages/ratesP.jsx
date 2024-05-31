@@ -8,9 +8,15 @@ import { Chatlist } from '../components/Chatlist'
 import { Navmenu } from '../components/Navmenu'
 import { Settings } from "../components/Settings"
 import { Trends } from "../components/Trends"
+import axios from 'axios'
+
 
 export function Rates() {
 
+    const token = Cookies.get('token')
+    const[id, setId] = useState({})
+    const [user, setUser] = useState({})
+    const [img, setImg] = useState({})
     const [settings, setSettings] = useState(false)
 
     const handleSettings = () => {
@@ -43,19 +49,53 @@ export function Rates() {
         }
     }
     useEffect(() => {
-        const token = Cookies.get('token')
-        if (!token) {
-            navigate('/home')
+        const hanledToken = async () => {
+            if (!token) {
+                alert('Por favor inicia sesion')
+                setTimeout(function () {
+                    navigate("/login");
+                }, 2000);
+                return
+            } else {
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
+                    setId(response.data.message)
+                    console.log(response.data.message)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
         }
-
-    }, [])
+        const hanledUser = async () => {
+            if (id) {
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/user/${id}`);
+                    setUser(response.data)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
+        }
+        const getImage = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
+                setImg(response)
+                console.log(response.data)
+            } catch (error) {
+                console.error('error:', error.message);
+            }
+        }
+        hanledToken()
+        hanledUser()
+        getImage()
+    }, [token, id]);
     return (
         <div>
             <div className="general-content">
                 <div className="general-box1 z-0">
-                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")}/>
+                    <img src={img.data} alt="" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")}/>
                     <Navmenu />
-                    <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
+                    <img src="../src/images/principales/logo.png" alt="" className='w-[150px] m-10' />
                 </div>
                 <div className="general-box2 z-40">
                     <div className='flex-col w-[100%] mt-[45px]'>

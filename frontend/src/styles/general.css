@@ -16,7 +16,7 @@
     flex-direction: column;
     background: rgb(18, 16, 25);
     color: white;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 

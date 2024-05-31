@@ -19,6 +19,7 @@ export function MembershipPay() {
 
     const [id, setId] = useState()
     const [user, setUser] = useState()
+    const [img, setImg] = useState()
     const [pagoMovil, setpagoMovil] = useState(false)
     const [pagoP, setPagoP] = useState(false)
     const [data, setData] = useState({
@@ -67,7 +68,6 @@ export function MembershipPay() {
         }
 
     }
-
     useEffect(() => {
         const hanledToken = async () => {
             if (!token) {
@@ -80,6 +80,7 @@ export function MembershipPay() {
                 try {
                     const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
                     setId(response.data.message)
+                    console.log(response.data.message)
                 } catch (error) {
                     console.error('error:', error.message);
                 }
@@ -95,15 +96,26 @@ export function MembershipPay() {
                 }
             }
         }
+        const getImage = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
+                setImg(response)
+                console.log(response.data)
+            } catch (error) {
+                console.error('error:', error.message);
+            }
+        }
         hanledToken()
         hanledUser()
+        getImage()
     }, [token, id]);
+
     return (
         <div className="general-content">
             <div className="general-box1 z-0">
-                <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")}/>
+                <img src={img.data} alt="" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
                 <Navmenu />
-                <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
+                <img src="../src/images/principales/logo.png" alt="" className='w-[150px] m-10' />
             </div>
 
             <div className="general-box2 flex gap-2 p-[10px] font-[500]">
@@ -151,31 +163,31 @@ export function MembershipPay() {
                 </div>
             </div>
             <div className="general-box3 z-0">
-                    <div className="option-space">
-                        <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img"/>
-                        <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search"/>
-                        <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)}/>
-                
-                    </div>
-                    { settings && <Settings onSettings={handleSettings}/>  }
+                <div className="option-space">
+                    <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img" />
+                    <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search" />
+                    <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)} />
 
-            
-                    <div className="trends-space">
-                        <div style={{display: 'none'}}>
-                            <Trends />
-                        </div>
-                        
-                    </div>
-                    
-                    <div className="ad-space">
-                        <div className="ad-space-area">
-                            <h3>Suscribete a Premium</h3>
-                            <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
-                        </div>
-                    </div>
-
-                    <Chatlist/>
                 </div>
+                {settings && <Settings onSettings={handleSettings} />}
+
+
+                <div className="trends-space">
+                    <div style={{ display: 'none' }}>
+                        <Trends />
+                    </div>
+
+                </div>
+
+                <div className="ad-space">
+                    <div className="ad-space-area">
+                        <h3>Suscribete a Premium</h3>
+                        <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
+                    </div>
+                </div>
+
+                <Chatlist />
+            </div>
         </div>
     );
 }

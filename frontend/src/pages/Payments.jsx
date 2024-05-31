@@ -11,7 +11,7 @@ import { Settings } from "../components/Settings"
 import { Trends } from "../components/Trends"
 
 export function Payments() {
-
+    const token = Cookies.get('token')
     const [settings, setSettings] = useState(false)
 
     const handleSettings = () => {
@@ -22,6 +22,7 @@ export function Payments() {
     const [user, setUser] = useState()
     const [pagoMovil, setpagoMovil] = useState(false)
     const [pagoP, setPagoP] = useState(false)
+    const [img, setImg] = useState({})
     const [data, setData] = useState({
         name: '',
         ci: '',
@@ -31,7 +32,7 @@ export function Payments() {
         type: ''
     })
     const navigate = useNavigate()
-    const token = Cookies.get('token')
+    
     const hanledcheck = (e) => {
         e.preventDefault()
         if (pagoMovil === false && pagoP === false) {
@@ -81,6 +82,7 @@ export function Payments() {
                 try {
                     const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
                     setId(response.data.message)
+                    console.log(response.data.message)
                 } catch (error) {
                     console.error('error:', error.message);
                 }
@@ -96,17 +98,27 @@ export function Payments() {
                 }
             }
         }
+        const getImage = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
+                setImg(response)
+                console.log(response.data)
+            } catch (error) {
+                console.error('error:', error.message);
+            }
+        }
         hanledToken()
         hanledUser()
+        getImage()
     }, [token, id]);
 
     return (
         <div>
             <div className="general-content">
             <div className="general-box1 z-0">
-                <img src="../src/images/principales/logo.png" alt="" className='w-[150px] my-[60px] cursor-pointer' onClick={() => navigate("/")}/>
+            <img src={img.data} alt="avatar" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
                 <Navmenu />
-                <img src="../src/images/principales/logo.png" alt="" className='w-[100px] my-[60px]' />
+                <img src="../src/images/principales/logo.png" alt="logo" className='w-[150px] m-14' />
             </div>
                 <div className="general-box2 p-[10px]">
                     <div className='flex-col mt-[45px]'>
