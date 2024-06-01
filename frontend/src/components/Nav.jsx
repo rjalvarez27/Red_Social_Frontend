@@ -16,8 +16,6 @@ export function Nav({name, username, id}) {
     const handleClose = () => {
         setOpen(false)
     }
-
-    console.log(open)
     const [ openNav, setOpenNav ] = useState(false)
     const nav = openNav ? "nav flex z-10 sm:w-[300px] md:w-[300px] lg:flex lg:w-[20%]" : "nav hidden lg:flex lg:w-[20%]"
 
