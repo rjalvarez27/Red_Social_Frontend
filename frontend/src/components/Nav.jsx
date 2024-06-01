@@ -51,7 +51,6 @@ export function Nav({name, username, id}) {
                     <Online/>
                     <div className="nav-perfil-user">
                         <strong className="perfil-name">{name}</strong>
-                        <p className="perfil-username">@{username}</p>
                     </div>
                     <img src="../src/images/down-arrow.png" className="w-6 h-6"/>
                 </div>
