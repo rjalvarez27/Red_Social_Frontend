@@ -14,7 +14,7 @@ export function FyP(){
     useEffect(() => { // traer informacion de imagen de base datos 
         const GetPost = async () => {
             try{
-                const response = await fetch('http://localhost:3000/social/publicaciones');
+                const response = await axios.get('http://localhost:3000/social/publicaciones');
                 if(response.ok){
                     const data = await response.json();
                     setPosts(data);
@@ -35,7 +35,9 @@ export function FyP(){
             <main className="principal bg-[rgb(57,54,66)] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
                 
                 <nav className="fyp-nav w-[100%] lg:w-[80%] xl:w-[60%] ">
-                    <a href="" className="fyp-nav-link w-[100%]"><button>General</button></a>
+                    <a href="" className="fyp-nav-link"><button>General</button></a>
+                    <hr />
+                    <a href="" className="fyp-nav-link"><button>Seguidos</button></a>
                 </nav>
                 <div className="fyp-area">
                     <section className="fyp-section">
