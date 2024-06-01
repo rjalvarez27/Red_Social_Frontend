@@ -1,0 +1,21 @@
+/* console.log(data)
+
+    const [publish, setPublish] = useState([]);
+    useEffect(() => { // traer informacion de imagen de base datos 
+        const GetPost = async () => {
+            try{
+                const response = await fetch(`http://localhost:3000/social/publicaciones/:${data._id}`);
+                if(response.ok){
+                    const result = await response.json();
+                    setPublish(result);
+                    //console.log(data[0].image[0].data)
+                }else{
+                    console.error('error');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        
+        GetPost();
+    }, []);*/
