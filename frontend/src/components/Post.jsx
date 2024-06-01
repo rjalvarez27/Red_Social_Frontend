@@ -3,9 +3,12 @@ import { Modelcomment } from "./Modelcomment";
 import { Modelpost } from "./Modelpost";
 import { Newcomment } from "./Newcomment";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Post(){
     const [comments, setComments] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const GetPost = async () => {
