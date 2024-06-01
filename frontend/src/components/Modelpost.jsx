@@ -11,7 +11,7 @@ export function Modelpost({content, image }){
             <div className="fyp-section-post w-[570px] sm:bg-red-600">
                 <div className="fyp-section-post-area" onClick={() => navigate("/post")} >
                     <div className="fyp-section-post-user">
-                        <img src="" alt="imagen" className="perfil-img"/>
+                        <img src="" alt="" className="perfil-img"/>
                         <div>
                             <a className="perfil-name" href="/profile"><strong>Nombre de usuario</strong></a>
                             <p className="perfil-username">@username</p>
