@@ -9,7 +9,6 @@ export function Preloader() {
     useEffect(()=>{
         tl.from('.preloader', {
             duration:0,
-            
             y: '100vh'
             });
         tl.from('.loader-logo', {
@@ -23,10 +22,10 @@ export function Preloader() {
             y: '100vh'
             }, '-=0.7');
         tl.from('.loading', {
-            duration:3.5,
+            duration:1.5,
             ease: "circ.out",
             y: '100vh'
-            }, '-=0.2');
+            }, '-=0.5');
         tl.to('.preloader', {
             duration:1,
             ease: "circ.out",

@@ -58,11 +58,11 @@ export function Login() {
           <form className='flex flex-col items-center bg-transparent' onSubmit={senData}>
             <h3 className="text-lg font-black items-start m-2">Correo electronico</h3>
             <label className='flex m-2 items-center border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
-              <input type="Email" placeholder="Ingresa tu Email" className='p-1 rounded-md text-center' onChange={(e) => setData({ ...data, email: e.target.value })} />
+              <input type="Email" placeholder="Ingresa tu Email" className='p-1 rounded-md' onChange={(e) => setData({ ...data, email: e.target.value })} />
             </label>
             <h3 className="text-lg font-black items-start m-2">Contraseña</h3>
             <label className='flex items-center border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
-              <input type="password" placeholder="Contraseña" className='p-1 rounded-md text-center' onChange={(e) => setData({ ...data, password: e.target.value })} />
+              <input type="password" placeholder="Contraseña" className='p-1 rounded-md' onChange={(e) => setData({ ...data, password: e.target.value })} />
             </label>
             <div className="flex">
               <p className="text-sm text-center m-1">Haga Click aqui para iniciar sesion directamente </p>

@@ -88,26 +88,26 @@ export function Register() {
                         <form action="" className='flex flex-col gap-1 items-center' onSubmit={handleSubmit}>
                             <h3 className="text-lg font-black items-start ">Nombre</h3>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
-                                <input type="text" className='p-1 rounded-md text-center' name="name" id="name" onChange={(e) => setData({ ...data, name: e.target.value })} />
+                                <input type="text" className='p-1 rounded-md' placeholder="Indique su nombre..." name="name" id="name" onChange={(e) => setData({ ...data, name: e.target.value })} />
                             </label>
                             <h3 className="text-lg font-black items-start ">@UserName</h3>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white '>
-                                <input type="text" className='p-1 rounded-md text-center' name="username" id="username" onChange={(e) => setData({ ...data, username: e.target.value })} />
+                                <input type="text" className='p-1 rounded-mdr' placeholder="Indique su @username..." name="username" id="username" onChange={(e) => setData({ ...data, username: e.target.value })} />
                             </label>
                             <h3 className="text-lg font-black items-start">Email*</h3>
                             <label className='flex  border border-gray-800 rounded-lg gap-2 p-1 shadow-lg bg-white'>
-                                <input type="Email" className='p-1 rounded-md text-center' name="email" id="email" onChange={(e) => setData({ ...data, email: e.target.value })} />
+                                <input type="Email" className='p-1 rounded-md' placeholder="Indique su correo..." name="email" id="email" onChange={(e) => setData({ ...data, email: e.target.value })} />
                             </label>
                             <h3 className="text-lg font-black items-start">Password*</h3>
                             <p className="text-[10px] px-16 m-1">Ingrese una combinacion de al menos 6 numeros, letras o signos puntuacion ( como ! y & )</p>
                             <label className='flex items-center border border-gray-800 rounded-lg gap-2 p-1 m-1 shadow-lg bg-white '>
-                                <input type="password" className='p-1 rounded-md text-center' name="password" id="password" onChange={(e) => setData({ ...data, password: e.target.value })} />
+                                <input type="password" className='p-1 rounded-md' placeholder="Defina una contraseña" name="password" id="password" onChange={(e) => setData({ ...data, password: e.target.value })} />
                             </label>
                             <label className='flex items-center border border-gray-800 rounded-lg gap-2 p-1 m-1 shadow-lg bg-white'>
-                                <input type="password" placeholder="Confirm Password" className='p-1 rounded-md  text-center text-grey-800' name="confirm" id="confirm" onChange={(e) => setConfirm(e.target.value)} />
+                                <input type="password" placeholder="Confirmar contraseña" className='p-1 rounded-md text-grey-800' name="confirm" id="confirm" onChange={(e) => setConfirm(e.target.value)} />
                             </label>
                             <div className="flex">
-                                <input type="checkbox" placeholder="Contraseña" className='flex items-center border border-gray-800 rounded-lg gap-2 p-1 m-1 shadow-lg bg-white  hover:accent-black ' name="premium" id="premium" onChange={(e) => setCheckbox(e.target.checked)} />
+                                <input type="checkbox" className='flex items-center border border-gray-800 rounded-lg gap-2 p-1 m-1 shadow-lg bg-white  hover:accent-black ' name="premium" id="premium" onChange={(e) => setCheckbox(e.target.checked)} />
                                 <p className="text-[10px]  m-1">Haz click aqui si desea tener una cuenta premium directamente.  </p>
                             </div>
                             <div className="flex">

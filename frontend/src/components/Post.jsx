@@ -28,16 +28,16 @@ export function Post(){
 
     return(
         <>
-            <div className="principal bg-[#f5f5f5] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
+            <div className="principal bg-[rgb(57,54,66)] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
                 <div className="w-[100%] flex justify-center">
                         <div className="principal-post rounded-b-lg">
 
                         <Modelpost/>
                         
                         <div className="fyp-interaction-data">
-                            <p>20.000 comentarios</p>
+                            {/*<p>20.000 comentarios</p>
                             <p>17.654 compartidas</p>
-                            <p>100.000 me gustas</p>
+                            <p>100.000 me gustas</p>*/}
                         </div>
                         <hr className="w-[100%]"/>
                         <Newcomment/>

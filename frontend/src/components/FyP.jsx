@@ -33,7 +33,7 @@ export function FyP(){
 
     return (
         <>
-            <main className="principal bg-[#f5f5f5] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
+            <main className="principal bg-[rgb(57,54,66)] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
                 
                 <nav className="fyp-nav w-[100%] lg:w-[80%] xl:w-[60%] ">
                     <a href="" className="fyp-nav-link"><button>General</button></a>
