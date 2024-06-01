@@ -14,7 +14,21 @@ export function Modelpost({ data }) {
     const [img, setImg] = useState({})
     const [userPublic, setUserPublic] = useState({})
 
+    useEffect(() => {
+        const getUserPublic = async () => {
+            try{
+                const response = await axios.get(`http://localhost:3000/social/user/${data.id_user}`);
+                setUserPublic(response.data);
+                console.log(response)
     
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getUserPublic()
+    }, []);
+
+
 //console.log(data)
     useEffect(() => {
 
@@ -47,7 +61,7 @@ export function Modelpost({ data }) {
     }
     const getImage = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/social/avatar/${data._id}`)
+            const response = await axios.get(`http://localhost:3000/social/avatar/${userPublic._id}`)
             setImg(response)
             console.log(response.data)
         } catch (error) {
@@ -60,27 +74,15 @@ export function Modelpost({ data }) {
     getImage()
 }, [token, id]);
 
-useEffect(() => {
-    const getUserPublic = async () => {
-        try{
-            const response = await axios.get(`http://localhost:3000/social/user/${data.id_user}`);
-            setUserPublic(response.data);
-            console.log(response)
 
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    getUserPublic()
-}, []);
 
-console.log(img.data)
+console.log(userPublic._id)
 
     return (
         <div className="fyp-section-post w-[570px] sm:bg-red-600">
             <div className="fyp-section-post-area" onClick={() => navigate(`/post`)} > 
                 <div className="fyp-section-post-user">
-                    <img src={img} alt="imagen" className="perfil-img" />
+                    <img src={img.data} alt="imagen" className="perfil-img" />
                     <div>
                         <a className="perfil-name" href="/profile"><strong>{userPublic.name}</strong></a>
                         <p className="perfil-username">{userPublic.username}</p>
