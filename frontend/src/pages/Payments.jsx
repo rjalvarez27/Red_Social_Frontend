@@ -52,7 +52,9 @@ export function Payments() {
                 data.email = user.email
                 data.type = Cookies.get('type')
                 const response = axios.post("http://localhost:3000/social/paymentPM", data)
-                if (!response) {
+                const response2 = axios.post("http://localhost:3000/social/bill", data)
+                
+                if (!response && !response2) {
                     alert("Error al realizar el pago")
                 }
                 else {
@@ -62,6 +64,7 @@ export function Payments() {
                         navigate("/");
                     }, 2000);
                 }
+            
             }
             catch (error) {
                 console.error('error:', error.message);

@@ -36,14 +36,14 @@ export function Rates() {
         if (checkB == true && checkP == true) {
             alert("Estan marcadas las dos casillas, por favor marque solo una casilla")
         } else if (checkB == true) {
-            Cookies.set('type', 'basic')
-            alert("Tarifa basica activada,  reedirigiendo al pago")
+            Cookies.set('type', 'Publicidad basica')
+            alert("Selecciono elPlan basico , reedirigiendo a la pagina de pago")
             setTimeout(() => {
                 navigate('/payments')
             }, 2000);
         } else if (checkP == true) {
-            Cookies.set('type', 'premiun')
-            alert("Tarifa Premium activada,  reedirigiendo al pago")
+            Cookies.set('type', 'Publicidad premiun')
+            alert("Selecciono el Plan Premium ,  reedirigiendo a la pagina de pago")
             setTimeout(() => {
                 navigate('/payments')
             }, 2000);
