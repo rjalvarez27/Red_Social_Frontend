@@ -1,137 +1,146 @@
-import { Header } from '../components/Header.jsx'
-import { Modelchat } from '../components/Modelchat.jsx'
-import { useEffect } from 'react'
-import { io } from 'socket.io-client'
-import axios from 'axios'
-/*
-
-import {io} from 'socket.io-client'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import io from "socket.io-client";
+import axios from "axios";
+import Cookies from 'js-cookie';
+const socket = io("http://localhost:3000");
+import { Navmenu } from '../components/Navmenu.jsx';
+import { Chatlist } from '../components/Chatlist.jsx';
+import { Settings } from "../components/Settings"
+import { Trends } from "../components/Trends"
+import { Online } from '../components/Online.jsx';
+import "../styles/recovery.css";
 
 export function Messages() {
+    const token = Cookies.get("token");
+    const [id, setId] = useState();
+    const [user, setUser] = useState();
+    const [img, setImg] = useState();
+    const [name, setName] = useState();
+    const navigate = useNavigate();
+    const [message, setMessage] = useState("");
+    const [chat, setChat] = useState([]);
+    const [settings, setSettings] = useState(false)
+    const handleSettings = () => {
+        setSettings(false)
+    }
 
-
-/*
-import io from 'socket.io-client'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-*/
-
-/*
-
-
-    /*const [socket, setSocket] = useState()
-
-
-
-
-
-/*export function Messages(){
-    const [socket, setSocket] = useState()
-
-
-
+    const hanldSubmit = (e) => {
+        e.preventDefault();
+        const newMessage = {
+            body: message,
+            from: user.name
+        }
+        setChat([...chat, newMessage]);
+        socket.emit('message', message);
+    }
 
     useEffect(() => {
-        const socket = io('http://localhost:3000')
-
-        setSocket(socket)
+        socket.on('message', receiveMessage)
+        return () => socket.off('message', receiveMessage)
     }, [])
 
-    useEffect(() => {
-        if (socket) {
-            socket.on('message', (data) => {
-                console.log(data)
-            })
-        }
-    }, [socket])
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const message = e.target[0].value
-        console.log(message)
-        if (!message) {
-            alert('Por favor rellene el campo')
-            return
-        }
-        socket.emit('message', message)
-        e.target.reset()
-
+    const receiveMessage = (message) => {
+        setChat((state) => [...state, message]);
     }
-const socket = io('http://localhost:3000')
 
-    }*/
-/*const socket = io('http://localhost:3000')*/
-
-
-
-export function Messages(){
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const message = e.target[0].value;
-        if (!message) {
-          alert('Por favor rellene el campo');
-          return;
+    useEffect(() => {
+        const hanledToken = async () => {
+            if (!token) {
+                alert("Por favor inicie sesion")
+                return
+            } else {
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
+                    setId(response.data.message)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
         }
-        try {
-          const response = await axios.post('http://localhost:3000/social/message', {
-            message,
-          });
-          console.log(response.data);
-        } catch (error) {
-          console.error(error.message);
+        const hanledUser = async () => {
+            if (id) {
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/user/${id}`);
+                    setUser(response.data)
+                    console.log(user.name)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
         }
-        e.target.reset();
-      };
-        useEffect(() => {
-          const socket = io();
-          socket.on('message', (data) => {
-            const li = document.createElement('li');
-            li.textContent = data;
-            document.getElementById('messages').appendChild(li);
-          });
-        }, []);
+        const getImage = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
+                setImg(response)
 
-return (
+            } catch (error) {
+                console.error('error:', error.message);
+            }
+        }
+        hanledToken()
+        hanledUser()
+        getImage()
+    }, [token, id]);
 
-        <>
-            <div className='header-profile'>
-                <Header />
+
+    return (
+        <div>
+            <div className="general-content">
+                <div className="general-box1 h-[100%]">
+                    <div className='flex flex-col items-start' >
+                        <div className='flex flex-col items-end  justify-start'>
+                            <img src="" alt="avatar" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
+                        </div>
+                    </div>
+                    <Navmenu />
+                    <img src="../src/images/principales/logo.png" alt="logo" className='w-[150px] m-10' />
+                </div>
+                <div className="general-chat">
+                    <div className="flex fle-col rounded-md bg-slate-500">
+                        <ul>
+                            {
+                                chat.map((chart, index) => {
+                                    return (
+                                        <li key={index}>
+                                            {chart.from} : {chart.body}</li>
+                                    )
+                                })
+                            }
+                        </ul>
+                        <form action="" onSubmit={hanldSubmit}>
+                            <input type="text" placeholder="Escriba su mensaje ..." onChange={(e) => setMessage(e.target.value)} />
+                            <button >Enviar</button>
+                        </form>
+                    </div>
+                </div>
+                <div className="general-box3 z-0">
+                    <div className="option-space">
+                        <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img" />
+                        <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search" />
+                        <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)} />
+
+                    </div>
+                    {settings && <Settings onSettings={handleSettings} />}
+
+
+                    <div className="trends-space">
+                        <div style={{ display: 'none' }}>
+                            <Trends />
+                        </div>
+
+                    </div>
+
+                    <div className="ad-space">
+                        <div className="ad-space-area">
+                            <h3>Suscribete a Premium</h3>
+                            <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
+                        </div>
+                    </div>
+
+                    <Chatlist />
+                </div>
             </div>
-            <nav className="nav">
-                <div className='nav-messages'>
-
-                    <div className="img-profile-messages"></div>
-
-                    <input type="search" name="" id="" className="nav-messages-search" />
-
-
-                    <div className="messages-chatlist">
-                        <Modelchat />
-                        <Modelchat />
-                        <Modelchat />
-                        <Modelchat />
-                    </div>
-                </div>
-            </nav>
-            <main className='chat'>
-                <div className='chat-messages-header'>
-
-                </div>
-                <div className='chat-messages-area'>
-                    <div className='chat-messages messages-receive decoration-white font-[550]'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sapiente laborum sit et vitae incidunt aperiam quisquam eius velit eos. Neque earum aut minus cumque quo aliquam exercitationem maiores tempore.
-                    </div>
-                </div>
-                <div className='chat-messages-input'>
-                    <form action="" onSubmit={handleSubmit} >
-                        <textarea name="massage" id="message" ></textarea>
-                        <button type="submit">Enviar</button>
-                    </form>
-                    
-                </div>
-            </main>
-        </>
+        </div>
     )
 }

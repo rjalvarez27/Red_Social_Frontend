@@ -4,11 +4,6 @@ import { Newcomment } from "./Newcomment";
 import { useState, useEffect } from "react";
 
 export function Post(){
-
-
-
-
-
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
