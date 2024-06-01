@@ -4,21 +4,25 @@ import { Modelpost } from "./Modelpost";
 
 export function FyP(){
 
-    const [fyp, setFyp] = useState([]);
-
+    
+    const [posts, setPosts] = useState([]);
+  
     const handleFyp = () => {
+
+    
         
     }
 
-    const [posts, setPosts] = useState([]);
-    useEffect(() => { // traer informacion de imagen de base datos 
+    
+    useEffect(() => { 
+        console.log("hola paso por aqui");
         const GetPost = async () => {
             try{
-                const response = await fetch('http://localhost:3000/social/publicaciones');
+                const response = await axios.get('http://localhost:3000/social/publicaciones');
+                console.log(response);
                 if(response.ok){
                     const data = await response.json();
                     setPosts(data);
-                    //console.log(data[0].image[0].data)
                 }else{
                     console.error('error');
                 }
@@ -39,9 +43,7 @@ export function FyP(){
                 </nav>
                 <div className="fyp-area">
                     <section className="fyp-section">
-                        {posts.map((post) => (
-                            <Modelpost content={post.content} key={post._id} image={post.image}/>
-                        ))}
+                       
                     </section>
                 </div>
             </main>
