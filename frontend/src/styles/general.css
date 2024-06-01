@@ -57,6 +57,17 @@ ol li:hover {
     justify-content: space-between;
 }
 
+.general-chat{
+    width: 60%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border: solid black 1px;
+    margin: 15px;
+}
+
 /* Responsive*/
 
 @media screen and (max-width: 750px) {
