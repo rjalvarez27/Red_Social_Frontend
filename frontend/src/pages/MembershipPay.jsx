@@ -51,7 +51,8 @@ export function MembershipPay() {
                 data.email = user.email
                 data.type = Cookies.get('type')
                 const response = axios.post("http://localhost:3000/social/paymentPM", data)
-                if (!response) {
+                const response2 = axios.post("http://localhost:3000/social/bill", data)
+                if (!response && !response2) {
                     alert("Error al realizar el pago")
                 }
                 else {
@@ -80,7 +81,6 @@ export function MembershipPay() {
                 try {
                     const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
                     setId(response.data.message)
-                    console.log(response.data.message)
                 } catch (error) {
                     console.error('error:', error.message);
                 }
@@ -99,8 +99,7 @@ export function MembershipPay() {
         const getImage = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
-                setImg(response)
-                console.log(response.data)
+                setImg(response.data)
             } catch (error) {
                 console.error('error:', error.message);
             }
@@ -113,7 +112,7 @@ export function MembershipPay() {
     return (
         <div className="general-content">
             <div className="general-box1 z-0">
-                <img src={img.data} alt="" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
+                <img src={img} alt="" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
                 <Navmenu />
                 <img src="../src/images/principales/logo.png" alt="" className='w-[150px] m-10' />
             </div>

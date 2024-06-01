@@ -27,13 +27,13 @@ export function Member() {
     const handleCheck = (e) => {
         e.preventDefault()
         if (check === false) {
-            alert("Usuario Free , reedirigiendo al inicio")
+            alert("Usuario Gratuito , reedirigiendo al inicio")
             setTimeout(() => {
                 navigate('/')
             }, 2000);
         } else if (check == true) {
-            Cookies.set('type', 'Premiun')
-            alert("Tarifa Premiun activada,  reedirigiendo a la pagina de pago")
+            Cookies.set('type', 'Usuario Premiun')
+            alert("Plan Premiun activado,  reedirigiendo a la pagina de pago")
             setTimeout(() => {
                 navigate('/membershippay')
             }, 2000);
