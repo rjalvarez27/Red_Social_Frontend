@@ -32,6 +32,10 @@ export function Post(){
             <div className="principal bg-[rgb(57,54,66)] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
                 <div className="w-[100%] flex justify-center">
                         <div className="principal-post rounded-b-lg">
+                        <div className="w-[100%] flex justify-end">
+                            <img src="src/images/x.png" alt="Cerrar Post" className="w-[25px] h-[25px]" onClick={() => navigate("/")}/>
+                        </div>
+
 
                         <Modelpost/>
                         
