@@ -2,56 +2,43 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from 'js-cookie'
-export function Modelpost({ content, image }) {
+export function Modelpost({ data }) {
     const navigate = useNavigate()
     const token = Cookies.get('token')
     const [liked, setLiked] = useState(false)
     const like = liked ? "src/images/like-red.png" : "src/images/like-white.png"
     const [shared, setShared] = useState(false)
-    const share = shared ? "src/images/share_white.png" : "src/images/share_green.png"
+    const share = shared ? "src/images/share_green.png" : "src/images/share_white.png"
     const [id, setId] = useState({})
     const [user, setUser] = useState({})
     const [img, setImg] = useState({})
 
-    useEffect(() => {
-        const hanledToken = async () => {
-            if (!token) {
-                alert('Por favor inicia sesion')
-                setTimeout(function () {
-                    navigate("/login");
-                }, 2000);
-                return
-            } else {
-                try {
-                    const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
-                    setId(response.data.message)
-                } catch (error) {
-                    console.error('error:', error.message);
+    console.log(data)
+    const imgdata = data.image
+
+    if(imgdata == null){
+        
+    }
+
+    /*const [publish, setPublish] = useState([]);
+    useEffect(() => { // traer informacion de imagen de base datos 
+        const GetPost = async () => {
+            try{
+                const response = await fetch(`http://localhost:3000/social/publicaciones/:${data._id}`);
+                if(response.ok){
+                    const result = await response.json();
+                    setPublish(result);
+                    //console.log(data[0].image[0].data)
+                }else{
+                    console.error('error');
                 }
-            }
-        }
-        const hanledUser = async () => {
-            if (id) {
-                try {
-                    const response = await axios.get(`http://localhost:3000/social/user/${id}`);
-                    setUser(response.data)
-                } catch (error) {
-                    console.error('error:', error.message);
-                }
-            }
-        }
-        const getImage = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
-                setImg(response)
             } catch (error) {
-                console.error('error:', error.message);
+                console.error(error);
             }
         }
-        hanledToken()
-        hanledUser()
-        getImage()
-    }, [token, id])
+        
+        GetPost();
+    }, []);*/
 
 
     return (
@@ -65,10 +52,12 @@ export function Modelpost({ content, image }) {
                     </div>
                 </div>
                 <div className="fyp-section-post-content">
-                    {content}
+                    {data.content}
                 </div>
                 <div className="fyp-section-post-image" >
-                    <img src={image} alt="imagen" className="fyp-section-post-img" />
+
+
+                    <img src={} alt="" className="fyp-section-post-img" />
                 </div>
             </div>
 

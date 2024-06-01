@@ -14,7 +14,7 @@ export function FyP(){
     useEffect(() => { // traer informacion de imagen de base datos 
         const GetPost = async () => {
             try{
-                const response = await axios.get('http://localhost:3000/social/publicaciones');
+                const response = await fetch('http://localhost:3000/social/publicaciones');
                 if(response.ok){
                     const data = await response.json();
                     setPosts(data);
@@ -42,7 +42,7 @@ export function FyP(){
                 <div className="fyp-area">
                     <section className="fyp-section">
                         {posts.map((post) => (
-                            <Modelpost content={post.content} key={post._id} image={post.image}/>
+                            <Modelpost data={post}/>
                         ))}
                     </section>
                 </div>
