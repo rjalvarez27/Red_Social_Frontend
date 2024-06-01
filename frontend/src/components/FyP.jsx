@@ -18,7 +18,6 @@ export function FyP(){
                 if(response.ok){
                     const data = await response.json();
                     setPosts(data);
-                    console.log(data)
                     //console.log(data[0].image[0].data)
                 }else{
                     console.error('error');

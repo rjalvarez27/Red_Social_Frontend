@@ -14,13 +14,6 @@ export function Home(){
     const [id, setId] = useState()
     const [user, setUser] = useState()
 
-
-	//const token = Cookies.set('token', 1234)
-
-  console.log(id)
-  console.log(user)
-
-
   useEffect(() => {
     const hanledToken = async () => {
         if (!token) {
