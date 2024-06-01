@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Modelcomment } from "./Modelcomment";
 import { Modelpost } from "./Modelpost";
 import { Newcomment } from "./Newcomment";
@@ -9,7 +10,7 @@ export function Post(){
     useEffect(() => {
         const GetPost = async () => {
             try{
-                const response = await fetch('http://localhost:3000/social/comments');
+                const response = await axios.get('http://localhost:3000/social/comments');
                 if(response.ok){
                     const data = await response.json();
                     setComments(data);

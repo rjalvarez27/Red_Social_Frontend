@@ -35,9 +35,7 @@ export function FyP(){
             <main className="principal bg-[rgb(57,54,66)] w-[100%] lg:left-[20%] lg:w-[80%] xl:w-[60%]">
                 
                 <nav className="fyp-nav w-[100%] lg:w-[80%] xl:w-[60%] ">
-                    <a href="" className="fyp-nav-link"><button>General</button></a>
-                    <hr />
-                    <a href="" className="fyp-nav-link"><button>Seguidos</button></a>
+                    <a href="" className="fyp-nav-link w-[100%]"><button>General</button></a>
                 </nav>
                 <div className="fyp-area">
                     <section className="fyp-section">

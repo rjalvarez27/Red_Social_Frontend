@@ -16,7 +16,11 @@ export function Nav({name, username, id}) {
     const handleClose = () => {
         setOpen(false)
     }
+
     console.log(open)
+    const [ openNav, setOpenNav ] = useState(false)
+    const nav = openNav ? "nav flex z-10 sm:w-[300px] md:w-[300px] lg:flex lg:w-[20%]" : "nav hidden lg:flex lg:w-[20%]"
+
     const cerrarSesion = () => {
         try {
             Cookies.remove('token'); // Elimina la cookie 'token'
@@ -41,7 +45,15 @@ export function Nav({name, username, id}) {
 
     return (
         <>
-        <nav className="nav hidden lg:flex lg:w-[20%]">
+        <div className="fixed top-0 left-0 w-[64px] h-[80px] lg:hidden bg-[rgb(18,16,25)] flex justify-center items-center">
+            <img src="src/images/menu.png" alt="menu" className="cursor-pointer flex lg:hidden" onClick={() => setOpenNav(!openNav)}/>
+        </div>
+
+        <nav className={nav}>
+            <div className="lg:hidden">
+                <img src="src/images/menu.png" alt="menu" className="cursor-pointer mt-6" onClick={() => setOpenNav(!openNav)}/>
+            </div>
+            
             <div className="nav-perfil">
                 <div className="nav-perfil-avatar flex justify-center items-center p-[2px]">
                     <img src={img.data} alt="avatar" className='w-[100%] h-[100%] cursor-pointer rounded-full' onClick={() => navigate("/")} />
@@ -63,6 +75,10 @@ export function Nav({name, username, id}) {
         </nav>
 
         { open && <Newpost onClose={handleClose}/>  }
+
+        {openNav ? (
+            <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[rgba(18,16,25,0.5)] z-[9]" onClick={() => setOpenNav(!openNav)}></div>
+        ) : null}
         
         </>
     )}
