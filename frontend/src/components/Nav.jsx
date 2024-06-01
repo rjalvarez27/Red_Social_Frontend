@@ -16,7 +16,7 @@ export function Nav({name, username, id}) {
     const handleClose = () => {
         setOpen(false)
     }
-
+    console.log(open)
     const cerrarSesion = () => {
         try {
             Cookies.remove('token'); // Elimina la cookie 'token'
@@ -32,7 +32,6 @@ export function Nav({name, username, id}) {
             try {
                 const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
                 setImg(response)
-                console.log(response.data)
             } catch (error) {
                 console.error('error:', error.message);
             }
