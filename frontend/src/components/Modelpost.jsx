@@ -31,6 +31,7 @@ export function Modelpost({ content, image }) {
             }
         }
         const hanledUser = async () => {
+            console.log(id)
             if (id) {
                 try {
                     const response = await axios.get(`http://localhost:3000/social/user/${id}`);
@@ -51,7 +52,7 @@ export function Modelpost({ content, image }) {
         hanledToken()
         hanledUser()
         getImage()
-    }, [token, id])
+    }, [])
 
 
     return (
