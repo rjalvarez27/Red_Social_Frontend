@@ -59,13 +59,13 @@ ol li:hover {
 
 .general-chat{
     width: 60%;
-    height: 50vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: whitesmoke;
     border-radius: 10px;
     border: solid black 1px;
-    margin: 15px;
+
 }
 
 /* Responsive*/

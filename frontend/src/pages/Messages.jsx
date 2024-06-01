@@ -33,6 +33,7 @@ export function Messages() {
         }
         setChat([...chat, newMessage]);
         socket.emit('message', message);
+        setMessage("");
     }
 
     useEffect(() => {
@@ -97,22 +98,32 @@ export function Messages() {
                     <img src="../src/images/principales/logo.png" alt="logo" className='w-[150px] m-10' />
                 </div>
                 <div className="general-chat">
-                    <div className="flex fle-col rounded-md bg-slate-500">
-                        <ul>
-                            {
-                                chat.map((chart, index) => {
-                                    return (
-                                        <li key={index}>
-                                            {chart.from} : {chart.body}</li>
-                                    )
-                                })
-                            }
-                        </ul>
-                        <form action="" onSubmit={hanldSubmit}>
-                            <input type="text" placeholder="Escriba su mensaje ..." onChange={(e) => setMessage(e.target.value)} />
-                            <button >Enviar</button>
+                    <div className="h-[100%] bg-[rgb(57,54,66)] text-white flex items-center justify-center">
+                        <form onSubmit={hanldSubmit} className="bg-zinc-900 p-10 rounded-lg w-[80%]">
+                            <ul className="h-80 overflow-y-auto">
+                                {chat.map((message, index) => (
+                                    <li
+                                        key={index}
+                                        className={`my-2 p-2 table text-sm rounded-md ${message.from === "Me" ? "bg-sky-700 ml-auto" : "bg-black"
+                                            }`}
+                                    >
+                                        <b>{message.from}</b>:{message.body}
+                                    </li>
+                                ))}
+                            </ul>
+                            <h1 className="text-2xl font-bold my-2">Chat Mounts</h1>
+                            <input
+                                name="message"
+                                type="text"
+                                placeholder="Escribe tu mensaje..."
+                                onChange={(e) => setMessage(e.target.value)}
+                                className="border-2 border-zinc-500 p-2 w-full text-black"
+                                value={message}
+                                autoFocus
+                            />
                         </form>
                     </div>
+
                 </div>
                 <div className="general-box3 z-0">
                     <div className="option-space">
@@ -122,7 +133,6 @@ export function Messages() {
 
                     </div>
                     {settings && <Settings onSettings={handleSettings} />}
-
 
                     <div className="trends-space">
                         <div style={{ display: 'none' }}>
