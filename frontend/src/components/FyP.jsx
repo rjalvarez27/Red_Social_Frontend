@@ -5,19 +5,28 @@ import { Modelpost } from "./Modelpost";
 export function FyP(){
 
     const [fyp, setFyp] = useState([]);
+    const [id, setId] = useState("")
 
     const handleFyp = () => {
         
     }
 
+
+
+
     const [posts, setPosts] = useState([]);
+
+    
     useEffect(() => { // traer informacion de imagen de base datos 
         const GetPost = async () => {
             try{
-                const response = await fetch('http://localhost:3000/social/publicaciones');
+                const response = await fetch('http://localhost:3000/social/publicaciones/');
                 if(response.ok){
+                    console.log(response)
                     const data = await response.json();
+                    console.log(data)
                     setPosts(data);
+                    
                     
                 }else{
                     console.error('error');
@@ -29,6 +38,9 @@ export function FyP(){
         
         GetPost();
     }, []);
+
+    console.log(posts)
+
 
     return (
         <>

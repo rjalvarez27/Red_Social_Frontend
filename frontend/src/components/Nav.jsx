@@ -66,7 +66,7 @@ export function Nav({name, username}) {
 
     return (
         <>
-        <div className="fixed top-0 left-0 w-[64px] h-[80px] lg:hidden bg-[rgb(18,16,25)] flex justify-center items-center">
+        <div className="fixed top-0 left-0 w-[64px] h-[80px] lg:hidden bg-[rgb(18,16,25)] flex justify-center items-center z-[9]">
             <img src="src/images/menu.png" alt="menu" className="cursor-pointer flex lg:hidden" onClick={() => setOpenNav(!openNav)}/>
         </div>
 
@@ -80,11 +80,12 @@ export function Nav({name, username}) {
                     <img src={img} alt="avatar" className='w-[100%] h-[100%] cursor-pointer rounded-full' onClick={() => navigate("/")} />
                 </div>
                 <div className="nav-perfil-bottom" onClick={() => setIsActive(!isActive)}>
-                    <Online/>
+                    
                     <div className="nav-perfil-user">
                         <strong className="perfil-name">{name}</strong>
+                        <img src="../src/images/down-arrow.png" className="w-6 h-6"/>
                     </div>
-                    <img src="../src/images/down-arrow.png" className="w-6 h-6"/>
+                    <Online/>
                 </div>
                 {isActive ? (
                 <div className="optionsSesion">
@@ -95,7 +96,7 @@ export function Nav({name, username}) {
             <button className="new-post w-[180px] xl:w-[220px]" onClick={() => setOpen(!open)}>Nueva publicación</button>
         </nav>
 
-        { open && <Newpost onClose={handleClose}/>  }
+        { open && <Newpost onClose={handleClose} img={img}/>  }
 
         {openNav ? (
             <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[rgba(18,16,25,0.5)] z-[9]" onClick={() => setOpenNav(!openNav)}></div>

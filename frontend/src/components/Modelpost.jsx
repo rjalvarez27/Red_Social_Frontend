@@ -12,20 +12,82 @@ export function Modelpost({ data }) {
     const [id, setId] = useState({})
     const [user, setUser] = useState({})
     const [img, setImg] = useState({})
+    const [userPublic, setUserPublic] = useState({})
 
+    
+//console.log(data)
+    useEffect(() => {
+
+        const hanledToken = async () => {
+            if (!token) {
+                alert('Por favor inicia sesion')
+                setTimeout(function () {
+                    navigate("/login");
+                }, 2000);
+                return
+            } else {
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
+                    setId(response.data.message)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
+        }
+    const hanledUser = async () => {
+        if (id) {
+            try {
+                const response = await axios.get(`http://localhost:3000/social/user/${id}`);
+                setUser(response.data)
+                console.log(response.data)
+            } catch (error) {
+                console.error('error:', error.message);
+            }
+        }
+    }
+    const getImage = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3000/social/avatar/${data._id}`)
+            setImg(response)
+            console.log(response.data)
+        } catch (error) {
+            console.error('error:', error.message);
+        }
+    }
+
+    hanledToken()
+    hanledUser()
+    getImage()
+}, [token, id]);
+
+useEffect(() => {
+    const getUserPublic = async () => {
+        try{
+            const response = await axios.get(`http://localhost:3000/social/user/${data.id_user}`);
+            setUserPublic(response.data);
+            console.log(response)
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    getUserPublic()
+}, []);
+
+console.log(img.data)
 
     return (
         <div className="fyp-section-post w-[570px] sm:bg-red-600">
-            <div className="fyp-section-post-area" onClick={() => navigate("/post/:${data._id}")} >
+            <div className="fyp-section-post-area" onClick={() => navigate(`/post`)} > 
                 <div className="fyp-section-post-user">
-                    <img src={img.data} alt="imagen" className="perfil-img" />
+                    <img src={img} alt="imagen" className="perfil-img" />
                     <div>
-                        <a className="perfil-name" href="/profile"><strong>{user.name}</strong></a>
-                        <p className="perfil-username">{user.username}</p>
+                        <a className="perfil-name" href="/profile"><strong>{userPublic.name}</strong></a>
+                        <p className="perfil-username">{userPublic.username}</p>
                     </div>
                 </div>
                 <div className="fyp-section-post-content">
-                    {data.content}
+                    {data.contenido}
                 </div>
                 <div className="fyp-section-post-image" >
 

@@ -3,12 +3,13 @@ import { Modelcomment } from "./Modelcomment";
 import { Modelpost } from "./Modelpost";
 import { Newcomment } from "./Newcomment";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export function Post(){
     const [comments, setComments] = useState([]);
 
     const navigate = useNavigate();
+
 
     useEffect(() => {
         const GetPost = async () => {
@@ -40,7 +41,7 @@ export function Post(){
                         </div>
 
 
-                        <Modelpost/>
+                        
                         
                         <div className="fyp-interaction-data">
                             {/*<p>20.000 comentarios</p>
