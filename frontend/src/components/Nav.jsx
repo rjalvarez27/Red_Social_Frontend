@@ -6,12 +6,13 @@ import { Navmenu } from "./Navmenu";
 import { Online } from "./Online";
 import axios from 'axios'
 
-export function Nav({name, username, id}) {
+export function Nav({name, username}) {
     const token = Cookies.get('token')
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState(false);
     const [open, setOpen] = useState(false)
-    const [img, setImg] = useState({})
+    const [img, setImg] = useState("")
+    const [id, setId] = useState("")
 
     const handleClose = () => {
         setOpen(false)
@@ -30,16 +31,38 @@ export function Nav({name, username, id}) {
     };
 
     useEffect(() => {
+
+        const hanledToken = async () => {
+            if (!token) {
+                alert('Por favor inicia sesion')
+                setTimeout(function () {
+                    navigate("/login");
+                }, 2000);
+                return
+            } else {
+                try {
+                    const response = await axios.get(`http://localhost:3000/social/recovery/${token}`);
+                    setId(response.data.message)
+                } catch (error) {
+                    console.error('error:', error.message);
+                }
+            }
+        }
         const getImage = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/social/avatar/${id}`)
                 setImg(response.data)
+                console.log(response.data)
             } catch (error) {
                 console.error('error:', error.message);
             }
         }
+
+        hanledToken()
         getImage()
     }, [token, id]);
+
+    console.log(id)
 
     return (
         <>
@@ -54,7 +77,7 @@ export function Nav({name, username, id}) {
             
             <div className="nav-perfil">
                 <div className="nav-perfil-avatar flex justify-center items-center p-[2px]">
-                    <img src={img.data} alt="avatar" className='w-[100%] h-[100%] cursor-pointer rounded-full' onClick={() => navigate("/")} />
+                    <img src={img} alt="avatar" className='w-[100%] h-[100%] cursor-pointer rounded-full' onClick={() => navigate("/")} />
                 </div>
                 <div className="nav-perfil-bottom" onClick={() => setIsActive(!isActive)}>
                     <Online/>

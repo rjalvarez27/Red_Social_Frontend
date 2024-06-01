@@ -13,37 +13,10 @@ export function Modelpost({ data }) {
     const [user, setUser] = useState({})
     const [img, setImg] = useState({})
 
-    console.log(data)
-    const imgdata = data.image
-
-    if(imgdata == null){
-        
-    }
-
-    /*const [publish, setPublish] = useState([]);
-    useEffect(() => { // traer informacion de imagen de base datos 
-        const GetPost = async () => {
-            try{
-                const response = await fetch(`http://localhost:3000/social/publicaciones/:${data._id}`);
-                if(response.ok){
-                    const result = await response.json();
-                    setPublish(result);
-                    //console.log(data[0].image[0].data)
-                }else{
-                    console.error('error');
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        
-        GetPost();
-    }, []);*/
-
 
     return (
         <div className="fyp-section-post w-[570px] sm:bg-red-600">
-            <div className="fyp-section-post-area" onClick={() => navigate("/post")} >
+            <div className="fyp-section-post-area" onClick={() => navigate("/post/:${data._id}")} >
                 <div className="fyp-section-post-user">
                     <img src={img.data} alt="imagen" className="perfil-img" />
                     <div>
@@ -57,7 +30,7 @@ export function Modelpost({ data }) {
                 <div className="fyp-section-post-image" >
 
 
-                    <img src={} alt="" className="fyp-section-post-img" />
+                    <img src={data.image} alt="" className="fyp-section-post-img" />
                 </div>
             </div>
 
