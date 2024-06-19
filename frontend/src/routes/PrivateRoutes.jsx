@@ -35,5 +35,5 @@ export function PrivateRoute() {
     return <div>Cargando...</div>;
   }
 
-  return token ? <Outlet /> : <Navigate to="/login" />;
+  return token ? <Outlet /> : <Navigate to="/" />;
 }

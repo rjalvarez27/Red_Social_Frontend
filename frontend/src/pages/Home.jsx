@@ -1,8 +1,3 @@
-import { Header } from '../components/Header.jsx'
-import { Nav } from '../components/Nav.jsx'
-import { Aside } from '../components/Aside.jsx'
-import { FyP } from '../components/FyP.jsx'
-import { Preloader } from '../components/Preloader.jsx'
 import Cookies from 'js-cookie'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -47,11 +42,9 @@ export function Home(){
 
   return(
       <>
-        <Header/>
-        {<Nav name={user?.name} username={user?.username} id={id}/>}
-        <Aside />
-        <FyP/>
-        <Preloader/>
+       <div>
+        <p>estoy en home</p>
+       </div>
       </>
   )
 }

@@ -3,10 +3,6 @@ import { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import '../styles/general.css'
 import Cookies from 'js-cookie'
-import { Chatlist } from '../components/Chatlist'
-import { Navmenu } from '../components/Navmenu'
-import { Settings } from "../components/Settings"
-import { Trends } from "../components/Trends"
 import axios from 'axios'
 
 export function Member() {
@@ -85,13 +81,13 @@ export function Member() {
             <div className="general-content">
                 <div className="general-box1 z-0">
                     <img src={img.data} alt="" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
-                    <Navmenu />
+                    
                     <img src="../src/images/principales/logo.png" alt="" className='w-[150px] m-10' />
                 </div>
 
                 <div className="general-box2 z-40">
                     <div className='flex-col w-[100%] mt-[45px]'>
-                        {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
+                     
                         <h1 className="text-3xl font-black m-2 text-center">Membresia</h1>
                     </div>
                     <div className='flex'>

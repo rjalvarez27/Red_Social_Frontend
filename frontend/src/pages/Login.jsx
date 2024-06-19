@@ -43,7 +43,7 @@ export function Login() {
   useEffect(() => {
     const data = Cookies.get('token')
     if (data) {
-      navigate('/')
+      navigate('/Home')
     }
   });
 
