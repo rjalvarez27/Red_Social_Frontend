@@ -1,15 +1,10 @@
 //Pagina para las tarifas de Publicidad 
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import '../styles/general.css'
 import Cookies from 'js-cookie'
-import { Chatlist } from '../components/Chatlist'
-import { Navmenu } from '../components/Navmenu'
-import { Settings } from "../components/Settings"
-import { Trends } from "../components/Trends"
 import axios from 'axios'
-import { Online } from '../components/Online'
 
 
 export function Rates() {

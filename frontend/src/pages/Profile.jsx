@@ -1,10 +1,8 @@
-import { Header } from '../components/Header.jsx'
-import { Modelpost } from '../components/Modelpost.jsx'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import axios from 'axios'
-import { Newpost } from '../components/Newpost.jsx'
+
 
 
 
@@ -131,14 +129,10 @@ useEffect(() => {
             </aside>
 
             <main className='main-profile'>
-                <div className='post-profile'>
-                    {posts.map((post) => (
-                            <Modelpost content={post.content} key={post._id} image={post.image}/>
-                        ))}
-                </div>
+         
             </main>
 
-            { open && <Newpost onClose={handleClose}/>  }
+       
         </>
     )
 }

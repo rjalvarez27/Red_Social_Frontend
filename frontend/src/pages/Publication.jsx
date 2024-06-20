@@ -1,11 +1,10 @@
-import { Aside } from "../components/Aside";
-import { Nav } from "../components/Nav";
-import { Post } from "../components/Post";
-import { Header } from '../components/Header.jsx'
-import Cookies from 'js-cookie'
-import axios from 'axios'
+
+
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
+import Cookies from 'js-cookie'
+
 
 export function Publication() {
     const navigate = useNavigate()

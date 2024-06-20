@@ -11,13 +11,14 @@
 .conten1 {
     width: 550px;
     height: 100px;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
     border-radius: 20px 20px 0 0;
-    background-color: rgb(182, 179, 179);
+    background-color: rgb(49, 36, 235);
 }
 
 .conten2 {
@@ -30,11 +31,18 @@
     padding: 20px;
 }
 
+.content3{
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 /* Responsive*/
 
 @media screen and (max-width:750px) {
     html {
-        font-size: 15px;
+        font-size: 12px;
     }
 
     .container {
@@ -50,9 +58,8 @@
     .conten2 {
         position: relative;
         width: 450px;
-        height: 670px;
+        height: 650px;
     }
-
 }
 
 @media screen and (max-width:580px) {
@@ -72,6 +79,9 @@
 
     .conten2 {
         width: 400px;
-        height: 750px;
+        height: 500px;
+    }
+    .content3{
+        border:none;
     }
 }

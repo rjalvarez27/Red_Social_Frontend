@@ -4,11 +4,6 @@ import io from "socket.io-client";
 import axios from "axios";
 import Cookies from 'js-cookie';
 const socket = io("http://localhost:3000");
-import { Navmenu } from '../components/Navmenu.jsx';
-import { Chatlist } from '../components/Chatlist.jsx';
-import { Settings } from "../components/Settings"
-import { Trends } from "../components/Trends"
-import { Online } from '../components/Online.jsx';
 import "../styles/recovery.css";
 
 export function Messages() {
