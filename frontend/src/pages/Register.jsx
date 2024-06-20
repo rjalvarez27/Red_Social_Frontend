@@ -11,7 +11,7 @@ export function Register() {
     const [data, setData] = useState({
         name: "",
         username: "",
-        email: "", 
+        email: "",
         password: "",
     });
     const [checkbox, setCheckbox] = useState(false);
@@ -32,7 +32,7 @@ export function Register() {
         }
         if (!validPassword.test(data.password)) {
             alert('Contraseña incorrecta, por favor verifique los datos')
-        } 
+        }
         if (data.password.length < 6) {
             alert('La contrasenia debe tener minimo 6 caracteres')
             return
@@ -74,10 +74,10 @@ export function Register() {
     });
     return (
         <div>
-            <div className="all flex">
-                <div className="flex-col w-[25%] space-y-[350px] relative z-0  ">
-                    <img src="../src/images/register/regist1.png" alt="register1" className="border-double border-[5px] border-black my-[80px]" />
-                    <img src="../src/images/register/regist2.png" alt="register2" className="border-double border-[5px] border-black" />
+            <div className="flex flex-row z-0">
+                <div className="content3">
+                    <img src="../src/images/register/regist1.png" alt="register1" className="border-double border-[5px] border-black my-[80px] rounded-md w-[250px] z-0"/>
+                    <img src="../src/images/register/regist2.png" alt="register2" className="border-double border-[5px] border-black rounded-md my-[80px] z-0"/>
                 </div>
                 <div className="container min-h-screen w-[50%] relative z-40">
                     <div className="conten1">
@@ -127,13 +127,17 @@ export function Register() {
                             <input type="submit" value="Aceptar" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg m-4 w-1/3' />
                         </form>
                     </div>
-                    <div className="sticky top-[100vh] conten3">
+                    <div className="sticky top-[100vh]">
                         <h1 className="text-sm text-center m-2 ">© 2024 Copyright: Mounts</h1>
                     </div>
                 </div>
-                <div className="flex-col w-[25%] relative z-0 space-y-[350px] ">
-                    <NavLink to="/login"><img src="../src/images/principales/home.png" alt="home" className="w-[60px] my-10 mx-36" /></NavLink>
-                    <img src="../src/images/register/character.png" alt="personaje" className=" w-[280px] sticky z-10 " />
+                <div className="content3">
+                    <div className="w-[80%] flex justify-end mt-6">
+                        <NavLink to="/login"><img src="../src/images/principales/home.png" alt="home" className="w-[60px]" /></NavLink>
+                    </div>
+                    <div className="w-full sticky top-[100vh]">
+                        <img src="../src/images/register/character.png" alt="personaje" className=" w-[280px] sticky top-[100vh] " />
+                    </div>
                 </div>
             </div>
         </div>

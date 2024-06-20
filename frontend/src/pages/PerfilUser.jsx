@@ -5,11 +5,7 @@ import { validName, validUserName, validCorreo } from "../components/Regext.jsx"
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import "../styles/recovery.css";
-import { Navmenu } from '../components/Navmenu.jsx';
-import { Chatlist } from '../components/Chatlist.jsx';
-import { Settings } from "../components/Settings"
-import { Trends } from "../components/Trends"
-import { Online } from '../components/Online.jsx';
+
 
 export function PerfilUser() {
     const [settings, setSettings] = useState(false)

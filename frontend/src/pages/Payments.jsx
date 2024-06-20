@@ -5,10 +5,6 @@ import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import '../styles/general.css'
-import { Chatlist } from '../components/Chatlist'
-import { Navmenu } from '../components/Navmenu'
-import { Settings } from "../components/Settings"
-import { Trends } from "../components/Trends"
 
 export function Payments() {
     const token = Cookies.get('token')
