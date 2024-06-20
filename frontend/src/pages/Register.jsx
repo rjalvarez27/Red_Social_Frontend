@@ -3,6 +3,9 @@ import { validName, validUserName, validCorreo, validPassword } from "../compone
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie'
+import Swal from 'sweetalert2'
+
+
 import "../styles/register.css";
 
 export function Register() {
@@ -17,48 +20,152 @@ export function Register() {
     const [checkbox, setCheckbox] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!data.name || !data.username || !data.email || !data.password || !confirm) {
-            alert('Campos estan vacios, por favor rellene todos los datos')
-            return
+        if (!data.name) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Nombre vacio",
+                showConfirmButton: false,
+                timer: 1200
+            });
+            return;
         }
-        if (!validName.test(data.name)) {
-            alert('Nombre incorrecto, por favor verifique los datos')
+        if (!data.username) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "@Username vacio",
+                showConfirmButton: false,
+                timer: 1200
+            });
+            return;
         }
-        if (!validUserName.test(data.username)) {
-            alert('Usuario incorrecto, por favor verifique los datos')
+        if (!data.email) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Email vacio",
+                showConfirmButton: false,
+                timer: 1200
+            });
+            return;
         }
-        if (!validCorreo.test(data.email)) {
-            alert('Correo incorrecto, por favor verifique los datos')
+        if (!data.password) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Clave vacia",
+                showConfirmButton: false,
+                timer: 1200
+            });
+            return;
         }
-        if (!validPassword.test(data.password)) {
-            alert('Contraseña incorrecta, por favor verifique los datos')
+        if (!confirm) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Confirmar clave vacio",
+                showConfirmButton: false,
+                timer: 1200
+            });
+            return;
         }
-        if (data.password.length < 6) {
-            alert('La contrasenia debe tener minimo 6 caracteres')
-            return
+        else if (!validName.test(data.name)) {
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Nombre invalido, por favor verifique los datos",
+                showConfirmButton: false,
+                timer: 1300
+            });
+            return;
+        }
+        else if (!validUserName.test(data.username)) {
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Username invalido, por favor verifique los datos",
+                showConfirmButton: false,
+                timer: 1300
+            });
+            return;
+        }
+        else if (!validCorreo.test(data.email)) {
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Correo invalido, por favor verifique los datos",
+                showConfirmButton: false,
+                timer: 1300
+            });
+            return;
+        }
+        else if (!validPassword.test(data.password)) {
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Clave invalida, por favor verifique los datos",
+                showConfirmButton: false,
+                timer: 1300
+            });
+            return;
+        }
+        else if (data.password.length < 6) {
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Clave demasiado corta, por favor verifique los datos",
+                showConfirmButton: false,
+                timer: 1300
+            });
+            return;
         }
         else if (data.password != confirm) {
-            alert('Las contrasenias no coinciden, por favor verifique los datos')
-            return
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Claves no coinciden, por favor verifique los datos",
+                showConfirmButton: false,
+                timer: 1300
+            });
+            return;
         }
         else {
             try {
                 const response = await axios.post('http://localhost:3000/social/user', data)
                 if (checkbox == true) {
-                    alert("redirigiendo a la zona de pago, usuario registrado con exito")
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Usuario registrado con exito, Reedirigiendo a la pagina de pagos",
+                        showConfirmButton: false,
+                        timer: 1300
+                    });
                     setTimeout(function () {
                         navigate("/membership");
                     }, 2000);
                     return
                 } else {
-                    alert("usuario registrado con exito")
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Usuario registrado con exito",
+                        showConfirmButton: false,
+                        timer: 1300
+                    });
                     setTimeout(function () {
-                        navigate("/login");
+                        navigate("/");
                     }, 2000);
                     return
                 }
             } catch (error) {
-                alert("Correo en uso, por favor ingrese otro")
+                Swal.fire({
+                    position: "center",
+                    icon: "info",
+                    title: "Correo ya registrado, por favor ingrese otro",
+                    showConfirmButton: false,
+                    timer: 1300
+                });
                 setTimeout(function () {
                     window.location.reload();
                 }, 2000);
@@ -69,15 +176,15 @@ export function Register() {
     useEffect(() => {
         const data = Cookies.get('token')
         if (data) {
-            navigate('/')
+            navigate('/home')
         }
     });
     return (
         <div>
             <div className="flex flex-row z-0">
                 <div className="content3">
-                    <img src="../src/images/register/regist1.png" alt="register1" className="border-double border-[5px] border-black my-[80px] rounded-md w-[250px] z-0"/>
-                    <img src="../src/images/register/regist2.png" alt="register2" className="border-double border-[5px] border-black rounded-md my-[80px] z-0"/>
+                    <img src="../src/images/register/regist1.png" alt="register1" className="border-double border-[5px] border-black my-[80px] rounded-md w-[250px] z-0" />
+                    <img src="../src/images/register/regist2.png" alt="register2" className="border-double border-[5px] border-black rounded-md my-[80px] z-0" />
                 </div>
                 <div className="container min-h-screen w-[50%] relative z-40">
                     <div className="conten1">
@@ -111,7 +218,7 @@ export function Register() {
                                 <p className="text-[10px]  m-1">Haz click aqui si desea tener una cuenta premium directamente.  </p>
                             </div>
                             <div className="flex">
-                                <p>Si no tienes ninguna cuenta , simplemente haz clic aqui </p>
+                                <p>Si no tienes ninguna cuenta , simplemente haz clic aqui: </p>
                             </div>
                             <div className="flex">
                                 <button className="border w-12 py-3 m-1 rounded-lg  hover:bg-gray-800 hover:text-white" disabled>
@@ -133,7 +240,7 @@ export function Register() {
                 </div>
                 <div className="content3">
                     <div className="w-[80%] flex justify-end mt-6">
-                        <NavLink to="/login"><img src="../src/images/principales/home.png" alt="home" className="w-[60px]" /></NavLink>
+                        <NavLink to="/"><img src="../src/images/principales/home.png" alt="home" className="w-[60px]" /></NavLink>
                     </div>
                     <div className="w-full sticky top-[100vh]">
                         <img src="../src/images/register/character.png" alt="personaje" className=" w-[280px] sticky top-[100vh] " />
