@@ -10,18 +10,18 @@
 .recovery-box {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 500px;
     height: 100px;
     border: 1px solid black;
     border-radius: 20px 20px 0 0;
     justify-content: center;
     align-items: center;
-    background-color: rgb(184, 184, 184);
+    background-color: rgb(36, 28, 150);
 }
 
 .recovery-box2 {
     display: flex;
-    width: 400px;
+    width: 500px;
     height: 290px;
     flex-direction: column;
     border: 1px solid black;
