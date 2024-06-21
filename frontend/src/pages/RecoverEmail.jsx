@@ -37,7 +37,7 @@ export function RecoverEmail() {
                         icon: "success",
                         title: "Se ha enviado un email para recuperar su contraseña",
                         showConfirmButton: false,
-                        timer: 1200
+                        timer: 1500
                       });
                     setTimeout(function () {
                         navigate("/");
