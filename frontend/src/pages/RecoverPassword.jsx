@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 import { validPassword } from "../components/Regext.jsx";
 import axios from "axios";
+import Swal from 'sweetalert2';
 import "../styles/recovery.css";
 
 
@@ -18,22 +19,46 @@ export function RecoverPassword() {
     const hanledUser = async (e) => {
         e.preventDefault();
         if (!value.password || !passwordC) {
-            alert('Campos estan vacios, por favor rellene todos los datos')
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Campos vacios por favor verifique los datos",
+                showConfirmButton: false,
+                timer: 1500
+              });
             return
         }
         if (value.password != passwordC) {
-            alert('Las contrasenias no coinciden, por favor verifique los datos')
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Las contraseña no coinciden",
+                showConfirmButton: false,
+                timer: 1500
+              });
             return
         } if (value.password.length < 6) {
-            alert('La contrasenia debe tener minimo 6 caracteres')
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "La contraseña debe tener minimo 6 caracteres",
+                showConfirmButton: false,
+                timer: 1500
+              });
             return
         } else if (validPassword.test(value.password)) {
             try {
                 const response = await axios.patch(`http://localhost:3000/social/user/password/${id}`, value);
-                alert("Contrasenia cambiada con exito")
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Se ha cambiado la contrasenia correctamente", 
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 setTimeout(function () {
-                    navigate("/login");
-                }, 3000);
+                    navigate("/");
+                }, 2000);
             } catch (error) {
                 console.error('error:', error.message);
             }
@@ -64,7 +89,7 @@ export function RecoverPassword() {
     return (
         <div className="flex flex-col">
             <div className='flex-col'>
-                <NavLink to="/login" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
+                <NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
             </div>
             <div className="recovery-body">
                 <div className="recovery-box">
