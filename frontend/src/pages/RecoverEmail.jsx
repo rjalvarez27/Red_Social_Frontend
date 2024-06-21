@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { validCorreo } from "../components/Regext.jsx";
 import axios from "axios";
+import Swal from 'sweetalert2';
 import "../styles/recovery.css";
 
 
@@ -14,7 +15,13 @@ export function RecoverEmail() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!data.email) {
-            alert('El email se encuentra vacio, por favor rellene la casilla ')
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "El campo Email es obligatorio",
+                showConfirmButton: false,
+                timer: 1200
+              });
             return
         }
         if (!validCorreo.test(data.email)) {
@@ -25,23 +32,41 @@ export function RecoverEmail() {
                 const response = await axios.post(`http://localhost:3000/social/recovery/${data.email}`, data);
                 console.log(response.data)
                 if (response) {
-                    alert("Se ha enviado un correo para recuperar su cuenta, Esta pagina lo redirecionara en 3 segundos")
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Se ha enviado un email para recuperar su contraseña",
+                        showConfirmButton: false,
+                        timer: 1200
+                      });
                     setTimeout(function () {
-                        navigate("/login");
+                        navigate("/");
                     }, 3000);
                     return
                 } else {
-                    alert("Error en servidor")
+                    Swal.fire({
+                        position: "center",
+                        icon: "warning",
+                        title: "El email no se encuentra registrado",
+                        showConfirmButton: false,
+                        timer: 1200
+                      });
                 }
             } catch (error) {
-                alert(error.response.data.message);
+                Swal.fire({
+                    position: "center",
+                    icon: "warning",
+                    title: `${error.response.data.message}`,
+                    showConfirmButton: false,
+                    timer: 1200
+                  });
             }
         }
     }
     return (
         <div className="flex flex-col">
             <div className='flex-col'>
-                <NavLink to="/login" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
+                <NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>
             </div>
             <div className="recovery-body">
                 <div className="recovery-box">

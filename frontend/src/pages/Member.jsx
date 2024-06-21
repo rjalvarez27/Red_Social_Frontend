@@ -81,13 +81,13 @@ export function Member() {
             <div className="general-content">
                 <div className="general-box1 z-0">
                     <img src={img.data} alt="" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
-                    
+
                     <img src="../src/images/principales/logo.png" alt="" className='w-[150px] m-10' />
                 </div>
 
                 <div className="general-box2 z-40">
                     <div className='flex-col w-[100%] mt-[45px]'>
-                     
+
                         <h1 className="text-3xl font-black m-2 text-center">Membresia</h1>
                     </div>
                     <div className='flex'>
@@ -125,11 +125,6 @@ export function Member() {
                                     <td className='text-green-500'></td>
                                     <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
                                 </tr>
-                                {/*<tr className="border-b-2">
-                                    <th>IA Publicaciones</th>
-                                    <td className='text-green-500'></td>
-                                    <td className='text-green-500'><i className="fa-solid fa-square-check"></i></td>
-                                </tr>*/}
                                 <tr className="border-b-2">
                                     <th>Filtros personalizados</th>
                                     <td className='text-green-500'></td>
@@ -171,26 +166,9 @@ export function Member() {
                         <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)} />
 
                     </div>
-                    {settings && <Settings onSettings={handleSettings} />}
-
-
-                    <div className="trends-space">
-                        <div style={{ display: 'none' }}>
-                            <Trends />
-                        </div>
-
-                    </div>
-
-                    <div className="ad-space">
-                        <div className="ad-space-area">
-                            <h3>Suscribete a Premium</h3>
-                            <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
-                        </div>
-                    </div>
-
-                    <Chatlist />
                 </div>
             </div>
         </div>
+
     );
 }

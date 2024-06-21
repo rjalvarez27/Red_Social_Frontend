@@ -11,6 +11,7 @@ import "../styles/register.css";
 export function Register() {
     const navigate = useNavigate()
     const [confirm, setConfirm] = useState("");
+    const [token, setToken] = useState(null)
     const [data, setData] = useState({
         name: "",
         username: "",
@@ -110,11 +111,21 @@ export function Register() {
             });
             return;
         }
-        else if (data.password.length < 6) {
+        else if (data.name.length < 4 && data.username.length <4 ) {
             Swal.fire({
                 position: "center",
                 icon: "warning",
-                title: "Clave demasiado corta, por favor verifique los datos",
+                title: "Nombre o Username muy cortos, por favor verifique los datos",
+                showConfirmButton: false,
+                timer: 1300
+            });
+            return;
+        }
+        else if (data.password.length < 6 ) {
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "clave muy corta, por favor verifique los datos",
                 showConfirmButton: false,
                 timer: 1300
             });
@@ -133,7 +144,12 @@ export function Register() {
         else {
             try {
                 const response = await axios.post('http://localhost:3000/social/user', data)
-                if (checkbox == true) {
+                if (checkbox == true && response) {
+                    try{
+                    const request = await axios.post("http://localhost:3000/social/login", {email: data.email, password: data.password});
+                    const info = request.data
+                    setToken(info.token)
+                    Cookies.set('token', `${info.token}`)
                     Swal.fire({
                         position: "center",
                         icon: "success",
@@ -142,9 +158,12 @@ export function Register() {
                         timer: 1300
                     });
                     setTimeout(function () {
-                        navigate("/membership");
+                        navigate("/member");
                     }, 2000);
                     return
+                    } catch (error) {
+                        console.log(error.response.data);
+                    }
                 } else {
                     Swal.fire({
                         position: "center",
@@ -159,6 +178,7 @@ export function Register() {
                     return
                 }
             } catch (error) {
+                console.log(error.response.data);
                 Swal.fire({
                     position: "center",
                     icon: "info",
@@ -166,9 +186,6 @@ export function Register() {
                     showConfirmButton: false,
                     timer: 1300
                 });
-                setTimeout(function () {
-                    window.location.reload();
-                }, 2000);
                 return
             }
         }

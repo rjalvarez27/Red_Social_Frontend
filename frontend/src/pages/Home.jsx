@@ -14,7 +14,7 @@ export function Home(){
         if (!token) {
             alert('Por favor inicia sesion')
             setTimeout(function () {
-                navigate("/login");
+                navigate("/");
             }, 2000);
             return
         } else {

@@ -5,6 +5,7 @@ import { validCorreo, validPassword } from "../components/Regext.jsx";
 import axios from "axios";
 import "../styles/login.css";
 import Cookies from 'js-cookie'
+import Swal from 'sweetalert2'
 
 
 export function Login() {
@@ -18,14 +19,34 @@ export function Login() {
   const senData = async (e) => {
     e.preventDefault();
     if (!data.email || !data.password) {
-      alert('Campos estan vacios, por favor rellene todos los datos')
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Campos vacios",
+        showConfirmButton: false,
+        timer: 1200
+      });
       return
     }
     if (!validCorreo.test(data.email)) {
-      alert('Correo incorrecto, por favor verifique los datos')
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Datos invalidos",
+        showConfirmButton: false,
+        timer: 1200
+      });
+      return
     }
     if (!validPassword.test(data.password)) {
-      alert('Contraseña incorrecta, por favor verifique los datos')
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Datos invalidos",
+        showConfirmButton: false,
+        timer: 1200
+      });
+      return
     }
     else {
       try {
@@ -33,10 +54,19 @@ export function Login() {
         const info = response.data
         setToken(info.token)
         Cookies.set('token', `${info.token}`)
-        navigate('/')
+        Swal.fire({
+          position: "success",
+          icon: "warning",
+          title: "Bienvenido",
+          showConfirmButton: false,
+          timer: 1200
+        });
+        setTimeout(function () {
+          navigate("/");
+        }, 2000);
+        return
       } catch (error) {
         console.log(error.response.data);
-        alert(error.response.data.message)
       }
     }
   };
@@ -46,7 +76,6 @@ export function Login() {
       navigate('/Home')
     }
   });
-
   return (
     <div className="login-body">
       <div className="containerL">
@@ -65,7 +94,7 @@ export function Login() {
               <input type="password" placeholder="Contraseña" className='p-1 rounded-md' onChange={(e) => setData({ ...data, password: e.target.value })} />
             </label>
             <div className="flex">
-              <p className="text-sm text-center m-1">Haga Click aqui para iniciar sesion directamente </p>
+              <p className="text-sm text-center m-1">Haga Click aqui para iniciar sesion directamente: </p>
             </div>
             <div className="flex">
               <button className="border w-12 py-3 m-1 rounded-lg  hover:bg-gray-800 hover:text-white" disabled>
@@ -78,7 +107,7 @@ export function Login() {
                 <i className="fa-brands fa-facebook"></i>
               </button>
             </div>
-            <NavLink to="/recoverEmail" className="text-lg text-center m-1">¿Olviste tu contraseña?</NavLink>
+            <NavLink to="/recoverEmail" className="text-lg text-center m-1 text-blue-400 hover:text-blue-800">¿Olviste tu contraseña?</NavLink>
             <input type="submit" value="Iniciar Sesion" className='bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg m-4' />
           </form>
         </div>
@@ -86,14 +115,14 @@ export function Login() {
       <div className="containerL">
         <div className="box3">
           <p>¿No tienes cuenta?</p>
-          <NavLink to="/register" className="text-lg text-center m-1 text-blue-800">Registrate</NavLink>
+          <NavLink to="/register" className="text-lg text-center m-1 text-blue-400">Registrate</NavLink>
         </div>
       </div>
       <div className="containerF">
         <p className="text-xl text-center m-1 font-bold ">Descarga la app</p>
-        <div className="flex-col relative ">
+        <div className="flex flex-col relative ">
           <img src="../src/images/login/img2.png" alt="app" className="w-[400px] position:relative z-0 " />
-          <img src="../src/images/login/img1.png" alt="fondo" className="w-[500px] absolute inset-0 z-[-1] " />
+          <img src="../src/images/login/img1.png" alt="fondo" className="w-[400px] absolute inset-0 z-[-1] " />
         </div>
       </div>
     </div>

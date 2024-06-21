@@ -71,7 +71,7 @@ export function MembershipPay() {
             if (!token) {
                 alert('Por favor inicia sesion')
                 setTimeout(function () {
-                    navigate("/login");
+                    navigate("/");
                 }, 2000);
                 return
             } else {
@@ -116,7 +116,6 @@ export function MembershipPay() {
 
             <div className="general-box2 flex gap-2 p-[10px] font-[500]">
                 <div className='flex-col mt-[45px]'>
-                    {/*<NavLink to="/" className="flex justify-end"><img src="../src/images/principales/home.png" alt="home" className="w-12 m-2" /></NavLink>*/}
                     <h1 className="text-3xl font-black  text-center m-1">Pago de la Membresia Premiun</h1>
                 </div>
                 <div className='flex-col text-center'>
@@ -151,7 +150,6 @@ export function MembershipPay() {
                     <p className="text-sm m-3 text-center">
                         Si tiene algun problema con el pago por favor ingrese al siguien link:
                     </p>
-
                     <a href="https://www.whatsapp.com/?lang=es_LA"><button className='text-white bg-green-700 shadow-md w-36 m-3 p-2 rounded-md'>WhatsApp</button></a>
                 </div>
                 <div className="sticky top-[100vh] conten3">
@@ -162,27 +160,14 @@ export function MembershipPay() {
                 <div className="option-space">
                     <img src="src/images/notification.png" alt="Notificaciones" className="option-space-img" />
                     <input type="search" name="search" id="search" placeholder="Buscar..." className="option-space-search" />
-                    <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)} />
 
                 </div>
-                {settings && <Settings onSettings={handleSettings} />}
-
-
-                <div className="trends-space">
-                    <div style={{ display: 'none' }}>
-                        <Trends />
-                    </div>
-
-                </div>
-
                 <div className="ad-space">
                     <div className="ad-space-area">
                         <h3>Suscribete a Premium</h3>
                         <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
                     </div>
                 </div>
-
-                <Chatlist />
             </div>
         </div>
     );
