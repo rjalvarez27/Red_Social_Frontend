@@ -86,11 +86,9 @@ export function Messages() {
                 <div className="general-box1 h-[100%]">
                     <div className='flex flex-col items-start' >
                         <div className='flex flex-col items-end  justify-start'>
-                            <img src="" alt="avatar" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
+                            <img src="../src/images/principales/logo.png" alt="avatar" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
                         </div>
                     </div>
-                    <Navmenu />
-                    <img src="../src/images/principales/logo.png" alt="logo" className='w-[150px] m-10' />
                 </div>
                 <div className="general-chat">
                     <div className="h-[100%] bg-[rgb(57,54,66)] text-white flex items-center justify-center">
@@ -127,23 +125,8 @@ export function Messages() {
                         <img src="src/images/settings.png" alt="Settings" className="option-space-img" onClick={() => setSettings(!settings)} />
 
                     </div>
-                    {settings && <Settings onSettings={handleSettings} />}
-
-                    <div className="trends-space">
-                        <div style={{ display: 'none' }}>
-                            <Trends />
-                        </div>
-
-                    </div>
-
                     <div className="ad-space">
-                        <div className="ad-space-area">
-                            <h3>Suscribete a Premium</h3>
-                            <p className="decoration-[rgb(174, 174, 174)]">¡Únete a nuestra comunidad exclusiva! Suscríbete para obtener funciones especiales y contenido premium directamente en tu bandeja de entrada. No te pierdas nada y forma parte de nuestra familia en línea.</p>
-                        </div>
                     </div>
-
-                    <Chatlist />
                 </div>
             </div>
         </div>

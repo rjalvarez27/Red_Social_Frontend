@@ -19,8 +19,6 @@ export function Profile() {
     const [user, setUser] = useState()
     const [img, setImg] = useState({})
 
-	//const token = Cookies.set('token', 1234)
-
   console.log(id)
   console.log(user)
 

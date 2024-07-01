@@ -55,10 +55,7 @@ export function Publication() {
 
     return (
         <>
-            <Header />
-            {<Nav name={user?.name} username={user?.username}/>}
-            <Aside />
-            <Post />
+           <div>publicaciones</div>
         </>
     )
 }

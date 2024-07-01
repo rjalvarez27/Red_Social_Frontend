@@ -81,7 +81,6 @@ export function Member() {
             <div className="general-content">
                 <div className="general-box1 z-0">
                     <img src={img.data} alt="" className='w-[150px] cursor-pointer rounded-full my-10' onClick={() => navigate("/")} />
-
                     <img src="../src/images/principales/logo.png" alt="" className='w-[150px] m-10' />
                 </div>
 

@@ -4,7 +4,6 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import {Home} from './pages/Home.jsx'
 import {Messages} from './pages/Messages.jsx'
 import { Publication } from './pages/Publication.jsx'
-import { Explorar } from './pages/Explorar.jsx'
 import { Profile } from './pages/Profile.jsx'
 import { PrivateRoute } from './routes/PrivateRoutes'
 import { Login } from './pages/Login.jsx'
@@ -17,7 +16,6 @@ import { PerfilUser } from './pages/PerfilUser.jsx'
 import { Rates } from './pages/ratesP.jsx'
 import { RecoverEmail } from './pages/RecoverEmail.jsx'
 import { RecoverPassword } from './pages/RecoverPassword.jsx'
-import { Interacciones } from './pages/Interacciones.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
@@ -34,9 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/home' element={<Home/>}/>
         <Route path='/messages' element={<Messages/>}/>
         <Route path='/post' element={<Publication/>}/>
-        <Route path='/explorar' element={<Explorar/>}/>
         <Route path='/profile' element={<Profile/>}/>
-        <Route path='/interacciones' element={<Interacciones/>}/>
         </Route>
         //Rutas Publicas
         <Route path="/" element={<Login />} />

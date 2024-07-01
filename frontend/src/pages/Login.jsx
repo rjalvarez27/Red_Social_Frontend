@@ -56,7 +56,7 @@ export function Login() {
         Cookies.set('token', `${info.token}`)
         Swal.fire({
           position: "success",
-          icon: "warning",
+          icon: "success",
           title: "Bienvenido",
           showConfirmButton: false,
           timer: 1200
