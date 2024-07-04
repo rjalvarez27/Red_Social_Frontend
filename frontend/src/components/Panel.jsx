@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import '../styles/button.css'
+
 
 export function Panel() {
 
