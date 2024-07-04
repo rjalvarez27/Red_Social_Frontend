@@ -1,6 +1,6 @@
 export function Header() {
     return (
-        <div className="w-[100%] h-[20%] flex flex-col bg-black justify-center ">
+        <div className="w-[100%] h-[20%] flex flex-col">
             <div className="flex flex-row justify-center">
                 <img src="../src/images/principales/logo.png" alt="" className="w-[110px]"/>
             </div>

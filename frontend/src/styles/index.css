@@ -5,8 +5,6 @@
     font-family: 'Inter', sans-serif;
 }
 
-.principal{
-    padding-bottom: 30px;
-    position: absolute;
-    top: 75px;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

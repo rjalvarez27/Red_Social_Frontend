@@ -10,8 +10,6 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: rgb(0, 0, 0);
-    color: white;
 }
 
 .general-box2 {
@@ -19,7 +17,6 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: whitesmoke;
 }
 
 .general-box3 {
@@ -27,8 +24,6 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: rgb(0, 0, 0);;
-    color: white;
     align-items: center;
     justify-content: space-between;
 }
@@ -38,7 +33,6 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: whitesmoke;
     border-radius: 10px;
     border: solid black 1px;
 
