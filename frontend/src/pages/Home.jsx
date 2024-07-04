@@ -17,16 +17,14 @@ export function Home() {
     return (
         <>
             <div className="general-content">
-                <div className="general-box1 z-0">
-                    <div className="flex h-[20%] w-[100%] items-center justify-center">
-                        <img src="../src/images/principales/perfil.png" alt="" className='border rounded-full w-[150px]' />
+                <div className="general-box1 z-0 bg-white dark:bg-slate-600 ">
+                    <div className="flex h-[20%] w-[100%] items-center justify-center my-[20px]">
+                        <img src="../src/images/principales/perfil.png" alt="" className='border border-black rounded-full w-[100px]' />
                     </div>
                     <div className='flex h-[80%] w-[100%] items-center justify-center text-center'>
                         <ul className='flex flex-col '>
-                           <li className='border border-white rounded-lg  hover:bg-gray-800 text-white font-bold py-2 px-6  m-3 italic'><a href="/publications">Publicaciones</a></li>
-                           <li className='border border-white rounded-lg  hover:bg-gray-800 text-white font-bold py-2 px-6  m-4 italic'><a href="/addPublicaiones">Crear</a></li>
-                           <li className='border border-white rounded-lg hover:bg-gray-800 text-white font-bold py-2 px-6  m-4 italic'><a href="/publications">Perfil</a></li>
-                           <li className='border border-white rounded-lg  hover:bg-gray-800 text-white font-bold py-2 px-6  m-4 italic'><a href="/messages">Mensajeria</a></li>
+                           <li className='text-3xl dark:text-white'><a href="/publications">Publicaciones</a></li>
+                        
                         </ul>
                     </div>
                 </div>
