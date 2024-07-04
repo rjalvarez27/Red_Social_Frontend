@@ -4,8 +4,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie'
 import Swal from 'sweetalert2'
-
-
 import "../styles/register.css";
 
 export function Register() {
@@ -205,7 +203,7 @@ export function Register() {
                 </div>
                 <div className="container min-h-screen w-[50%] relative z-40">
                     <div className="conten1">
-                        <img src="../src/images/logo.png" alt="logo" className="w-20 " />
+                        <img src="../src/images/principales/logo.png" alt="logo" className="w-20 " />
                     </div>
                     <div className="conten2 bg-white">
                         <h1 className="text-2xl text-center m-3">Crea una cuenta</h1>

@@ -5,8 +5,7 @@ export function Panel() {
 
     const [darkMode, setDarkMode] = useState("light");
 
-    const hanledDarkMode = (e) => {
-        e.preventDefault();
+    const hanledDarkMode = () => {
         if (darkMode === "dark") {
             setDarkMode("light")
         } else {
@@ -30,7 +29,7 @@ export function Panel() {
         <>
             <div className="h-[20%] flex flex-row bg-black justify-center text-lg m-3 gap-3">
                 <input type="checkbox" id="darkmode-toggle"  />
-                <label htmlFor="darkmode-toggle" className="btn" onClick={hanledDarkMode}  >
+                <label htmlFor="darkmode-toggle" className="btn"  >
                 <i className="fa-solid fa-sun sun text-black"></i>
                 <i className="fa-regular fa-moon moon"></i>
                 </label>
