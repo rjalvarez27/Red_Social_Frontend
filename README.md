@@ -39,11 +39,7 @@ por correo electronico y aplica tambien al momento de adquirir el usuario premiu
 
 🖼 Interfaz:
 
-![image](https://github.com/user-attachments/assets/d2107aea-6f27-4f93-8dc8-88e3676885d6)
 
-![image](https://github.com/user-attachments/assets/16310ae7-6fe9-468d-a046-8952dde884e5)
-
-![image](https://github.com/user-attachments/assets/ea169bd9-f7a1-4b84-bf3b-6747997de4a2)
 
 
 
