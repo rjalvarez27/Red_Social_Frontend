@@ -1,4 +1,4 @@
-📳 RED SOCIAL INTERACTIVA API 📳
+📳 RED SOCIAL INTERACTIVA Frontend 📳
 
 Proyecto final del Bootcamp Lexpin 
 
