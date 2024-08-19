@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import axios from 'axios'
-
-
+import { Header } from '../components/Header.jsx'
+import { Panel } from '../components/Panel.jsx'
 
 
 export function Profile() {
@@ -90,45 +90,36 @@ useEffect(() => {
 
     return (
         <>
-            <div className='header-profile'>
-                <Header />
+          <div className="general-content">
+                <div className="general-box1 z-0 bg-white dark:bg-slate-700 ">
+                    <div className="flex h-[20%] w-[100%] items-center justify-center my-[20px]">
+                        <img src="../src/images/principales/perfil.png" alt="" className='border border-black rounded-full w-[100px]' />
+                    </div>
+                    <div className='flex h-[80%] w-[80%]  justify-center text-start m-8 '>
+                        <ul className='flex flex-col'>
+                           <li className='text-xl dark:text-white m-2'><i className="fa-solid fa-square-plus"></i> <a href="/publications">Nuevas Publicaciones</a></li>
+                           <li className='text-xl dark:text-white m-2'><i className="fa-duotone fa-solid fa-user"></i> <a href="/publications">Mi perfil</a></li>
+                           <li className='text-xl dark:text-white m-2'><i className="fa-solid fa-user-group"></i> <a href="/publications">Mis Amigos</a></li>
+                           <li className='text-xl dark:text-white m-2'><i className="fa-solid fa-message"></i> <a href="/publications">Mensajes</a></li>
+                           <li className='text-xl dark:text-white m-2'><i className="fa-solid fa-gear"></i> <a href="/publications">Configuracion</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="general-box2 z-40">
+                    <Header />
+                    <div>
+
+                    </div>
+                    <div className="sticky top-[100vh]">
+                        <h1 className="text-sm text-center m-2 ">© 2024 Copyright: Mounts</h1>
+                    </div>
+                </div>
+                <div className="general-box3 z-0 bg-white dark:bg-slate-700">
+                    <div>
+                      < Panel />
+                    </div>
+                </div>
             </div>
-
-            <nav className='nav-profile'>
-                <div className='img-profile flex justify-center items-center p-[2px]'>
-                    <img src={img.data} alt="avatar" className='w-[100%] h-[100%] cursor-pointer rounded-full' onClick={() => navigate("/")} />
-                </div>
-                <section className='datos-profile'>
-                    <div className='user-profile'>
-                        <strong className='name-profile'>{user?.name}</strong>
-                        <p className='username-profile'>@{user?.username}</p>
-                    </div>
-                    <div className='info-profile'>
-                        <p>Amigos</p>
-                        <p>Seguidores</p>
-                        <p>Seguidos</p>
-                    </div>
-                </section>
-
-                
-            </nav>
-
-            <aside className='nav'>
-                <div className='aside-profile'>
-                    <ul className="menu">
-                        <li><div className="decoracion -white"></div><a onClick={() => navigate("/profile")}>Publicaciones</a></li>
-                        <li><div className="decoracion -white"></div><a onClick={() => navigate("/profile")}>Fotos o videos</a></li>
-                        <li><div className="decoracion -gold"></div><a onClick={() => navigate("/member")} >Premium</a></li>
-                        <li><div className="decoracion -white"></div><a onClick={() => navigate("/perfiluser")} >Configuración</a></li>
-                    </ul>
-                    <button className="new-post w-[180px] xl:w-[220px]" onClick={() => setOpen(!open)}>Nueva publicación</button>
-                </div>
-                
-            </aside>
-
-            <main className='main-profile'>
-         
-            </main>
 
        
         </>
